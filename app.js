@@ -464,9 +464,9 @@
       seasonLine = '<p class="season-line">Ontology by moonlight — still the real gist under the costume.</p>';
       ornament = '<span class="home-moon" aria-hidden="true"></span>';
     } else if (theme === 'christmas') {
-      eyebrow = 'Christmas edition';
-      heading = (course.title || 'Gist') + ' · Christmas';
-      seasonLine = '<p class="season-line">Holly, ivy, and the real gist under the wrapping paper.</p>';
+      eyebrow = 'Gistmas edition';
+      heading = (course.title || 'Gist') + ' · Gistmas';
+      seasonLine = '<p class="season-line">Holly, ivy, and the real gist under the Gistmas wrapping paper.</p>';
       ornament = '<span class="home-holly" aria-hidden="true"></span>';
       santa = '<figure class="dave-santa">' +
         '<img src="assets/dave-santa.svg" width="220" height="240" alt="Dave McComb as Santa Claus (festive illustration)">' +
@@ -480,7 +480,7 @@
     var toggle = '<div class="theme-toggle" role="group" aria-label="Theme">' +
       themeBtn('auto', 'Auto') +
       themeBtn('halloween', 'Halloween') +
-      themeBtn('christmas', 'Christmas') +
+      themeBtn('christmas', 'Gistmas') +
       themeBtn('classic', 'Classic') +
       '</div>';
 
@@ -652,7 +652,7 @@
     var courseTitle = ui.course.title || 'Gist';
     var chromeTitle = courseTitle;
     if (theme === 'halloween') chromeTitle = courseTitle + ' · Halloween';
-    if (theme === 'christmas') chromeTitle = courseTitle + ' · Christmas';
+    if (theme === 'christmas') chromeTitle = courseTitle + ' · Gistmas';
     if (ui.view === 'home') document.title = chromeTitle;
     else {
       var lesson = currentLesson();

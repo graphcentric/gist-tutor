@@ -33,15 +33,15 @@ Teach `line` definitions stay aligned with gist 14.1.0. Seasonal fields only fla
 
 Theme preference is stored under `gist-tutor-theme-v1` as `auto` | `halloween` | `christmas` | `classic`. Progress still uses `gist-tutor-progress-v1` and is not cleared by the theme.
 
-On the home screen you can switch among Auto, Halloween, Christmas, and Classic.
+On the home screen you can switch among Auto, Halloween, Gistmas, and Classic.
 
 **Auto** (local calendar via `localISODate`):
 
 - 1 October through 2 November → Halloween
-- 1 December through 6 January (crossing the year) → Christmas
+- 1 December through 6 January (crossing the year) → Gistmas (Christmas skin)
 - otherwise → Classic
 
-Halloween: purple night sky, parchment cards, moonlight chrome. Christmas: forest green, crimson and gold, holly/ivy accents, and a festive illustration of Dave McComb (Semantic Arts) as Santa Claus. Both keep focus, forced-colours, and reduced-motion support.
+Halloween: purple night sky, parchment cards, moonlight chrome. **Gistmas**: forest green, crimson and gold, holly/ivy accents, and a festive illustration of Dave McComb (Semantic Arts) as Santa Claus. Both keep focus, forced-colours, and reduced-motion support. (Theme preference value remains `christmas` in storage; the UI says Gistmas.)
 
 ## Source
 
