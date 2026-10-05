@@ -12,39 +12,61 @@
           "term": "gist:Person",
           "kind": "class",
           "line": "A human being who was or is alive.",
-          "example": "Maya, who carves pumpkins on Hallowe'en, is a person."
+          "example": "Idris, who packs parcels on Saturdays, is a person.",
+          "exampleHalloween": "Maya, who carves pumpkins on Hallowe'en, is a person.",
+          "exampleChristmas": "Maya, who hosts Christmas dinner every year, is a person."
         },
         {
           "type": "teach",
           "term": "gist:hasParty",
           "kind": "property",
           "line": "Relates an event, agreement, or obligation to a participating person or organization.",
-          "example": "The costume party has Maya as a party, and it also has the neighbourhood committee as a party."
+          "example": "The loan has Priya as a party, and it also has her building society as a party.",
+          "exampleHalloween": "The costume party has Maya as a party, and it also has the neighbourhood committee as a party.",
+          "exampleChristmas": "The Christmas dinner has Maya as a party, and it also has the neighbourhood committee as a party."
         },
         {
           "type": "teach",
           "term": "gist:Organization",
           "kind": "class",
           "line": "A structured entity formed to achieve specific goals, typically involving members with defined roles.",
-          "example": "The Hollow Oak Neighbourhood Committee is an organisation, even if it is only a shell with no staff."
+          "example": "Northwind Traders Ltd is an organisation, even if it is only a shell with no staff.",
+          "exampleHalloween": "The Hollow Oak Neighbourhood Committee is an organisation, even if it is only a shell with no staff.",
+          "exampleChristmas": "The Hollow Oak Carol Committee is an organisation, even if it is only a shell with no staff."
         },
         {
           "type": "teach",
           "term": "gist:name",
           "kind": "property",
           "line": "Relates an individual to (one of) its name(s).",
-          "example": "The same person has the name Maya Shah and the name M. Shah on her guest badge."
+          "example": "The same person has the name Priya Shah and the name P. Shah.",
+          "exampleHalloween": "The same person has the name Maya Shah and the name M. Shah on her guest badge.",
+          "exampleChristmas": "The same person has the name Maya Shah and the name M. Shah on her place card."
         },
         {
           "type": "choice",
-          "prompt": "How do you record that Maya is a party to a costume party?",
+          "prompt": "How do you record that Priya is a party to a loan?",
           "options": [
+            "Type her as gist:Party",
+            "Relate the loan to her with gist:hasParty",
+            "Relate the loan to her with gist:name"
+          ],
+          "answer": 1,
+          "why": "There is no gist:Party class. A party is a person or an organisation, and hasParty is the link from the loan, agreement, or obligation to that participant. name only records what something is called.",
+          "promptHalloween": "How do you record that Maya is a party to a costume party?",
+          "whyHalloween": "There is no gist:Party class. A party is a person or an organisation, and hasParty is the link from the event, agreement, or obligation to that participant. name only records what something is called.",
+          "optionsHalloween": [
             "Type her as gist:Party",
             "Relate the party to her with gist:hasParty",
             "Relate the party to her with gist:name"
           ],
-          "answer": 1,
-          "why": "There is no gist:Party class. A party is a person or an organisation, and hasParty is the link from the event, agreement, or obligation to that participant. name only records what something is called."
+          "promptChristmas": "How do you record that Maya is a party to a Christmas dinner?",
+          "optionsChristmas": [
+            "Type her as gist:Party",
+            "Relate the dinner to her with gist:hasParty",
+            "Relate the dinner to her with gist:name"
+          ],
+          "whyChristmas": "There is no gist:Party class. A party is a person or an organisation, and hasParty is the link from the event, agreement, or obligation to that party."
         },
         {
           "type": "truefalse",
@@ -81,18 +103,32 @@
             "Person",
             "gist:Person"
           ],
-          "why": "gist:Person is a human being who was or is alive. A neighbourhood committee is an organisation, not a person."
+          "why": "gist:Person is a human being who was or is alive. A company is an organisation, not a person.",
+          "whyHalloween": "gist:Person is a human being who was or is alive. A neighbourhood committee is an organisation, not a person.",
+          "whyChristmas": "gist:Person is a human being who was or is alive. A carol committee is an organisation, not a person."
         },
         {
           "type": "choice",
           "prompt": "Which of these is a gist:Person?",
           "options": [
+            "Northwind Traders Ltd",
+            "The charity that runs the food bank",
+            "Idris, who volunteers there on Saturdays"
+          ],
+          "answer": 2,
+          "why": "A person is a human being. The company and the charity are organisations: structured entities formed to achieve goals. Members of an organisation are often people, but they can be other organisations, and some organisations have no members at all.",
+          "whyHalloween": "A person is a human being. The committee and the charity are organisations: structured entities formed to achieve goals. Members of an organisation are often people, but they can be other organisations, and some organisations have no members at all.",
+          "optionsHalloween": [
             "Hollow Oak Neighbourhood Committee",
             "The charity that runs the sweet stall",
             "Maya, who carves pumpkins on Saturdays"
           ],
-          "answer": 2,
-          "why": "A person is a human being. The committee and the charity are organisations: structured entities formed to achieve goals. Members of an organisation are often people, but they can be other organisations, and some organisations have no members at all."
+          "optionsChristmas": [
+            "Hollow Oak Carol Committee",
+            "The charity that runs the toy drive",
+            "Maya, who wraps presents on Saturdays"
+          ],
+          "whyChristmas": "A person is a human being. The committee and the charity are organisations: structured entities formed to achieve goals. Members of an organisation are not the organisation."
         }
       ]
     },
@@ -106,35 +142,45 @@
           "term": "gist:Intention",
           "kind": "class",
           "line": "A goal, desire, or aspiration.",
-          "example": "Maya's intention is that the porch be lit before the first trick-or-treaters."
+          "example": "Priya's intention is that the kitchen be finished before the holiday.",
+          "exampleHalloween": "Maya's intention is that the porch be lit before the first trick-or-treaters.",
+          "exampleChristmas": "Maya's intention is that the pudding be finished before Christmas Day."
         },
         {
           "type": "teach",
           "term": "gist:hasGiver",
           "kind": "property",
           "line": "Relates something to the participant that provides it.",
-          "example": "The promise to bring sweets has Maya as its giver."
+          "example": "The promise to fit the worktop has the joiner as its giver.",
+          "exampleHalloween": "The promise to bring sweets has Maya as its giver.",
+          "exampleChristmas": "The promise to bring the Christmas pudding has Maya as its giver."
         },
         {
           "type": "teach",
           "term": "gist:Commitment",
           "kind": "class",
           "line": "A promise made by a single party to one or more parties to do or not do something or act in a particular way.",
-          "example": "Maya's commitment is to bring a bowl of sweets; that promise binds Maya, not the whole street."
+          "example": "The joiner's commitment is to fit the worktop; that promise binds the joiner, not the whole household.",
+          "exampleHalloween": "Maya's commitment is to bring a bowl of sweets; that promise binds Maya, not the whole street.",
+          "exampleChristmas": "Maya's commitment is to bring a Christmas pudding; that promise binds Maya, not the whole household."
         },
         {
           "type": "teach",
           "term": "gist:Agreement",
           "kind": "class",
           "line": "A mutually understood arrangement in which two or more parties make commitments to one another.",
-          "example": "The costume-party RSVP is an agreement: the guest commits to come in costume, and the host commits to open the door."
+          "example": "The gym membership is an agreement: the member commits to pay, and the gym commits to allow access.",
+          "exampleHalloween": "The costume-party RSVP is an agreement: the guest commits to come in costume, and the host commits to open the door.",
+          "exampleChristmas": "The Christmas-dinner RSVP is an agreement: the guest commits to come, and the host commits to set a place."
         },
         {
           "type": "teach",
           "term": "gist:hasRecipient",
           "kind": "property",
           "line": "Relates something to the participant that receives or is intended to receive it.",
-          "example": "The bag of sweets has the child as its recipient, and the neighbour as its giver."
+          "example": "The birthday gift has the child as its recipient, and the aunt as its giver.",
+          "exampleHalloween": "The bag of sweets has the child as its recipient, and the neighbour as its giver.",
+          "exampleChristmas": "The wrapped gift has the child as its recipient, and the aunt as its giver."
         },
         {
           "type": "choice",
@@ -186,14 +232,16 @@
         },
         {
           "type": "choice",
-          "prompt": "A street performer promises one Hallowe'en show to every ticket holder. How many commitments is that?",
+          "prompt": "A performer promises one show to every ticket holder. How many commitments is that?",
           "options": [
             "One commitment, owed to many parties",
             "A separate commitment for each ticket",
             "An agreement, because more than one person is involved"
           ],
           "answer": 0,
-          "why": "The same action fulfils the obligation to every ticket holder at once, so it is one commitment with many parties on the receiving side. An agreement would be the wider arrangement in which two or more parties make commitments to each other."
+          "why": "The same action fulfils the obligation to every ticket holder at once, so it is one commitment with many parties on the receiving side. An agreement would be the wider arrangement in which two or more parties make commitments to each other.",
+          "promptHalloween": "A street performer promises one Hallowe'en show to every ticket holder. How many commitments is that?",
+          "promptChristmas": "A caroller promises one Christmas Eve show to every ticket holder. How many commitments is that?"
         }
       ]
     },
@@ -207,52 +255,68 @@
           "term": "gist:Offer",
           "kind": "class",
           "line": "A contingent commitment to buy, sell, swap or provide one or more described or identified goods or services in exchange for another (or others).",
-          "example": "The card in the sweet-shop window is an offer to sell that pumpkin for £3 through Sunday."
+          "example": "The card in the bookshop window is an offer to sell that novel for £8 through Sunday.",
+          "exampleHalloween": "The card in the sweet-shop window is an offer to sell that pumpkin for £3 through Sunday.",
+          "exampleChristmas": "The card in the toy-shop window is an offer to sell that rocking horse for £40 through Christmas Eve."
         },
         {
           "type": "teach",
           "term": "gist:offersToProvide",
           "kind": "property",
           "line": "Relates an offer to the thing being made available for exchange.",
-          "example": "The shop's offer offers to provide the carved pumpkin."
+          "example": "The bookshop's offer offers to provide the novel.",
+          "exampleHalloween": "The shop's offer offers to provide the carved pumpkin.",
+          "exampleChristmas": "The shop's offer offers to provide the rocking horse."
         },
         {
           "type": "teach",
           "term": "gist:offersToReceive",
           "kind": "property",
           "line": "Relates an offer to the thing expected in return for the offered item.",
-          "example": "That same offer offers to receive £3."
+          "example": "That same offer offers to receive £8.",
+          "exampleHalloween": "That same offer offers to receive £3.",
+          "exampleChristmas": "That same offer offers to receive £40."
         },
         {
           "type": "teach",
           "term": "gist:Contract",
           "kind": "class",
           "line": "An agreement which can be enforced by law.",
-          "example": "The signed hall-hire for the costume party, which a court can enforce, is a contract, not merely the advert that offered the room."
+          "example": "The signed tenancy, which a court can enforce, is a contract, not merely the advert that offered the flat.",
+          "exampleHalloween": "The signed hall-hire for the costume party, which a court can enforce, is a contract, not merely the advert that offered the room.",
+          "exampleChristmas": "The signed hall-hire for the Christmas party, which a court can enforce, is a contract, not merely the advert that offered the room."
         },
         {
           "type": "teach",
           "term": "gist:isUnderJurisdictionOf",
           "kind": "property",
           "line": "Relates a law, contract, etc., to the system of law or government which has the power, right, or authority to interpret and apply it.",
-          "example": "The hall-hire is under the jurisdiction of the government organisation whose courts would hear a dispute."
+          "example": "The tenancy is under the jurisdiction of the government organisation whose courts would hear a dispute.",
+          "exampleHalloween": "The hall-hire is under the jurisdiction of the government organisation whose courts would hear a dispute.",
+          "exampleChristmas": "The hall-hire is under the jurisdiction of the government organisation whose courts would hear a dispute."
         },
         {
           "type": "choice",
-          "prompt": "Maya's signed hall-hire for the costume party, which the courts of a government can enforce, is which gist class?",
+          "prompt": "Maya's signed lease, which the courts of a government can enforce, is which gist class?",
           "options": [
             "gist:Offer",
             "gist:Contract",
             "gist:Commitment"
           ],
           "answer": 1,
-          "why": "A contract is an agreement which can be enforced by law: formally, an agreement that is under the jurisdiction of a government organisation. An offer is only a contingent commitment to exchange something, and a commitment is a single party's promise."
+          "why": "A contract is an agreement which can be enforced by law: formally, an agreement that is under the jurisdiction of a government organisation. An offer is only a contingent commitment to exchange something, and a commitment is a single party's promise.",
+          "promptHalloween": "Maya's signed hall-hire for the costume party, which the courts of a government can enforce, is which gist class?",
+          "promptChristmas": "Maya's signed hall-hire for the Christmas party, which the courts of a government can enforce, is which gist class?"
         },
         {
           "type": "truefalse",
-          "prompt": "A shop's offer to sell a pumpkin for £3 is already a gist:Contract.",
+          "prompt": "A shop's offer to sell a bike for £50 is already a gist:Contract.",
           "answer": false,
-          "why": "The offer offers to provide the pumpkin and offers to receive £3. That is a contingent commitment, not an agreement under a government organisation's jurisdiction. Dates on the offer are the period it stays open, such as '£3 through Sunday'."
+          "why": "The offer offers to provide the bike and offers to receive £50. That is a contingent commitment, not an agreement under a government organisation's jurisdiction. Dates on the offer are the period it stays open, such as '£50 through Friday'.",
+          "promptHalloween": "A shop's offer to sell a pumpkin for £3 is already a gist:Contract.",
+          "whyHalloween": "The offer offers to provide the pumpkin and offers to receive £3. That is a contingent commitment, not an agreement under a government organisation's jurisdiction. Dates on the offer are the period it stays open, such as '£3 through Sunday'.",
+          "promptChristmas": "A shop's offer to sell a Christmas tree for £25 is already a gist:Contract.",
+          "whyChristmas": "The offer offers to provide the tree and offers to receive £25. That is a contingent commitment, not an agreement under a government organisation's jurisdiction."
         },
         {
           "type": "match",
@@ -297,35 +361,45 @@
           "term": "gist:Event",
           "kind": "class",
           "line": "Something that occurs over a period of time, often characterized as an activity being carried out by some person, organization, or software application or brought about by natural forces.",
-          "example": "The Hallowe'en thunderstorm is an event, and so is Maya carving the porch pumpkin."
+          "example": "The afternoon thunderstorm is an event, and so is Priya repainting the hall.",
+          "exampleHalloween": "The Hallowe'en thunderstorm is an event, and so is Maya carving the porch pumpkin.",
+          "exampleChristmas": "The Boxing Day thunderstorm is an event, and so is Maya wrapping the porch presents."
         },
         {
           "type": "teach",
           "term": "gist:hasGoal",
           "kind": "property",
           "line": "Relates something to the end towards which it directs effort.",
-          "example": "Carving the pumpkin has the goal that the porch look welcoming."
+          "example": "Repainting the hall has the goal that the walls be blue.",
+          "exampleHalloween": "Carving the pumpkin has the goal that the porch look welcoming.",
+          "exampleChristmas": "Wrapping the presents has the goal that the tree look welcoming."
         },
         {
           "type": "teach",
           "term": "gist:Task",
           "kind": "class",
           "line": "An activity or piece of work that is either proposed, planned, scheduled, underway, or completed.",
-          "example": "Going to the costume party is a task in gist, because it is an event with the goal of joining the gathering."
+          "example": "Going to the concert is a task in gist, because it is an event with the goal of hearing the band.",
+          "exampleHalloween": "Going to the costume party is a task in gist, because it is an event with the goal of joining the gathering.",
+          "exampleChristmas": "Going to the Christmas party is a task in gist, because it is an event with the goal of joining the gathering."
         },
         {
           "type": "teach",
           "term": "gist:TaskTemplate",
           "kind": "class",
           "line": "An outline of a task of a particular type, which is the basis for executing such tasks.",
-          "example": "The street's write-up of how to set up a trick-or-treat stall is a task template, until someone actually proposes doing it."
+          "example": "The firm's write-up of how to onboard an employee is a task template, until someone actually proposes doing it.",
+          "exampleHalloween": "The street's write-up of how to set up a trick-or-treat stall is a task template, until someone actually proposes doing it.",
+          "exampleChristmas": "The street's write-up of how to set up a carol stall is a task template, until someone actually proposes doing it."
         },
         {
           "type": "teach",
           "term": "gist:isBasedOn",
           "kind": "property",
           "line": "The object is a foundation for, a starting point for, gave rise to, or justifies the subject.",
-          "example": "Tuesday's set-up of Sam's stall is based on the street's stall template."
+          "example": "Tuesday's onboarding of Sam is based on the firm's onboarding template.",
+          "exampleHalloween": "Tuesday's set-up of Sam's stall is based on the street's stall template.",
+          "exampleChristmas": "Tuesday's set-up of Sam's carol stall is based on the street's stall template."
         },
         {
           "type": "truefalse",
@@ -335,14 +409,16 @@
         },
         {
           "type": "choice",
-          "prompt": "In gist, going to a costume party for pleasure, in order to join the gathering, is what?",
+          "prompt": "In gist, going to a concert for pleasure, in order to hear the band, is what?",
           "options": [
             "Not a task, because nobody is obliged to go",
             "A task, because it is an event with a goal",
             "A task template, because it might be repeated"
           ],
           "answer": 1,
-          "why": "gist:Task is wider than the everyday word. An event directed at an intention is a task even when it is done for pleasure rather than duty. The template would be an outline of how such an outing works, not the outing itself."
+          "why": "gist:Task is wider than the everyday word. An event directed at an intention is a task even when it is done for pleasure rather than duty. The template would be an outline of how such an outing works, not the outing itself.",
+          "promptHalloween": "In gist, going to a costume party for pleasure, in order to join the gathering, is what?",
+          "promptChristmas": "In gist, going to a Christmas party for pleasure, in order to join the gathering, is what?"
         },
         {
           "type": "match",
@@ -387,35 +463,45 @@
           "term": "gist:ScheduledTask",
           "kind": "class",
           "line": "A task with a planned start datetime.",
-          "example": "Carving the pumpkin on Thursday is a scheduled task because Thursday is when it was planned to start."
+          "example": "Mending the gate on Thursday is a scheduled task because Thursday is when it was planned to start.",
+          "exampleHalloween": "Carving the pumpkin on Thursday is a scheduled task because Thursday is when it was planned to start.",
+          "exampleChristmas": "Wrapping the presents on Thursday is a scheduled task because Thursday is when it was planned to start."
         },
         {
           "type": "teach",
           "term": "gist:plannedStartDateTime",
           "kind": "property",
           "line": "The date and time that something is or was planned to start, with no implied precision.",
-          "example": "The porch decoration was planned to start on Monday evening."
+          "example": "The renovation was planned to start on Monday morning.",
+          "exampleHalloween": "The porch decoration was planned to start on Monday evening.",
+          "exampleChristmas": "The Christmas decoration was planned to start on Monday evening."
         },
         {
           "type": "teach",
           "term": "gist:actualStartDateTime",
           "kind": "property",
           "line": "The actual date and time that something started, with no implied precision.",
-          "example": "The porch decoration actually started on Wednesday, after the pumpkins were late."
+          "example": "The renovation actually started on Wednesday, after the timber was late.",
+          "exampleHalloween": "The porch decoration actually started on Wednesday, after the pumpkins were late.",
+          "exampleChristmas": "The Christmas decoration actually started on Wednesday, after the fairy lights were late."
         },
         {
           "type": "teach",
           "term": "gist:Project",
           "kind": "class",
           "line": "A task, usually of longer duration, made up of other tasks.",
-          "example": "The Hallowe'en porch set-up is a project: it is itself a task, made up of carving the pumpkin and hanging the lanterns."
+          "example": "The kitchen renovation is a project: it is itself a task, made up of ripping out the cabinets and fitting the worktop.",
+          "exampleHalloween": "The Hallowe'en porch set-up is a project: it is itself a task, made up of carving the pumpkin and hanging the lanterns.",
+          "exampleChristmas": "The Christmas porch set-up is a project: it is itself a task, made up of wrapping the presents and hanging the holly."
         },
         {
           "type": "teach",
           "term": "gist:isPartOf",
           "kind": "property",
           "line": "The relationship between a part and a whole where the part has independent existence.",
-          "example": "Carving the pumpkin is part of the Hallowe'en porch set-up."
+          "example": "Fitting the worktop is part of the kitchen renovation.",
+          "exampleHalloween": "Carving the pumpkin is part of the Hallowe'en porch set-up.",
+          "exampleChristmas": "Wrapping the presents is part of the Christmas porch set-up."
         },
         {
           "type": "truefalse",
@@ -425,14 +511,28 @@
         },
         {
           "type": "choice",
-          "prompt": "How do you state that carving the pumpkin is one of the tasks in the porch set-up project?",
+          "prompt": "How do you state that fitting the worktop is one of the tasks in the renovation project?",
           "options": [
+            "The fitting task gist:hasGoal the project",
+            "The fitting task gist:isPartOf the project",
+            "The project gist:isPartOf the fitting task"
+          ],
+          "answer": 1,
+          "why": "A project is a task made up of other tasks, so some other task is part of it. isPartOf runs from the part to the whole, and the part has its own independent existence. It is transitive: a part of the fitting task is also part of the project.",
+          "promptHalloween": "How do you state that carving the pumpkin is one of the tasks in the porch set-up project?",
+          "whyHalloween": "A project is a task made up of other tasks, so some other task is part of it. isPartOf runs from the part to the whole, and the part has its own independent existence. It is transitive: a part of the carving task is also part of the project.",
+          "optionsHalloween": [
             "The carving task gist:hasGoal the project",
             "The carving task gist:isPartOf the project",
             "The project gist:isPartOf the carving task"
           ],
-          "answer": 1,
-          "why": "A project is a task made up of other tasks, so some other task is part of it. isPartOf runs from the part to the whole, and the part has its own independent existence. It is transitive: a part of the carving task is also part of the project."
+          "promptChristmas": "How do you state that wrapping the presents is one of the tasks in the porch set-up project?",
+          "optionsChristmas": [
+            "The wrapping task gist:hasGoal the project",
+            "The wrapping task gist:isPartOf the project",
+            "The project gist:isPartOf the wrapping task"
+          ],
+          "whyChristmas": "A project is a task made up of other tasks, so some other task is part of it. isPartOf runs from the part to the whole, and the part has its own identity."
         },
         {
           "type": "match",
@@ -467,14 +567,16 @@
         },
         {
           "type": "choice",
-          "prompt": "The pumpkin carving was planned for Thursday and actually began on Thursday. Which statement is faithful?",
+          "prompt": "The gate repair was planned for Thursday and actually began on Thursday. Which statement is faithful?",
           "options": [
             "It is no longer scheduled, because the plan has been used up",
             "It is still a scheduled task, and it now also has an actual start",
             "The actual start replaces the planned start, so you delete the plan"
           ],
           "answer": 1,
-          "why": "The task always retains its planned start, and therefore remains a scheduled task. The actual start is additional. When a task runs late you leave the plan where it was and compare it with what happened."
+          "why": "The task always retains its planned start, and therefore remains a scheduled task. The actual start is additional. When a task runs late you leave the plan where it was and compare it with what happened.",
+          "promptHalloween": "The pumpkin carving was planned for Thursday and actually began on Thursday. Which statement is faithful?",
+          "promptChristmas": "The present wrapping was planned for Thursday and actually began on Thursday. Which statement is faithful?"
         }
       ]
     },
@@ -488,28 +590,36 @@
           "term": "gist:TimeInterval",
           "kind": "class",
           "line": "A span of time with a known start time, end time, and duration.",
-          "example": "The span from 18:00 to 20:00 on Hallowe'en, lasting two hours of trick-or-treat, is a time interval."
+          "example": "The span from 09:00 to 09:45 on Tuesday, lasting 45 minutes, is a time interval.",
+          "exampleHalloween": "The span from 18:00 to 20:00 on Hallowe'en, lasting two hours of trick-or-treat, is a time interval.",
+          "exampleChristmas": "The span from 18:00 to 20:00 on Christmas Eve, lasting two hours of carol singing, is a time interval."
         },
         {
           "type": "teach",
           "term": "gist:Magnitude",
           "kind": "class",
           "line": "The amount of a measurable characteristic (aspect).",
-          "example": "Two hours is a magnitude of the duration aspect; it is how long that trick-or-treat window lasts, not the interval."
+          "example": "45 minutes is a magnitude of the duration aspect; it is how long that interval lasts, not the interval.",
+          "exampleHalloween": "Two hours is a magnitude of the duration aspect; it is how long that trick-or-treat window lasts, not the interval.",
+          "exampleChristmas": "Two hours is a magnitude of the duration aspect; it is how long that carol-singing window lasts, not the interval."
         },
         {
           "type": "teach",
           "term": "gist:startDateTime",
           "kind": "property",
           "line": "The date and time that something starts.",
-          "example": "The trick-or-treat window's time interval starts at 18:00."
+          "example": "The Tuesday meeting's time interval starts at 09:00.",
+          "exampleHalloween": "The trick-or-treat window's time interval starts at 18:00.",
+          "exampleChristmas": "The carol-singing window's time interval starts at 18:00."
         },
         {
           "type": "teach",
           "term": "gist:endDateTime",
           "kind": "property",
           "line": "The date and time that something ends.",
-          "example": "That same interval ends at 20:00."
+          "example": "That same interval ends at 09:45.",
+          "exampleHalloween": "That same interval ends at 20:00.",
+          "exampleChristmas": "That same interval ends at 20:00."
         },
         {
           "type": "truefalse",
@@ -577,35 +687,45 @@
           "term": "gist:IntellectualProperty",
           "kind": "class",
           "line": "An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill.",
-          "example": "The ghost story Maya has imagined, whether or not she has typed it, is intellectual property."
+          "example": "The story Priya has imagined, whether or not she has typed it, is intellectual property.",
+          "exampleHalloween": "The ghost story Maya has imagined, whether or not she has typed it, is intellectual property.",
+          "exampleChristmas": "The Christmas story Maya has imagined, whether or not she has typed it, is intellectual property."
         },
         {
           "type": "teach",
           "term": "gist:Content",
           "kind": "class",
           "line": "Information available in some medium.",
-          "example": "Once the invitation is written in a file, that information is content."
+          "example": "Once the story is written in a file, that information is content.",
+          "exampleHalloween": "Once the invitation is written in a file, that information is content.",
+          "exampleChristmas": "Once the Christmas card is written in a file, that information is content."
         },
         {
           "type": "teach",
           "term": "gist:ContentExpression",
           "kind": "class",
           "line": "Content reduced to text, audio, etc.",
-          "example": "The particular English text of the costume-party invitation is a content expression, shared by every copy that is printed."
+          "example": "The particular English text sold under one ISBN is a content expression, shared by every copy of that edition.",
+          "exampleHalloween": "The particular English text of the costume-party invitation is a content expression, shared by every copy that is printed.",
+          "exampleChristmas": "The particular English text of the Christmas-party invitation is a content expression, shared by every printed copy."
         },
         {
           "type": "teach",
           "term": "gist:isAbout",
           "kind": "property",
           "line": "Subject matter of a document.",
-          "example": "The costume-party invitation is about the party."
+          "example": "The boiler manual is about the boiler.",
+          "exampleHalloween": "The costume-party invitation is about the party.",
+          "exampleChristmas": "The Christmas-party invitation is about the party."
         },
         {
           "type": "teach",
           "term": "gist:containedText",
           "kind": "property",
           "line": "Relates an entity containing textual information to the string constituting that textual information.",
-          "example": "The invitation's contained text is the sentences printed on it."
+          "example": "The leaflet's contained text is the sentences printed on it.",
+          "exampleHalloween": "The invitation's contained text is the sentences printed on it.",
+          "exampleChristmas": "The card's contained text is the sentences printed on it."
         },
         {
           "type": "truefalse",
@@ -667,46 +787,58 @@
           "term": "gist:ID",
           "kind": "class",
           "line": "Content that is used to uniquely identify something or someone.",
-          "example": "The guest-badge record issued for Maya is an ID, and it identifies Maya."
+          "example": "The passport record issued for Priya is an ID, and it identifies Priya.",
+          "exampleHalloween": "The guest-badge record issued for Maya is an ID, and it identifies Maya.",
+          "exampleChristmas": "The gift-tag record issued for Maya is an ID, and it identifies Maya."
         },
         {
           "type": "teach",
           "term": "gist:isIdentifiedBy",
           "kind": "property",
           "line": "Relates something to a content object that uniquely identifies it.",
-          "example": "Maya is identified by that guest-badge ID, and also by a separate cloakroom ticket ID."
+          "example": "Priya is identified by that passport ID, and also by a separate employee ID.",
+          "exampleHalloween": "Maya is identified by that guest-badge ID, and also by a separate cloakroom ticket ID.",
+          "exampleChristmas": "Maya is identified by that gift-tag ID, and also by a separate cloakroom ticket ID."
         },
         {
           "type": "teach",
           "term": "gist:idText",
           "kind": "property",
           "line": "A text string that identifies an individual.",
-          "example": "The guest list carries the id text G-10482, with no separate ID individual."
+          "example": "The employee record carries the id text E-10482, with no separate ID individual.",
+          "exampleHalloween": "The guest list carries the id text G-10482, with no separate ID individual.",
+          "exampleChristmas": "The guest list carries the id text G-10482, with no separate ID individual."
         },
         {
           "type": "teach",
           "term": "gist:uniqueText",
           "kind": "property",
           "line": "The unique string value of some content object, to be used when there is no possibility of having more than one value.",
-          "example": "The guest-badge ID's own unique text is the number printed on it."
+          "example": "The passport ID's own unique text is the passport number printed in it.",
+          "exampleHalloween": "The guest-badge ID's own unique text is the number printed on it.",
+          "exampleChristmas": "The gift-tag ID's own unique text is the number printed on it."
         },
         {
           "type": "teach",
           "term": "gist:Text",
           "kind": "class",
           "line": "Content expressed as a written sequence of characters.",
-          "example": "The house rules on the party flyer, as a written sequence of characters, are text."
+          "example": "The clause in the lease, as a written sequence of characters, is text.",
+          "exampleHalloween": "The house rules on the party flyer, as a written sequence of characters, are text.",
+          "exampleChristmas": "The house rules on the Christmas-party flyer, as a written sequence of characters, are text."
         },
         {
           "type": "choice",
-          "prompt": "You store a guest-badge number as a string on the person, and you do not create an ID individual. Which property is that?",
+          "prompt": "You store a company employee number as a string on the person, and you do not create an ID individual. Which property is that?",
           "options": [
             "gist:isIdentifiedBy",
             "gist:idText",
             "gist:uniqueText"
           ],
           "answer": 1,
-          "why": "idText is the string shortcut on the individual you are identifying. It is the alternative to an ID individual reached by isIdentifiedBy. uniqueText is the single string on a content object such as the ID itself, and it is a subproperty of containedText."
+          "why": "idText is the string shortcut on the individual you are identifying. It is the alternative to an ID individual reached by isIdentifiedBy. uniqueText is the single string on a content object such as the ID itself, and it is a subproperty of containedText.",
+          "promptHalloween": "You store a guest-badge number as a string on the person, and you do not create an ID individual. Which property is that?",
+          "promptChristmas": "You store a gift-tag number as a string on the person, and you do not create an ID individual. Which property is that?"
         },
         {
           "type": "truefalse",
@@ -747,14 +879,28 @@
         },
         {
           "type": "choice",
-          "prompt": "Maya has both a guest-badge ID and a cloakroom ticket ID. What does inverse-functional allow?",
+          "prompt": "Priya has both a passport ID and an employee ID. What does inverse-functional allow?",
           "options": [
+            "Each of those IDs identifies only Priya, and Priya may have both",
+            "Priya may have only one ID in total",
+            "Both IDs may identify Priya and also her sister"
+          ],
+          "answer": 0,
+          "why": "A thing can have more than one ID, like more than one URI, but each ID can refer to only one thing. Sharing one ID individual between Priya and her sister would break that.",
+          "promptHalloween": "Maya has both a guest-badge ID and a cloakroom ticket ID. What does inverse-functional allow?",
+          "whyHalloween": "A thing can have more than one ID, like more than one URI, but each ID can refer to only one thing. Sharing one ID individual between Maya and her sister would break that.",
+          "optionsHalloween": [
             "Each of those IDs identifies only Maya, and Maya may have both",
             "Maya may have only one ID in total",
             "Both IDs may identify Maya and also her sister"
           ],
-          "answer": 0,
-          "why": "A thing can have more than one ID, like more than one URI, but each ID can refer to only one thing. Sharing one ID individual between Maya and her sister would break that."
+          "promptChristmas": "Maya has both a gift-tag ID and a cloakroom ticket ID. What does inverse-functional allow?",
+          "optionsChristmas": [
+            "Each of those IDs identifies only Maya, and Maya may have both",
+            "Maya may have only one ID in total",
+            "Both IDs may identify Maya and also her sister"
+          ],
+          "whyChristmas": "A thing can have more than one ID, like more than one URI, but each ID can refer to only one thing. Sharing one ID individual between Maya and her sister would break that."
         }
       ]
     },
@@ -768,35 +914,45 @@
           "term": "gist:PhysicalIdentifiableItem",
           "kind": "class",
           "line": "A discrete physical object which, if subdivided, will result in parts that are distinguishable in nature from the whole and in general also from the other parts.",
-          "example": "Three pumpkin lanterns on the step are three physical identifiable items: you count them."
+          "example": "Three parcels on the step are three physical identifiable items: you count them.",
+          "exampleHalloween": "Three pumpkin lanterns on the step are three physical identifiable items: you count them.",
+          "exampleChristmas": "Three wrapped presents on the step are three physical identifiable items: you count them."
         },
         {
           "type": "teach",
           "term": "gist:PhysicalSubstance",
           "kind": "class",
           "line": "An undifferentiated amount of physical material which, when subdivided, results in each part being indistinguishable in nature from the whole and from every other part.",
-          "example": "The kilo of sweets in the bowl is a physical substance: any scoop of it is still sweets."
+          "example": "The kilo of flour in the bowl is a physical substance: any scoop of it is still flour.",
+          "exampleHalloween": "The kilo of sweets in the bowl is a physical substance: any scoop of it is still sweets.",
+          "exampleChristmas": "The kilo of stuffing in the bowl is a physical substance: any scoop of it is still stuffing."
         },
         {
           "type": "teach",
           "term": "gist:isMadeUpOf",
           "kind": "property",
           "line": "Relates something to a substance that it is made up of.",
-          "example": "The toffee apple is made up of apple, sugar, and caramel."
+          "example": "The cake is made up of butter, flour, and sugar.",
+          "exampleHalloween": "The toffee apple is made up of apple, sugar, and caramel.",
+          "exampleChristmas": "The Christmas pudding is made up of flour, suet, and dried fruit."
         },
         {
           "type": "teach",
           "term": "gist:Component",
           "kind": "class",
           "line": "Something that, while having an independent existence, is inherently part of or designed to be part of a larger entity, such as a system or network.",
-          "example": "A candle built for a pumpkin lantern is a component, even while it is still in the box."
+          "example": "A steering wheel built for a car is a component, even while it is still on the shelf.",
+          "exampleHalloween": "A candle built for a pumpkin lantern is a component, even while it is still in the box.",
+          "exampleChristmas": "A bauble built for a Christmas tree is a component, even while it is still in the box."
         },
         {
           "type": "teach",
           "term": "gist:isPartOf",
           "kind": "property",
           "line": "The relationship between a part and a whole where the part has independent existence.",
-          "example": "The spare candle is part of the lantern kit; the wax it is made of is not a part in that sense, it is what the candle is made up of."
+          "example": "The spare wheel is part of the car; the steel it is made of is not a part in that sense, it is what the wheel is made up of.",
+          "exampleHalloween": "The spare candle is part of the lantern kit; the wax it is made of is not a part in that sense, it is what the candle is made up of.",
+          "exampleChristmas": "The spare bauble is part of the tree kit; the glass it is made of is not a part in that sense, it is what the bauble is made up of."
         },
         {
           "type": "truefalse",
@@ -806,14 +962,18 @@
         },
         {
           "type": "choice",
-          "prompt": "The caramel stirred into a toffee-apple coating is which of these?",
+          "prompt": "The butter stirred into a cake batter is which of these?",
           "options": [
             "gist:Component",
             "gist:PhysicalSubstance",
             "gist:Organization"
           ],
           "answer": 1,
-          "why": "Caramel here is an undifferentiated amount of material, a physical substance. A component has independent existence and is inherently part of a larger thing. Ingredients in a coating do not meet that test, and Component is disjoint with PhysicalSubstance. The toffee apple you can count is a physical identifiable item, and it is made up of the caramel."
+          "why": "Butter here is an undifferentiated amount of material, a physical substance. A component has independent existence and is inherently part of a larger thing. Ingredients in batter do not meet that test, and Component is disjoint with PhysicalSubstance. The cake you can count is a physical identifiable item, and it is made up of the butter.",
+          "promptHalloween": "The caramel stirred into a toffee-apple coating is which of these?",
+          "whyHalloween": "Caramel here is an undifferentiated amount of material, a physical substance. A component has independent existence and is inherently part of a larger thing. Ingredients in a coating do not meet that test, and Component is disjoint with PhysicalSubstance. The toffee apple you can count is a physical identifiable item, and it is made up of the caramel.",
+          "promptChristmas": "The suet stirred into a Christmas pudding batter is which of these?",
+          "whyChristmas": "Suet here is an undifferentiated amount of material, a physical substance. A component has independent existence and is inherently part of something."
         },
         {
           "type": "truefalse",
@@ -845,12 +1005,16 @@
         },
         {
           "type": "typein",
-          "prompt": "Which property links a toffee apple to the caramel it contains?",
+          "prompt": "Which property links a cake to the flour it contains?",
           "accept": [
             "isMadeUpOf",
             "gist:isMadeUpOf"
           ],
-          "why": "isMadeUpOf relates something to a physical substance it is made up of. isPartOf is for a part that exists in its own right, such as a candle that is part of a lantern."
+          "why": "isMadeUpOf relates something to a physical substance it is made up of. isPartOf is for a part that exists in its own right, such as a wheel that is part of a car.",
+          "promptHalloween": "Which property links a toffee apple to the caramel it contains?",
+          "whyHalloween": "isMadeUpOf relates something to a physical substance it is made up of. isPartOf is for a part that exists in its own right, such as a candle that is part of a lantern.",
+          "promptChristmas": "Which property links a Christmas pudding to the flour it contains?",
+          "whyChristmas": "isMadeUpOf relates something to a physical substance it is made up of. isPartOf is for a part that exists in its own right, such as a bauble on a tree."
         }
       ]
     },
@@ -864,21 +1028,27 @@
           "term": "gist:Aspect",
           "kind": "class",
           "line": "A measurable characteristic.",
-          "example": "Mass is a measurable characteristic of the bag of sweets, and so is its volume."
+          "example": "Mass is a measurable characteristic of the parcel, and so is its volume.",
+          "exampleHalloween": "Mass is a measurable characteristic of the bag of sweets, and so is its volume.",
+          "exampleChristmas": "Mass is a measurable characteristic of the turkey, and so is its volume."
         },
         {
           "type": "teach",
           "term": "gist:UnitOfMeasure",
           "kind": "class",
           "line": "A standard amount used to measure or specify things.",
-          "example": "A kilogram is a unit of measure you can use for the mass of candy; it is not itself the aspect mass."
+          "example": "A kilogram is a unit of measure you can use for mass; it is not itself the aspect mass.",
+          "exampleHalloween": "A kilogram is a unit of measure you can use for the mass of candy; it is not itself the aspect mass.",
+          "exampleChristmas": "A kilogram is a unit of measure you can use for the mass of the turkey; it is not itself the aspect mass."
         },
         {
           "type": "teach",
           "term": "gist:hasMagnitude",
           "kind": "property",
           "line": "Relates a thing to a magnitude.",
-          "example": "The bag of sweets has a magnitude for how heavy it is."
+          "example": "The parcel has a magnitude for how heavy it is.",
+          "exampleHalloween": "The bag of sweets has a magnitude for how heavy it is.",
+          "exampleChristmas": "The turkey has a magnitude for how heavy it is."
         },
         {
           "type": "teach",
@@ -954,52 +1124,68 @@
           "term": "gist:GeoLocation",
           "kind": "class",
           "line": "A physical location, with the earth as a frame of reference.",
-          "example": "The spot where the treat bucket was left, fixed relative to the Earth, is a geographic location."
+          "example": "The spot where the parcel was left, fixed relative to the Earth, is a geographic location.",
+          "exampleHalloween": "The spot where the treat bucket was left, fixed relative to the Earth, is a geographic location.",
+          "exampleChristmas": "The spot where the Christmas tree was left, fixed relative to the Earth, is a geographic location."
         },
         {
           "type": "teach",
           "term": "gist:GeoRegion",
           "kind": "class",
           "line": "A bounded region (or set of regions) on the surface of the Earth.",
-          "example": "The Hollow Oak streets are a geographic region: a bounded area of the Earth's surface, and it need not be one single patch."
+          "example": "Cornwall is a geographic region: a bounded area of the Earth's surface, and it need not be one single patch.",
+          "exampleHalloween": "The Hollow Oak streets are a geographic region: a bounded area of the Earth's surface, and it need not be one single patch.",
+          "exampleChristmas": "The Hollow Oak streets are a geographic region: a bounded area of the Earth's surface, and it need not be one single patch."
         },
         {
           "type": "teach",
           "term": "gist:PhysicalAddress",
           "kind": "class",
           "line": "An address that refers to a locatable place within the physical universe.",
-          "example": "14 Harbour Street, Whitby is a physical address on the trick-or-treat map. It refers to a place; it is not the place."
+          "example": "14 Harbour Street, Whitby is a physical address. It refers to a place; it is not the place.",
+          "exampleHalloween": "14 Harbour Street, Whitby is a physical address on the trick-or-treat map. It refers to a place; it is not the place.",
+          "exampleChristmas": "14 Harbour Street, Whitby is a physical address on the carol-singing map. It refers to a place; it is not the place."
         },
         {
           "type": "teach",
           "term": "gist:refersTo",
           "kind": "property",
           "line": "Relates something to another resource that it points to, indicates, or references.",
-          "example": "That street address refers to the geographic location of the house handing out sweets."
+          "example": "That street address refers to the geographic location of the house.",
+          "exampleHalloween": "That street address refers to the geographic location of the house handing out sweets.",
+          "exampleChristmas": "That street address refers to the geographic location of the house hosting carols."
         },
         {
           "type": "teach",
           "term": "gist:hasAddress",
           "kind": "property",
           "line": "Relates something to its physical or electronic address.",
-          "example": "The costume shop has that physical address, and it may also have an email address."
+          "example": "The bookshop has that physical address, and it may also have an email address.",
+          "exampleHalloween": "The costume shop has that physical address, and it may also have an email address.",
+          "exampleChristmas": "The toy shop has that physical address, and it may also have an email address."
         },
         {
           "type": "truefalse",
           "prompt": "The words '14 Harbour Street, Whitby' are a gist:GeoLocation.",
           "answer": false,
-          "why": "Those words are a physical address: content that refers to a locatable place. A geographic location is the place itself, with the Earth as its frame of reference. The address on the trick-or-treat map refers to the location; it is not the location."
+          "why": "Those words are a physical address: content that refers to a locatable place. A geographic location is the place itself, with the Earth as its frame of reference. The address refers to the location; it is not the location.",
+          "whyHalloween": "Those words are a physical address: content that refers to a locatable place. A geographic location is the place itself, with the Earth as its frame of reference. The address on the trick-or-treat map refers to the location; it is not the location.",
+          "whyChristmas": "Those words are a physical address: content that refers to a locatable place. A geographic location is the place itself, with the Earth as its frame of reference. The address on the trick-or-treat map refers to the location; it is not the location."
         },
         {
           "type": "choice",
-          "prompt": "The Hollow Oak streets, as an area of the Earth's surface, are which class?",
+          "prompt": "The county of Cornwall, as an area of the Earth's surface, is which class?",
           "options": [
             "gist:PhysicalAddress",
             "gist:GeoRegion",
             "gist:Content"
           ],
           "answer": 1,
-          "why": "A geographic region is a bounded region, or a set of regions, on the surface of the Earth, and it is a geographic location. A physical address is an address, hence content, that refers to a geographic location. The streets are the place, not the wording of an address."
+          "why": "A geographic region is a bounded region, or a set of regions, on the surface of the Earth, and it is a geographic location. A physical address is an address, hence content, that refers to a geographic location. The county is the place, not the wording of an address.",
+          "promptHalloween": "The Hollow Oak streets, as an area of the Earth's surface, are which class?",
+          "whyHalloween": "A geographic region is a bounded region, or a set of regions, on the surface of the Earth, and it is a geographic location. A physical address is an address, hence content, that refers to a geographic location. The streets are the place, not the wording of an address.",
+          "promptChristmas": "The Hollow Oak streets, as an area of the Earth's surface, are which class?",
+          "whyChristmas": "A geographic region is a bounded region, or a set of regions, on the surface of the Earth, and it is a geographic location. A physical address is an address, hence content, that refers to a geographic location. The streets are the place, not the wording of an address."
         },
         {
           "type": "match",
@@ -1044,35 +1230,45 @@
           "term": "gist:Category",
           "kind": "class",
           "line": "A concept or label used to categorize other instances without specifying any formal semantics.",
-          "example": "The label 'witch' on a costume categorises the costume, and it does not create a formal class."
+          "example": "The label 'spicy' on a dish categorises the dish, and it does not create a formal class.",
+          "exampleHalloween": "The label 'witch' on a costume categorises the costume, and it does not create a formal class.",
+          "exampleChristmas": "The label 'festive' on wrapping paper categorises the paper, and it does not create a formal class."
         },
         {
           "type": "teach",
           "term": "gist:isCategorizedBy",
           "kind": "property",
           "line": "Relates something to a taxonomy term or other less formally defined classification.",
-          "example": "The costume is categorised by the label witch."
+          "example": "The dish is categorised by the label spicy.",
+          "exampleHalloween": "The costume is categorised by the label witch.",
+          "exampleChristmas": "The wrapping paper is categorised by the label festive."
         },
         {
           "type": "teach",
           "term": "gist:Tag",
           "kind": "class",
           "line": "A term in a folksonomy used to categorize things. Tags can be made up on the fly by users.",
-          "example": "A guest types the tag 'spooky' on a party photo, a word nobody had to approve."
+          "example": "A customer types the tag 'weeknight' on a recipe, a word nobody had to approve.",
+          "exampleHalloween": "A guest types the tag 'spooky' on a party photo, a word nobody had to approve.",
+          "exampleChristmas": "A guest types the tag 'cosy' on a party photo, a word nobody had to approve."
         },
         {
           "type": "teach",
           "term": "gist:ControlledVocabulary",
           "kind": "class",
           "line": "A collection of terms approved and managed by some organization or person.",
-          "example": "The committee's list of costume-type terms is a controlled vocabulary: they govern it, and the terms in it are categories."
+          "example": "The standards board's list of cuisine terms is a controlled vocabulary: they govern it, and the terms in it are categories.",
+          "exampleHalloween": "The committee's list of costume-type terms is a controlled vocabulary: they govern it, and the terms in it are categories.",
+          "exampleChristmas": "The committee's list of wrapping-paper terms is a controlled vocabulary: they govern it, and the terms in it are categories."
         },
         {
           "type": "teach",
           "term": "gist:hasBroader",
           "kind": "property",
           "line": "Relates a thing to another thing with a broader meaning.",
-          "example": "Witch has the broader category costume, and costume has the broader category party-wear."
+          "example": "Ale has the broader category beer, and beer has the broader category drink.",
+          "exampleHalloween": "Witch has the broader category costume, and costume has the broader category party-wear.",
+          "exampleChristmas": "Holly has the broader category greenery, and greenery has the broader category decoration."
         },
         {
           "type": "truefalse",
@@ -1082,14 +1278,26 @@
         },
         {
           "type": "choice",
-          "prompt": "Witch hasBroader costume, and costume hasBroader party-wear. Does witch hasBroader party-wear?",
+          "prompt": "Ale hasBroader beer, and beer hasBroader drink. Does ale hasBroader drink?",
           "options": [
+            "Yes, because hasBroader is transitive",
+            "No, hasBroader never crosses an intermediate category",
+            "Only if ale and drink were declared owl:equivalentClass"
+          ],
+          "answer": 0,
+          "why": "hasBroader relates a thing to another with a broader meaning, and the property is transitive, so the link continues up the chain. That is not the same as an owl subclass. A direct step, with nothing in between, would use hasDirectBroader, which is not transitive.",
+          "promptHalloween": "Witch hasBroader costume, and costume hasBroader party-wear. Does witch hasBroader party-wear?",
+          "optionsHalloween": [
             "Yes, because hasBroader is transitive",
             "No, hasBroader never crosses an intermediate category",
             "Only if witch and party-wear were declared owl:equivalentClass"
           ],
-          "answer": 0,
-          "why": "hasBroader relates a thing to another with a broader meaning, and the property is transitive, so the link continues up the chain. That is not the same as an owl subclass. A direct step, with nothing in between, would use hasDirectBroader, which is not transitive."
+          "promptChristmas": "Holly hasBroader greenery, and greenery hasBroader decoration. Does holly hasBroader decoration?",
+          "optionsChristmas": [
+            "Yes, because hasBroader is transitive",
+            "No, hasBroader never crosses an intermediate category",
+            "Only if holly and decoration were declared owl:equivalentClass"
+          ]
         },
         {
           "type": "match",
@@ -1134,59 +1342,85 @@
           "term": "gist:Collection",
           "kind": "class",
           "line": "A grouping of things.",
-          "example": "The trick-or-treat group is a collection of people, and a collection is allowed to have no members yet."
+          "example": "The reading group is a collection of people, and a collection is allowed to have no members yet.",
+          "exampleHalloween": "The trick-or-treat group is a collection of people, and a collection is allowed to have no members yet.",
+          "exampleChristmas": "The carol-singing group is a collection of people, and a collection is allowed to have no members yet."
         },
         {
           "type": "teach",
           "term": "gist:isMemberOf",
           "kind": "property",
           "line": "Relates a member individual to the thing, such as a collection or organization, that it is a member of.",
-          "example": "Sam is a member of the trick-or-treat group, and also a member of the costume choir."
+          "example": "Sam is a member of the reading group, and also a member of the choir.",
+          "exampleHalloween": "Sam is a member of the trick-or-treat group, and also a member of the costume choir.",
+          "exampleChristmas": "Sam is a member of the carol-singing group, and also a member of the Christmas choir."
         },
         {
           "type": "teach",
           "term": "gist:OrderedMember",
           "kind": "class",
           "line": "A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders in different collections. The ordered member appears in exactly one ordered collection.",
-          "example": "Sam's 12th place in the costume parade is one ordered member, and Sam's 29th place in the pumpkin contest is another."
+          "example": "Sam's 12th place in the Boston marathon is one ordered member, and Sam's 29th place in New York is another.",
+          "exampleHalloween": "Sam's 12th place in the costume parade is one ordered member, and Sam's 29th place in the pumpkin contest is another.",
+          "exampleChristmas": "Sam's 12th place in the Christmas parade is one ordered member, and Sam's 29th place in the pudding contest is another."
         },
         {
           "type": "teach",
           "term": "gist:Network",
           "kind": "class",
           "line": "A composite consisting of nodes connected by links.",
-          "example": "The string of porch lights, made of lanterns joined by links, is a network."
+          "example": "The office wi-fi, made of routers joined by links, is a network.",
+          "exampleHalloween": "The string of porch lights, made of lanterns joined by links, is a network.",
+          "exampleChristmas": "The string of fairy lights, made of bulbs joined by links, is a network."
         },
         {
           "type": "teach",
           "term": "gist:NetworkLink",
           "kind": "class",
           "line": "An abstract representation of the connection between two or more nodes in a network.",
-          "example": "The cable run between the porch lantern and the gate lantern is a network link, not a third lantern."
+          "example": "The cable run between the hall router and the loft router is a network link, not a third router.",
+          "exampleHalloween": "The cable run between the porch lantern and the gate lantern is a network link, not a third lantern.",
+          "exampleChristmas": "The cable run between the porch light and the gate light is a network link, not a third bulb."
         },
         {
           "type": "teach",
           "term": "gist:links",
           "kind": "property",
           "line": "Relates a network link to a network node that it connects to another node. Used when the connection is undirected or the direction is not known.",
-          "example": "That cable links the porch lantern and links the gate lantern."
+          "example": "That cable links the hall router and links the loft router.",
+          "exampleHalloween": "That cable links the porch lantern and links the gate lantern.",
+          "exampleChristmas": "That cable links the porch light and links the gate light."
         },
         {
           "type": "truefalse",
-          "prompt": "To rank Sam 12th in the costume parade and 29th in the pumpkin contest, assert that Sam is a member of both ordered collections.",
+          "prompt": "To rank Sam 12th in one race and 29th in another, assert that Sam is a member of both ordered collections.",
           "answer": false,
-          "why": "An ordered member is a proxy for the real person, and that proxy belongs to exactly one ordered collection. Sam gets two ordered members, one per contest, and each one provides the order for Sam via providesOrderFor. Sam remains one person."
+          "why": "An ordered member is a proxy for the real person, and that proxy belongs to exactly one ordered collection. Sam gets two ordered members, one per race, and each one provides the order for Sam via providesOrderFor. Sam remains one person.",
+          "promptHalloween": "To rank Sam 12th in the costume parade and 29th in the pumpkin contest, assert that Sam is a member of both ordered collections.",
+          "whyHalloween": "An ordered member is a proxy for the real person, and that proxy belongs to exactly one ordered collection. Sam gets two ordered members, one per contest, and each one provides the order for Sam via providesOrderFor. Sam remains one person.",
+          "promptChristmas": "To rank Sam 12th in the Christmas parade and 29th in the pudding contest, assert that Sam is a member of both ordered collections.",
+          "whyChristmas": "An ordered member is a proxy for the real person, and that proxy belongs to exactly one ordered collection. Sam gets two ordered members, one for each ranking."
         },
         {
           "type": "choice",
           "prompt": "Which triple has the gist direction of membership?",
           "options": [
+            "The choir isMemberOf Sam",
+            "Sam isMemberOf the choir",
+            "The choir links Sam"
+          ],
+          "answer": 1,
+          "why": "isMemberOf relates the member to the collection or organisation it belongs to. links is not membership: it relates a network link to a node, and only when the connection is undirected or the direction is not known.",
+          "optionsHalloween": [
             "The costume choir isMemberOf Sam",
             "Sam isMemberOf the costume choir",
             "The costume choir links Sam"
           ],
-          "answer": 1,
-          "why": "isMemberOf relates the member to the collection or organisation it belongs to. links is not membership: it relates a network link to a node, and only when the connection is undirected or the direction is not known."
+          "optionsChristmas": [
+            "The Christmas choir isMemberOf Sam",
+            "Sam isMemberOf the Christmas choir",
+            "The Christmas choir links Sam"
+          ]
         },
         {
           "type": "match",
@@ -1245,28 +1479,36 @@
           "term": "gist:TemporalRelation",
           "kind": "class",
           "line": "A relationship existing for a period of time.",
-          "example": "Maya's evening shift at the costume shop is a temporal relation: it holds for a period, with at least the two of them taking part."
+          "example": "Priya's employment at the bookshop is a temporal relation: it holds for a period, with at least the two of them taking part.",
+          "exampleHalloween": "Maya's evening shift at the costume shop is a temporal relation: it holds for a period, with at least the two of them taking part.",
+          "exampleChristmas": "Maya's evening shift at the toy shop is a temporal relation: it holds for a period, with at least the two of them taking part."
         },
         {
           "type": "teach",
           "term": "gist:Assignment",
           "kind": "class",
           "line": "A temporal relationship between an assignee, the thing assigned, and the resource that made the assignment.",
-          "example": "The supervisor's act of assigning Maya to the sweets stall is an assignment, and it lasts while that assignment holds."
+          "example": "The supervisor's act of assigning Priya to the stocktake is an assignment, and it lasts while that assignment holds.",
+          "exampleHalloween": "The supervisor's act of assigning Maya to the sweets stall is an assignment, and it lasts while that assignment holds.",
+          "exampleChristmas": "The supervisor's act of assigning Maya to the gift-wrapping stall is an assignment, and it lasts while that assignment holds."
         },
         {
           "type": "teach",
           "term": "gist:isAssignmentOf",
           "kind": "property",
           "line": "Relates an assignment to the resource it assigns.",
-          "example": "That assignment is an assignment of Maya."
+          "example": "That assignment is an assignment of Priya.",
+          "exampleHalloween": "That assignment is an assignment of Maya.",
+          "exampleChristmas": "That assignment is an assignment of Maya."
         },
         {
           "type": "teach",
           "term": "gist:isAssignmentTo",
           "kind": "property",
           "line": "Relates something (typically an assignment) to the thing the resource is assigned to, such as a project, position, organization, pay rate, or billing rate.",
-          "example": "The same assignment is an assignment to the sweets stall."
+          "example": "The same assignment is an assignment to the stocktake.",
+          "exampleHalloween": "The same assignment is an assignment to the sweets stall.",
+          "exampleChristmas": "The same assignment is an assignment to the gift-wrapping stall."
         },
         {
           "type": "choice",

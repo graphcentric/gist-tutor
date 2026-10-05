@@ -951,3 +951,439 @@ html.halloween .home-moon {
     forced-color-adjust: none;
   }
 }
+
+/* —— Christmas edition (html.christmas) —— */
+html.christmas {
+  background: #0b2e1f;
+  --xm-ink: #1a2418;
+  --xm-paper: #f7f1e4;
+  --xm-paper-deep: #efe6d4;
+  --xm-crimson: #c41e3a;
+  --xm-crimson-deep: #9a1530;
+  --xm-gold: #d4a017;
+  --xm-green: #0b2e1f;
+  --xm-green-mid: #1a4d36;
+  --xm-panel: #123826;
+  --xm-line: #2f5c45;
+  --xm-muted: #c8d5cc;
+}
+
+html.christmas body {
+  background:
+    radial-gradient(circle 160px at 12% 8%, rgba(212, 160, 23, 0.18) 0%, transparent 55%),
+    radial-gradient(circle 120px at 88% 12%, rgba(196, 30, 58, 0.16) 0%, transparent 50%),
+    radial-gradient(900px 480px at 50% -100px, #1a4d36 0%, #0b2e1f 62%);
+  color: #f7f1e4;
+}
+
+html.christmas::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.7;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.75) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 24% 48%, rgba(255, 255, 255, 0.55) 50%, transparent 52%),
+    radial-gradient(2px 2px at 38% 12%, rgba(255, 255, 255, 0.7) 50%, transparent 52%),
+    radial-gradient(1px 1px at 52% 36%, rgba(255, 255, 255, 0.5) 50%, transparent 52%),
+    radial-gradient(2px 2px at 68% 18%, rgba(255, 255, 255, 0.65) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 82% 42%, rgba(255, 255, 255, 0.45) 50%, transparent 52%),
+    radial-gradient(1px 1px at 92% 28%, rgba(255, 255, 255, 0.6) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 16% 72%, rgba(255, 255, 255, 0.4) 50%, transparent 52%),
+    radial-gradient(2px 2px at 46% 64%, rgba(255, 255, 255, 0.5) 50%, transparent 52%),
+    radial-gradient(1px 1px at 74% 78%, rgba(255, 255, 255, 0.45) 50%, transparent 52%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.christmas::before {
+    animation: xm-snowfall 22s linear infinite;
+  }
+
+  html.christmas .home-holly::before,
+  html.christmas .home-holly::after {
+    animation: xm-twinkle 2.8s ease-in-out infinite;
+  }
+
+  html.christmas .dave-santa img {
+    animation: xm-bob 4.5s ease-in-out infinite;
+  }
+}
+
+@keyframes xm-snowfall {
+  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+  to { background-position: 0 120px, 12px 160px, -8px 100px, 6px 140px, -10px 110px, 8px 150px, -4px 90px, 10px 130px, -6px 170px, 4px 115px; }
+}
+
+@keyframes xm-twinkle {
+  0%, 100% { opacity: 0.85; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.25); }
+}
+
+@keyframes xm-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+html.christmas .app {
+  position: relative;
+  z-index: 1;
+}
+
+html.christmas ::selection {
+  background: #c41e3a;
+  color: #f7f1e4;
+}
+
+html.christmas :focus-visible {
+  outline-color: #f7f1e4;
+}
+
+html.christmas .card :focus-visible {
+  outline-color: #c41e3a;
+}
+
+html.christmas .eyebrow,
+html.christmas .lesson-kicker,
+html.christmas .kind,
+html.christmas .example-label,
+html.christmas .node-kicker {
+  color: #e8c65a;
+}
+
+html.christmas .source {
+  color: #c8d5cc;
+}
+
+html.christmas .source a {
+  color: #f7f1e4;
+}
+
+html.christmas .stats .stat {
+  background: #123826;
+  border-color: #2f5c45;
+}
+
+html.christmas .stat span {
+  color: #c8d5cc;
+}
+
+html.christmas .path-item:not(:last-child)::before {
+  background: #2f5c45;
+}
+
+html.christmas .lesson-node.locked {
+  color: #c8d5cc;
+}
+
+html.christmas button.lesson-node:hover {
+  background: rgba(196, 30, 58, 0.08);
+}
+
+html.christmas .marker {
+  background: #0f3324;
+  color: #f7f1e4;
+  box-shadow: inset 0 0 0 2px #2f5c45;
+  position: relative;
+}
+
+html.christmas .marker.current {
+  background: #f7f1e4;
+  color: #1a2418;
+  box-shadow: 0 0 0 3px #c41e3a;
+}
+
+html.christmas .marker.done {
+  background: #c41e3a;
+  color: #f7f1e4;
+  box-shadow: none;
+}
+
+html.christmas .marker.locked {
+  background: #0f3324;
+  color: #c8d5cc;
+}
+
+/* Tiny holly berries on path markers */
+html.christmas .marker.current::after,
+html.christmas .marker.done::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c41e3a;
+  box-shadow: -6px 2px 0 -1px #2f7a45;
+}
+
+html.christmas .lesson-node.locked .node-kicker {
+  color: #a8b8ae;
+}
+
+html.christmas .node-blurb {
+  color: #a8b8ae;
+}
+
+html.christmas .lesson-node.locked .node-blurb {
+  color: #8fa09a;
+}
+
+html.christmas .footnote,
+html.christmas .loading {
+  color: #c8d5cc;
+}
+
+html.christmas .back {
+  border-color: #3a6e55;
+  color: #f7f1e4;
+}
+
+html.christmas .back:hover {
+  background: rgba(196, 30, 58, 0.1);
+}
+
+html.christmas .progress {
+  background: #184032;
+}
+
+html.christmas .progress-fill {
+  background: linear-gradient(90deg, #c41e3a, #d4a017);
+}
+
+html.christmas .count {
+  color: #c8d5cc;
+}
+
+html.christmas .card {
+  background: linear-gradient(180deg, #fffaf0 0%, #f7f1e4 140px);
+  color: #1a2418;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Holly corners on cards */
+html.christmas .card::before,
+html.christmas .card::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  opacity: 0.9;
+  background:
+    radial-gradient(circle at 30% 55%, #c41e3a 0 18%, transparent 19%),
+    radial-gradient(circle at 55% 40%, #c41e3a 0 15%, transparent 16%),
+    radial-gradient(circle at 48% 68%, #a81830 0 14%, transparent 15%),
+    radial-gradient(ellipse 55% 28% at 42% 48%, #2f7a45 0 70%, transparent 71%),
+    radial-gradient(ellipse 50% 26% at 62% 58%, #3a9154 0 70%, transparent 71%);
+}
+
+html.christmas .card::before {
+  top: 8px;
+  left: 10px;
+}
+
+html.christmas .card::after {
+  top: 8px;
+  right: 10px;
+  transform: scaleX(-1);
+}
+
+html.christmas .kind {
+  color: #9a1530;
+}
+
+html.christmas .help {
+  color: #5a6a58;
+}
+
+html.christmas .example {
+  background: #fff8ec;
+  border-left-color: #c41e3a;
+}
+
+html.christmas .example-label {
+  color: #1a2418;
+}
+
+html.christmas .option,
+html.christmas .match-btn,
+html.christmas input[type="text"] {
+  color: #1a2418;
+  background: #fff8ec;
+  border-color: #e2d6c0;
+}
+
+html.christmas .match-btn.selected {
+  border-color: #c41e3a;
+  background: #fde8ec;
+}
+
+html.christmas .option.correct,
+html.christmas .match-btn.locked,
+html.christmas input.correct {
+  background: #e7f3ea;
+  border-color: #1b7a45;
+}
+
+html.christmas .option.wrong,
+html.christmas .match-btn.wrong,
+html.christmas input.wrong {
+  background: #fdeceb;
+  border-color: #9d342c;
+}
+
+html.christmas .btn {
+  background: #c41e3a;
+  color: #f7f1e4;
+}
+
+html.christmas .btn:hover {
+  background: #9a1530;
+}
+
+html.christmas .score-num {
+  color: #9a1530;
+}
+
+html.christmas .score-num span {
+  color: #5a6a58;
+}
+
+html.christmas .noscript {
+  background: #f7f1e4;
+  color: #1a2418;
+}
+
+html.christmas .theme-toggle {
+  border-color: #3a6e55;
+  background: rgba(11, 46, 31, 0.45);
+}
+
+html.christmas .theme-toggle button[aria-pressed="true"] {
+  background: #c41e3a;
+  color: #f7f1e4;
+}
+
+html.christmas .theme-toggle button:hover:not([aria-pressed="true"]) {
+  background: rgba(196, 30, 58, 0.12);
+}
+
+html.christmas .season-line {
+  color: #e8c65a;
+}
+
+html.christmas .theme-toggle button {
+  padding: 8px 10px;
+  font-size: 0.72rem;
+}
+
+.theme-toggle button {
+  padding: 8px 10px;
+  font-size: 0.72rem;
+}
+
+.home-holly {
+  display: none;
+}
+
+html.christmas .home-holly {
+  display: block;
+  position: relative;
+  width: 44px;
+  height: 32px;
+  margin: 0 0 8px;
+}
+
+html.christmas .home-holly::before,
+html.christmas .home-holly::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background:
+    radial-gradient(circle at 35% 55%, #c41e3a 0 20%, transparent 21%),
+    radial-gradient(circle at 58% 42%, #c41e3a 0 16%, transparent 17%),
+    radial-gradient(circle at 52% 70%, #a81830 0 14%, transparent 15%),
+    radial-gradient(ellipse 60% 30% at 40% 50%, #2f7a45 0 72%, transparent 73%),
+    radial-gradient(ellipse 55% 28% at 65% 58%, #3a9154 0 72%, transparent 73%);
+}
+
+html.christmas .home-holly::before {
+  left: 0;
+  top: 2px;
+}
+
+html.christmas .home-holly::after {
+  left: 18px;
+  top: 0;
+  transform: scaleX(-1);
+}
+
+.dave-santa {
+  margin: 16px 0 4px;
+  text-align: center;
+}
+
+.dave-santa img {
+  display: inline-block;
+  max-width: min(220px, 70vw);
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.dave-santa figcaption {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: #c8d5cc;
+  letter-spacing: 0.02em;
+}
+
+.dave-santa-mini {
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.christmas::before {
+    opacity: 0.4;
+    animation: none;
+  }
+
+  html.christmas .home-holly::before,
+  html.christmas .home-holly::after,
+  html.christmas .dave-santa img {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  html.christmas .theme-toggle,
+  html.christmas .theme-toggle button {
+    border: 1px solid ButtonText;
+  }
+
+  html.christmas .progress-fill,
+  html.christmas .theme-toggle button[aria-pressed="true"],
+  html.christmas .btn,
+  html.christmas .marker.done {
+    background: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  html.christmas .card::before,
+  html.christmas .card::after,
+  html.christmas .home-holly,
+  html.christmas .marker.current::after,
+  html.christmas .marker.done::after {
+    display: none;
+  }
+}

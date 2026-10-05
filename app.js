@@ -13,8 +13,11 @@
  *       "title": "short title",
  *       "blurb": "one sentence",
  *       "exercises": [
- *         {"type":"teach","term":"gist:Person","kind":"class|property","line":"one-sentence definition","example":"a concrete sentence"},
- *         {"type":"choice","prompt":"...","options":["a","b","c","d"],"answer":0,"why":"..."},
+ *         {"type":"teach","term":"gist:Person","kind":"class|property","line":"one-sentence definition","example":"a concrete sentence",
+ *          "exampleHalloween":"...","exampleChristmas":"..."},
+ *         {"type":"choice","prompt":"...","options":["a","b","c","d"],"answer":0,"why":"...",
+ *          "promptHalloween":"...","optionsHalloween":["..."],"whyHalloween":"...",
+ *          "promptChristmas":"...","optionsChristmas":["..."],"whyChristmas":"..."},
  *         {"type":"truefalse","prompt":"...","answer":true,"why":"..."},
  *         {"type":"match","prompt":"Match each name to its meaning","pairs":[{"left":"gist:Person","right":"a human being"}]},
  *         {"type":"typein","prompt":"...","accept":["Person","gist:Person"],"why":"..."}
@@ -35,6 +38,7 @@
   var THEME_KEY = 'gist-tutor-theme-v1';
   var THEME_COLOR_CLASSIC = '#14202b';
   var THEME_COLOR_HALLOWEEN = '#12081a';
+  var THEME_COLOR_CHRISTMAS = '#0b2e1f';
 
   var ui = {
     status: 'loading',
@@ -114,7 +118,7 @@
   function loadThemePref() {
     try {
       var raw = localStorage.getItem(THEME_KEY);
-      if (raw === 'halloween' || raw === 'classic' || raw === 'auto') return raw;
+      if (raw === 'halloween' || raw === 'christmas' || raw === 'classic' || raw === 'auto') return raw;
     } catch (err) {}
     return 'auto';
   }
@@ -135,20 +139,56 @@
     return false;
   }
 
-  function resolveHalloweenOn(pref) {
+  function isChristmasSeason(date) {
+    var iso = localISODate(date);
+    var parts = iso.split('-').map(Number);
+    var month = parts[1];
+    var day = parts[2];
+    if (month === 12) return true;
+    if (month === 1 && day <= 6) return true;
+    return false;
+  }
+
+  function resolveTheme(pref) {
     var p = pref || loadThemePref();
-    if (p === 'halloween') return true;
-    if (p === 'classic') return false;
-    return isHalloweenSeason();
+    if (p === 'halloween' || p === 'christmas' || p === 'classic') return p;
+    if (isHalloweenSeason()) return 'halloween';
+    if (isChristmasSeason()) return 'christmas';
+    return 'classic';
   }
 
   function applyTheme() {
-    var on = resolveHalloweenOn();
+    var theme = resolveTheme();
     var root = document.documentElement;
-    root.classList.toggle('halloween', on);
+    root.classList.toggle('halloween', theme === 'halloween');
+    root.classList.toggle('christmas', theme === 'christmas');
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', on ? THEME_COLOR_HALLOWEEN : THEME_COLOR_CLASSIC);
-    return on;
+    if (meta) {
+      var color = THEME_COLOR_CLASSIC;
+      if (theme === 'halloween') color = THEME_COLOR_HALLOWEEN;
+      if (theme === 'christmas') color = THEME_COLOR_CHRISTMAS;
+      meta.setAttribute('content', color);
+    }
+    return theme;
+  }
+
+  function seasonalField(ex, base) {
+    var theme = resolveTheme();
+    var key = null;
+    if (theme === 'halloween') key = base + 'Halloween';
+    else if (theme === 'christmas') key = base + 'Christmas';
+    if (key && ex && typeof ex[key] === 'string' && ex[key].trim()) return ex[key].trim();
+    if (ex && typeof ex[base] === 'string' && ex[base].trim()) return ex[base].trim();
+    return '';
+  }
+
+  function seasonalOptions(ex) {
+    var theme = resolveTheme();
+    var key = null;
+    if (theme === 'halloween') key = 'optionsHalloween';
+    else if (theme === 'christmas') key = 'optionsChristmas';
+    if (key && ex && Array.isArray(ex[key]) && ex[key].length) return ex[key];
+    return ex && Array.isArray(ex.options) ? ex.options : [];
   }
 
   function lessonId(lesson, index) {
@@ -230,8 +270,9 @@
       return '';
     }
     if (ex.type === 'choice') {
-      if (!Array.isArray(ex.options) || ex.options.length < 2) return 'This choice needs at least two options.';
-      if (!Number.isInteger(ex.answer) || ex.answer < 0 || ex.answer >= ex.options.length) return 'This choice has no valid answer.';
+      var opts = seasonalOptions(ex);
+      if (!Array.isArray(opts) || opts.length < 2) return 'This choice needs at least two options.';
+      if (!Number.isInteger(ex.answer) || ex.answer < 0 || ex.answer >= opts.length) return 'This choice has no valid answer.';
       return '';
     }
     if (ex.type === 'truefalse') {
@@ -267,12 +308,13 @@
   }
 
   function promptText(ex, fallback) {
-    if (ex && typeof ex.prompt === 'string' && ex.prompt.trim()) return ex.prompt.trim();
+    var seasonal = seasonalField(ex, 'prompt');
+    if (seasonal) return seasonal;
     return fallback;
   }
 
   function whyText(ex) {
-    return ex && typeof ex.why === 'string' ? ex.why.trim() : '';
+    return seasonalField(ex, 'why');
   }
 
   function accepted(ex, value) {
@@ -409,14 +451,28 @@
         '<p class="footnote">Finished lessons stay open if you want to practise them again.</p>';
     }
 
-    var halloweenOn = resolveHalloweenOn();
+    var theme = resolveTheme();
     var pref = loadThemePref();
-    var eyebrow = halloweenOn ? 'Halloween edition' : 'Semantic Arts';
-    var heading = halloweenOn ? ((course.title || 'Gist') + ' · Halloween') : (course.title || 'Gist');
-    var seasonLine = halloweenOn
-      ? '<p class="season-line">Ontology by moonlight — still the real gist under the costume.</p>'
-      : '';
-    var moon = halloweenOn ? '<span class="home-moon" aria-hidden="true"></span>' : '';
+    var eyebrow = 'Semantic Arts';
+    var heading = course.title || 'Gist';
+    var seasonLine = '';
+    var ornament = '';
+    var santa = '';
+    if (theme === 'halloween') {
+      eyebrow = 'Halloween edition';
+      heading = (course.title || 'Gist') + ' · Halloween';
+      seasonLine = '<p class="season-line">Ontology by moonlight — still the real gist under the costume.</p>';
+      ornament = '<span class="home-moon" aria-hidden="true"></span>';
+    } else if (theme === 'christmas') {
+      eyebrow = 'Christmas edition';
+      heading = (course.title || 'Gist') + ' · Christmas';
+      seasonLine = '<p class="season-line">Holly, ivy, and the real gist under the wrapping paper.</p>';
+      ornament = '<span class="home-holly" aria-hidden="true"></span>';
+      santa = '<figure class="dave-santa">' +
+        '<img src="assets/dave-santa.svg" width="220" height="240" alt="Dave McComb as Santa Claus (festive illustration)">' +
+        '<figcaption>Dave McComb · Semantic Arts · as Santa</figcaption>' +
+        '</figure>';
+    }
     function themeBtn(value, label) {
       return '<button type="button" data-action="theme" data-theme="' + value + '" aria-pressed="' +
         (pref === value ? 'true' : 'false') + '">' + esc(label) + '</button>';
@@ -424,15 +480,17 @@
     var toggle = '<div class="theme-toggle" role="group" aria-label="Theme">' +
       themeBtn('auto', 'Auto') +
       themeBtn('halloween', 'Halloween') +
+      themeBtn('christmas', 'Christmas') +
       themeBtn('classic', 'Classic') +
       '</div>';
 
     return '<header class="home-head">' +
-      moon +
+      ornament +
       '<p class="eyebrow">' + esc(eyebrow) + '</p>' +
       '<h1>' + esc(heading) + '</h1>' +
       '<p class="sub">The Semantic Arts ontology</p>' +
       seasonLine +
+      santa +
       (course.sourceNote ? '<p class="source">' + richText(course.sourceNote) + '</p>' : '') +
       toggle +
       '</header>' +
@@ -444,8 +502,9 @@
 
   function renderTeach(ex) {
     var line = typeof ex.line === 'string' && ex.line.trim() ? '<p class="line">' + esc(ex.line) + '</p>' : '';
-    var example = typeof ex.example === 'string' && ex.example.trim()
-      ? '<div class="example"><span class="example-label">For example</span><p class="line">' + esc(ex.example) + '</p></div>'
+    var exampleText = seasonalField(ex, 'example');
+    var example = exampleText
+      ? '<div class="example"><span class="example-label">For example</span><p class="line">' + esc(exampleText) + '</p></div>'
       : '';
     return '<div class="card-body"><p class="kind">' + esc(kindLabel(ex.kind)) + '</p>' +
       '<h2 id="step-heading" class="term" tabindex="-1">' + esc(ex.term) + '</h2>' +
@@ -453,7 +512,8 @@
   }
 
   function renderChoice(ex) {
-    var buttons = ex.options.map(function (opt, index) {
+    var options = seasonalOptions(ex);
+    var buttons = options.map(function (opt, index) {
       var state = '';
       if (ui.phase === 'feedback') {
         if (index === ex.answer) state = 'correct';
@@ -567,7 +627,11 @@
   function renderDone() {
     var sentence = scoreSentence(ui.firstTry, ui.scored);
     var figure = ui.scored ? '<p class="score-num">' + ui.firstTry + '<span> / ' + ui.scored + '</span></p>' : '';
-    var card = '<article class="card"><div class="card-body"><h2 id="step-heading" tabindex="-1">Lesson complete</h2>' +
+    var santaBit = resolveTheme() === 'christmas'
+      ? '<img class="dave-santa-mini" src="assets/dave-santa.svg" width="72" height="78" alt="Dave McComb as Santa Claus (festive illustration)">'
+      : '';
+    var card = '<article class="card"><div class="card-body">' + santaBit +
+      '<h2 id="step-heading" tabindex="-1">Lesson complete</h2>' +
       figure + '<p class="score-line">' + esc(sentence) + '</p></div>' + continueButton('Back to the path') + '</article>';
     return lessonChrome(card);
   }
@@ -584,9 +648,11 @@
     else html = renderHome();
     app.innerHTML = html;
     if (ui.status !== 'ready') return;
-    var halloweenOn = applyTheme();
+    var theme = applyTheme();
     var courseTitle = ui.course.title || 'Gist';
-    var chromeTitle = halloweenOn ? (courseTitle + ' · Halloween') : courseTitle;
+    var chromeTitle = courseTitle;
+    if (theme === 'halloween') chromeTitle = courseTitle + ' · Halloween';
+    if (theme === 'christmas') chromeTitle = courseTitle + ' · Christmas';
     if (ui.view === 'home') document.title = chromeTitle;
     else {
       var lesson = currentLesson();
@@ -758,7 +824,7 @@
     ui.scored += 1;
     if (right) ui.firstTry += 1;
     var why = whyText(ex);
-    var correctLabel = String(ex.options[ex.answer]);
+    var correctLabel = String(seasonalOptions(ex)[ex.answer]);
     ui.pendingAnnounce = right
       ? (why ? 'Right. ' + why : 'Right.')
       : (why ? 'Not quite. ' + why + ' The right answer is ' + correctLabel + '.' : 'Not quite. The right answer is ' + correctLabel + '.');
@@ -896,7 +962,7 @@
     if (action === 'home') { showHome(); return; }
     if (action === 'theme') {
       var next = btn.dataset.theme;
-      if (next === 'halloween' || next === 'classic' || next === 'auto') {
+      if (next === 'halloween' || next === 'christmas' || next === 'classic' || next === 'auto') {
         saveThemePref(next);
         applyTheme();
         if (ui.view === 'home') render();

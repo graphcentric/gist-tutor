@@ -21,16 +21,27 @@ Progress is stored in this browser under the key `gist-tutor-progress-v1` (lesso
 - `title` and `sourceNote` are strings.
 - `lessons` is an array of `{id, title, blurb, exercises}`.
 - Each exercise has a `type`:
-  - `teach`: `term`, `kind` (`class` or `property`), `line`, `example`
-  - `choice`: `prompt`, `options`, `answer` (index of the right option), `why`
+  - `teach`: `term`, `kind` (`class` or `property`), `line`, `example` (optional `exampleHalloween` / `exampleChristmas`)
+  - `choice`: `prompt`, `options`, `answer` (index of the right option), `why` (optional seasonal `prompt*` / `options*` / `why*`)
   - `truefalse`: `prompt`, `answer` (`true` or `false`), `why`
   - `match`: `prompt`, `pairs` of `{left, right}`
   - `typein`: `prompt`, `accept` (strings, matched without case), `why`
 
+Teach `line` definitions stay aligned with gist 14.1.0. Seasonal fields only flavour illustrative examples and prompts.
 
-## Halloween theme
+## Seasonal themes
 
-In late October (1 October through 2 November, local calendar), a Halloween skin turns on automatically. On the home screen you can switch among Auto, Halloween, and Classic; the choice is stored in this browser under `gist-tutor-theme-v1`. Progress still uses `gist-tutor-progress-v1` and is not cleared by the theme.
+Theme preference is stored under `gist-tutor-theme-v1` as `auto` | `halloween` | `christmas` | `classic`. Progress still uses `gist-tutor-progress-v1` and is not cleared by the theme.
+
+On the home screen you can switch among Auto, Halloween, Christmas, and Classic.
+
+**Auto** (local calendar via `localISODate`):
+
+- 1 October through 2 November → Halloween
+- 1 December through 6 January (crossing the year) → Christmas
+- otherwise → Classic
+
+Halloween: purple night sky, parchment cards, moonlight chrome. Christmas: forest green, crimson and gold, holly/ivy accents, and a festive illustration of Dave McComb (Semantic Arts) as Santa Claus. Both keep focus, forced-colours, and reduced-motion support.
 
 ## Source
 
