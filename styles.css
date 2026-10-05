@@ -81,6 +81,10 @@ p {
     max(24px, env(safe-area-inset-bottom));
 }
 
+.app.is-home {
+  width: min(720px, 100%);
+}
+
 .app.is-lesson {
   width: min(480px, 100%);
 }
@@ -636,330 +640,12 @@ input[type="text"] {
   }
 }
 
-/* —— Halloween edition (html.halloween) —— */
-html.halloween {
-  background: #12081a;
-  --hw-ink: #1a0f14;
-  --hw-paper: #f4e8d4;
-  --hw-paper-deep: #ebe0c8;
-  --hw-orange: #e67e22;
-  --hw-orange-deep: #c96a14;
-  --hw-mint: #f0a868;
-  --hw-sky: #12081a;
-  --hw-sky-mid: #2a1540;
-  --hw-panel: #1e1030;
-  --hw-line: #4a2f5c;
-  --hw-muted: #d4c4b0;
-}
-
-html.halloween body {
-  background:
-    radial-gradient(circle 140px at 88% 6%, rgba(246, 224, 160, 0.22) 0%, rgba(246, 224, 160, 0.08) 38%, transparent 62%),
-    radial-gradient(900px 480px at 50% -100px, #2a1540 0%, #12081a 62%);
-  color: #f4e8d4;
-}
-
-html.halloween::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.55;
-  background-image:
-    radial-gradient(1.5px 1.5px at 12% 18%, rgba(244, 232, 212, 0.55) 50%, transparent 52%),
-    radial-gradient(1px 1px at 28% 42%, rgba(244, 232, 212, 0.4) 50%, transparent 52%),
-    radial-gradient(1.5px 1.5px at 64% 14%, rgba(244, 232, 212, 0.5) 50%, transparent 52%),
-    radial-gradient(1px 1px at 78% 36%, rgba(244, 232, 212, 0.35) 50%, transparent 52%),
-    radial-gradient(1px 1px at 42% 8%, rgba(244, 232, 212, 0.45) 50%, transparent 52%),
-    radial-gradient(1.5px 1.5px at 91% 48%, rgba(244, 232, 212, 0.3) 50%, transparent 52%);
-}
-
-html.halloween .app {
-  position: relative;
-  z-index: 1;
-}
-
-html.halloween ::selection {
-  background: #e67e22;
-  color: #1a0f14;
-}
-
-html.halloween :focus-visible {
-  outline-color: #f4e8d4;
-}
-
-html.halloween .card :focus-visible {
-  outline-color: #e67e22;
-}
-
-html.halloween .eyebrow,
-html.halloween .lesson-kicker,
-html.halloween .kind,
-html.halloween .example-label,
-html.halloween .node-kicker {
-  color: #f0a868;
-}
-
-html.halloween .source {
-  color: #d4c4b0;
-}
-
-html.halloween .source a {
-  color: #f4e8d4;
-}
-
-html.halloween .stats .stat {
-  background: #1e1030;
-  border-color: #4a2f5c;
-}
-
-html.halloween .stat span {
-  color: #d4c4b0;
-}
-
-html.halloween .path-item:not(:last-child)::before {
-  background: #4a2f5c;
-}
-
-html.halloween .lesson-node.locked {
-  color: #d4c4b0;
-}
-
-html.halloween button.lesson-node:hover {
-  background: rgba(230, 126, 34, 0.08);
-}
-
-html.halloween .marker {
-  background: #1a0e28;
-  color: #f4e8d4;
-  box-shadow: inset 0 0 0 2px #4a2f5c;
-}
-
-html.halloween .marker.current {
-  background: #f4e8d4;
-  color: #1a0f14;
-  box-shadow: 0 0 0 3px #e67e22;
-}
-
-html.halloween .marker.done {
-  background: #e67e22;
-  color: #1a0f14;
-  box-shadow: none;
-}
-
-html.halloween .marker.locked {
-  background: #1a0e28;
-  color: #d4c4b0;
-}
-
-html.halloween .lesson-node.locked .node-kicker {
-  color: #cbb8a4;
-}
-
-html.halloween .node-blurb {
-  color: #cbb8a4;
-}
-
-html.halloween .lesson-node.locked .node-blurb {
-  color: #b8a490;
-}
-
-html.halloween .footnote,
-html.halloween .loading {
-  color: #d4c4b0;
-}
-
-html.halloween .back {
-  border-color: #5a3a6e;
-  color: #f4e8d4;
-}
-
-html.halloween .back:hover {
-  background: rgba(230, 126, 34, 0.1);
-}
-
-html.halloween .progress {
-  background: #2a1838;
-}
-
-html.halloween .progress-fill {
-  background: #e67e22;
-}
-
-html.halloween .count {
-  color: #d4c4b0;
-}
-
-html.halloween .card {
-  background: linear-gradient(180deg, #faf3e4 0%, #f4e8d4 140px);
-  color: #1a0f14;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
-}
-
-html.halloween .kind {
-  color: #c96a14;
-}
-
-html.halloween .help {
-  color: #6a5a48;
-}
-
-html.halloween .example {
-  background: #fff8ec;
-  border-left-color: #e67e22;
-}
-
-html.halloween .example-label {
-  color: #1a0f14;
-}
-
-html.halloween .option,
-html.halloween .match-btn,
-html.halloween input[type="text"] {
-  color: #1a0f14;
-  background: #fff8ec;
-  border-color: #e2d2b8;
-}
-
-html.halloween .match-btn.selected {
-  border-color: #e67e22;
-  background: #fde9d2;
-}
-
-html.halloween .option.correct,
-html.halloween .match-btn.locked,
-html.halloween input.correct {
-  background: #e7f3ea;
-  border-color: #1b7a45;
-}
-
-html.halloween .option.wrong,
-html.halloween .match-btn.wrong,
-html.halloween input.wrong {
-  background: #fdeceb;
-  border-color: #9d342c;
-}
-
-html.halloween .btn {
-  background: #e67e22;
-  color: #1a0f14;
-}
-
-html.halloween .btn:hover {
-  background: #c96a14;
-}
-
-html.halloween .score-num {
-  color: #c96a14;
-}
-
-html.halloween .score-num span {
-  color: #6a5a48;
-}
-
-html.halloween .noscript {
-  background: #f4e8d4;
-  color: #1a0f14;
-}
-
 /* Seasonal chrome helpers */
-.theme-toggle {
-  display: inline-flex;
-  gap: 0;
-  margin-top: 14px;
-  border: 1px solid #3a5166;
-  border-radius: 999px;
-  overflow: hidden;
-  background: rgba(20, 32, 43, 0.35);
-}
-
-html.halloween .theme-toggle {
-  border-color: #5a3a6e;
-  background: rgba(18, 8, 26, 0.45);
-}
-
-.theme-toggle button {
-  appearance: none;
-  margin: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 8px 12px;
-  cursor: pointer;
-  min-height: 36px;
-}
-
-.theme-toggle button[aria-pressed="true"] {
-  background: #1f7a6b;
-  color: #fff;
-}
-
-html.halloween .theme-toggle button[aria-pressed="true"] {
-  background: #e67e22;
-  color: #1a0f14;
-}
-
-.theme-toggle button:hover:not([aria-pressed="true"]) {
-  background: rgba(246, 241, 231, 0.08);
-}
-
-html.halloween .theme-toggle button:hover:not([aria-pressed="true"]) {
-  background: rgba(230, 126, 34, 0.12);
-}
-
 .season-line {
   margin: 10px 0 0;
   color: #d0d7de;
   font-size: 0.98rem;
   font-style: italic;
-}
-
-html.halloween .season-line {
-  color: #f0a868;
-}
-
-.home-moon {
-  display: none;
-}
-
-html.halloween .home-moon {
-  display: block;
-  width: 28px;
-  height: 28px;
-  margin: 0 0 6px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 32% 40%, #f6e0a0 0 58%, transparent 60%),
-    radial-gradient(circle at 62% 48%, #12081a 0 42%, transparent 44%);
-  box-shadow: 0 0 18px rgba(246, 224, 160, 0.35);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html.halloween::before {
-    opacity: 0.35;
-  }
-}
-
-@media (forced-colors: active) {
-  html.halloween .theme-toggle,
-  html.halloween .theme-toggle button {
-    border: 1px solid ButtonText;
-  }
-
-  html.halloween .progress-fill,
-  html.halloween .theme-toggle button[aria-pressed="true"],
-  html.halloween .btn,
-  html.halloween .marker.done {
-    background: Highlight;
-    color: HighlightText;
-    forced-color-adjust: none;
-  }
 }
 
 /* —— Gistmas edition (html.christmas) —— */
@@ -1334,33 +1020,13 @@ html.christmas .noscript {
   color: #1a2418;
 }
 
-html.christmas .theme-toggle {
-  border-color: #3a6e55;
-  background: rgba(11, 46, 31, 0.45);
-}
 
-html.christmas .theme-toggle button[aria-pressed="true"] {
-  background: #c41e3a;
-  color: #f7f1e4;
-}
 
-html.christmas .theme-toggle button:hover:not([aria-pressed="true"]) {
-  background: rgba(196, 30, 58, 0.12);
-}
 
 html.christmas .season-line {
   color: #e8c65a;
 }
 
-html.christmas .theme-toggle button {
-  padding: 8px 10px;
-  font-size: 0.72rem;
-}
-
-.theme-toggle button {
-  padding: 8px 10px;
-  font-size: 0.72rem;
-}
 
 .home-holly {
   display: none;
@@ -1400,18 +1066,18 @@ html.christmas .home-holly::after {
 }
 
 .dave-santa {
-  margin: 16px 0 4px;
+  margin: 12px 0 4px;
   text-align: center;
 }
 
 .dave-santa img {
   display: inline-block;
-  max-width: min(360px, 92vw);
+  max-width: min(160px, 42vw);
   width: 100%;
   height: auto;
-  border-radius: 18px;
+  border-radius: 14px;
   object-fit: cover;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.32);
 }
 
 .dave-santa figcaption {
@@ -1449,13 +1115,7 @@ html.christmas .home-holly::after {
 }
 
 @media (forced-colors: active) {
-  html.christmas .theme-toggle,
-  html.christmas .theme-toggle button {
-    border: 1px solid ButtonText;
-  }
-
   html.christmas .progress-fill,
-  html.christmas .theme-toggle button[aria-pressed="true"],
   html.christmas .btn,
   html.christmas .marker.done {
     background: Highlight;
@@ -1474,18 +1134,51 @@ html.christmas .home-holly::after {
 
 
 /* —— Advent calendar grid —— */
+.app.is-home .stats {
+  margin: 16px 0 14px;
+}
+
+.advent-board {
+  margin: 0 0 8px;
+  padding: 12px;
+  border-radius: 18px;
+  border: 2px solid #2f5c45;
+  background:
+    linear-gradient(165deg, rgba(26, 77, 54, 0.55) 0%, rgba(11, 46, 31, 0.85) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(232, 198, 90, 0.18),
+    0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+html.christmas .advent-board {
+  border-color: #d4a017;
+  background:
+    linear-gradient(180deg, #1a4d36 0%, #0f3324 55%, #0b2e1f 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(212, 160, 23, 0.35),
+    inset 0 1px 0 rgba(247, 241, 228, 0.12),
+    0 12px 28px rgba(0, 0, 0, 0.32);
+}
+
 .advent-grid {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 640px) {
   .advent-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px;
+  }
+}
+
+@media (max-width: 360px) {
+  .advent-grid {
+    gap: 6px;
   }
 }
 
@@ -1495,22 +1188,82 @@ html.christmas .home-holly::after {
 }
 
 .advent-door {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 4px;
+  appearance: none;
+  display: block;
   width: 100%;
-  min-height: 96px;
-  padding: 10px 6px 8px;
-  border-radius: 14px;
+  aspect-ratio: 1 / 1.08;
+  min-height: 0;
+  padding: 0;
+  border-radius: 10px;
   border: 1px solid #31485c;
   background: #1c2e3d;
   color: #f6f1e7;
   text-align: center;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.door-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 4px 6px;
+}
+
+.door-badge {
+  display: grid;
+  place-items: center;
+  width: clamp(1.75rem, 7vw, 2.35rem);
+  height: clamp(1.75rem, 7vw, 2.35rem);
+  border-radius: 50%;
+  background: rgba(246, 241, 231, 0.1);
+  border: 1px solid rgba(246, 241, 231, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.door-num {
+  font-size: clamp(0.95rem, 3.6vw, 1.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.door-title {
+  font-size: clamp(0.52rem, 1.9vw, 0.62rem);
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 100%;
+  padding: 0 2px;
+  opacity: 0.92;
+}
+
+.door-hint {
+  font-size: 0.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8fd4c8;
+  opacity: 0.85;
+  line-height: 1;
+}
+
+@media (max-width: 420px) {
+  .door-title {
+    -webkit-line-clamp: 1;
+  }
+
+  .door-hint {
+    display: none;
+  }
 }
 
 .advent-door.open {
@@ -1525,34 +1278,8 @@ html.christmas .home-holly::after {
 
 .advent-door.locked {
   cursor: default;
-  opacity: 0.72;
+  opacity: 0.78;
   color: #9eb0c0;
-}
-
-.door-num {
-  font-size: 1.45rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-}
-
-.door-title {
-  font-size: 0.68rem;
-  line-height: 1.25;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  max-width: 100%;
-}
-
-.door-hint {
-  font-size: 0.58rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #8fd4c8;
-  opacity: 0.9;
 }
 
 .advent-door.locked .door-hint {
@@ -1561,23 +1288,28 @@ html.christmas .home-holly::after {
 
 .door-lock {
   position: absolute;
-  top: 6px;
-  right: 6px;
-  opacity: 0.7;
+  top: 5px;
+  right: 5px;
+  z-index: 2;
+  opacity: 0.75;
+  line-height: 0;
 }
 
 .door-lock svg {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
 }
 
 .door-choco {
-  width: 18px;
-  height: 14px;
-  border-radius: 3px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 14px;
+  height: 11px;
+  border-radius: 2px;
   background: linear-gradient(135deg, #c9a227 0%, #8b5a2b 45%, #5c3317 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 1px 2px rgba(0, 0, 0, 0.25);
-  margin-bottom: 2px;
+  z-index: 2;
 }
 
 .advent-beat {
@@ -1662,18 +1394,79 @@ html.christmas .advent-beat {
   font-size: 1.02rem;
 }
 
+/* Festive door faces */
 html.christmas .advent-door {
-  background: linear-gradient(165deg, #184032 0%, #0f3324 100%);
-  border-color: #2f5c45;
+  border-color: #3d6b52;
   color: #f7f1e4;
+  background:
+    linear-gradient(180deg, rgba(232, 198, 90, 0.08), transparent 28%),
+    linear-gradient(165deg, #184032 0%, #0f3324 100%);
   box-shadow:
-    inset 0 1px 0 rgba(232, 198, 90, 0.12),
-    0 6px 14px rgba(0, 0, 0, 0.22);
+    inset 0 1px 0 rgba(232, 198, 90, 0.16),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.18),
+    0 4px 10px rgba(0, 0, 0, 0.22);
+}
+
+html.christmas .advent-door::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 7px;
+  border: 1px solid rgba(232, 198, 90, 0.22);
+  pointer-events: none;
+}
+
+html.christmas .advent-door::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 7px;
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #e8c65a 0%, #a67c00 100%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+html.christmas .door-badge {
+  background: radial-gradient(circle at 35% 30%, #f3e0a0 0%, #d4a017 55%, #a67c00 100%);
+  border-color: #f0d878;
+  color: #1a2418;
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+html.christmas .door-num {
+  color: #1a2418;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+html.christmas .advent-door.door-tone-1 {
+  background:
+    linear-gradient(180deg, rgba(232, 198, 90, 0.1), transparent 30%),
+    linear-gradient(165deg, #1f4d38 0%, #123826 100%);
+}
+
+html.christmas .advent-door.door-tone-2 {
+  background:
+    linear-gradient(180deg, rgba(232, 198, 90, 0.1), transparent 30%),
+    linear-gradient(165deg, #184032 0%, #0c2a1e 100%);
+}
+
+html.christmas .advent-door.door-tone-3 {
+  background:
+    linear-gradient(180deg, rgba(196, 30, 58, 0.16), transparent 34%),
+    linear-gradient(165deg, #1a3d30 0%, #0f2a20 100%);
 }
 
 html.christmas .advent-door.open {
-  background: linear-gradient(165deg, #1f4d38 0%, #123826 100%);
-  box-shadow: 0 0 0 2px #d4a017, 0 8px 16px rgba(0, 0, 0, 0.28);
+  background: linear-gradient(165deg, #226348 0%, #144032 100%);
+  box-shadow:
+    0 0 0 2px #d4a017,
+    inset 0 1px 0 rgba(247, 241, 228, 0.14),
+    0 6px 14px rgba(0, 0, 0, 0.28);
 }
 
 html.christmas .advent-door.done {
@@ -1681,14 +1474,31 @@ html.christmas .advent-door.done {
   border-color: #e8c65a;
 }
 
+html.christmas .advent-door.done .door-badge {
+  background: radial-gradient(circle at 35% 30%, #fff4c8 0%, #e8c65a 60%, #c9a227 100%);
+}
+
 html.christmas .advent-door.locked {
   background: #0f2a20;
   border-color: #234836;
   color: #a8b8ae;
+  opacity: 0.82;
+}
+
+html.christmas .advent-door.locked .door-badge {
+  background: #1a3a2c;
+  border-color: #2f5c45;
+  color: #c8d5cc;
+  box-shadow: none;
+}
+
+html.christmas .advent-door.locked .door-num {
+  color: #c8d5cc;
+  text-shadow: none;
 }
 
 html.christmas button.advent-door:hover {
-  filter: brightness(1.06);
+  filter: brightness(1.07);
 }
 
 html.christmas .door-hint {
@@ -1699,17 +1509,4 @@ html.christmas .choco-pill {
   background: #123826;
   border-color: #2f5c45;
   color: #f7f1e4;
-}
-
-html.halloween .advent-door {
-  background: #1a1028;
-  border-color: #3a2a55;
-}
-
-html.halloween .advent-door.open {
-  box-shadow: 0 0 0 2px #e8a84a;
-}
-
-html.halloween .advent-door.done {
-  background: linear-gradient(165deg, #6b3fa0 0%, #3d2466 100%);
 }

@@ -38,9 +38,6 @@
 
   var STORAGE_KEY = 'gist-tutor-progress-v1';
   var ADVENT_KEY = 'gist-tutor-advent-v1';
-  var THEME_KEY = 'gist-tutor-theme-v1';
-  var THEME_COLOR_CLASSIC = '#14202b';
-  var THEME_COLOR_HALLOWEEN = '#12081a';
   var THEME_COLOR_CHRISTMAS = '#0b2e1f';
 
   var ui = {
@@ -118,79 +115,24 @@
   }
 
 
-  function loadThemePref() {
-    try {
-      var raw = localStorage.getItem(THEME_KEY);
-      if (raw === 'halloween' || raw === 'christmas' || raw === 'classic' || raw === 'auto') return raw;
-    } catch (err) {}
-    return 'auto';
-  }
-
-  function saveThemePref(value) {
-    try {
-      localStorage.setItem(THEME_KEY, value);
-    } catch (err) {}
-  }
-
-  function isHalloweenSeason(date) {
-    var iso = localISODate(date);
-    var parts = iso.split('-').map(Number);
-    var month = parts[1];
-    var day = parts[2];
-    if (month === 10) return true;
-    if (month === 11 && day <= 2) return true;
-    return false;
-  }
-
-  function isChristmasSeason(date) {
-    var iso = localISODate(date);
-    var parts = iso.split('-').map(Number);
-    var month = parts[1];
-    var day = parts[2];
-    if (month === 12) return true;
-    if (month === 1 && day <= 6) return true;
-    return false;
-  }
-
-  function resolveTheme(pref) {
-    var p = pref || loadThemePref();
-    if (p === 'halloween' || p === 'christmas' || p === 'classic') return p;
-    if (isHalloweenSeason()) return 'halloween';
-    if (isChristmasSeason()) return 'christmas';
-    return 'classic';
-  }
-
   function applyTheme() {
-    var theme = resolveTheme();
     var root = document.documentElement;
-    root.classList.toggle('halloween', theme === 'halloween');
-    root.classList.toggle('christmas', theme === 'christmas');
+    root.classList.remove('halloween');
+    root.classList.add('christmas');
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) {
-      var color = THEME_COLOR_CLASSIC;
-      if (theme === 'halloween') color = THEME_COLOR_HALLOWEEN;
-      if (theme === 'christmas') color = THEME_COLOR_CHRISTMAS;
-      meta.setAttribute('content', color);
-    }
-    return theme;
+    if (meta) meta.setAttribute('content', THEME_COLOR_CHRISTMAS);
+    return 'christmas';
   }
 
   function seasonalField(ex, base) {
-    var theme = resolveTheme();
-    var key = null;
-    if (theme === 'halloween') key = base + 'Halloween';
-    else if (theme === 'christmas') key = base + 'Christmas';
-    if (key && ex && typeof ex[key] === 'string' && ex[key].trim()) return ex[key].trim();
+    var key = base + 'Christmas';
+    if (ex && typeof ex[key] === 'string' && ex[key].trim()) return ex[key].trim();
     if (ex && typeof ex[base] === 'string' && ex[base].trim()) return ex[base].trim();
     return '';
   }
 
   function seasonalOptions(ex) {
-    var theme = resolveTheme();
-    var key = null;
-    if (theme === 'halloween') key = 'optionsHalloween';
-    else if (theme === 'christmas') key = 'optionsChristmas';
-    if (key && ex && Array.isArray(ex[key]) && ex[key].length) return ex[key];
+    if (ex && Array.isArray(ex.optionsChristmas) && ex.optionsChristmas.length) return ex.optionsChristmas;
     return ex && Array.isArray(ex.options) ? ex.options : [];
   }
 
@@ -297,7 +239,6 @@
   }
 
   function snowMarkup() {
-    if (resolveTheme() !== 'christmas') return '';
     return '<div class="snow" aria-hidden="true">' +
       '<div class="snow-layer snow-layer-a"></div>' +
       '<div class="snow-layer snow-layer-b"></div>' +
@@ -503,8 +444,6 @@
     var dates = progress.dates.slice();
     var streak = streakCount(dates);
     var chocolates = chocolateCount();
-    var theme = resolveTheme();
-    var pref = loadThemePref();
 
     var doors = lessons.map(function (lesson, index) {
       var unlocked = isUnlocked(progress, lessons, index);
@@ -513,61 +452,48 @@
       var state = !unlocked ? 'locked' : (done ? 'done' : 'open');
       var title = lesson && lesson.title ? String(lesson.title) : ('Day ' + n);
       var label = done ? 'Opened' : (unlocked ? 'Open day ' + n : 'Locked — finish day ' + (n - 1) + ' first');
-      var hint = '<span class="door-hint">Opens Dec ' + n + '</span>';
-      var face = done
-        ? '<span class="door-choco" aria-hidden="true"></span><span class="door-num">' + n + '</span>'
-        : '<span class="door-num">' + n + '</span>';
-      var inner = face + '<span class="door-title">' + esc(title) + '</span>' + hint;
+      var tone = 'door-tone-' + ((index % 3) + 1);
+      var hint = '<span class="door-hint"><span class="visually-hidden">Opens </span>Dec ' + n + '</span>';
+      var badge = '<span class="door-badge" aria-hidden="true"><span class="door-num">' + n + '</span></span>';
+      var choco = done ? '<span class="door-choco" aria-hidden="true" title="Chocolate earned"></span>' : '';
+      var face =
+        '<span class="door-face">' +
+          badge +
+          choco +
+          '<span class="door-title">' + esc(title) + '</span>' +
+          hint +
+        '</span>';
       if (!unlocked) {
-        return '<li class="door-cell"><div class="advent-door locked" aria-label="Day ' + n + ' locked. ' + esc(title) + '. Opens Dec ' + n + '.">' +
-          '<span class="door-lock" aria-hidden="true">' + iconLock() + '</span>' + inner + '</div></li>';
+        return '<li class="door-cell">' +
+          '<div class="advent-door locked ' + tone + '" aria-label="Day ' + n + ' locked. ' + esc(title) + '. Opens Dec ' + n + '.">' +
+          '<span class="door-lock" aria-hidden="true">' + iconLock() + '</span>' +
+          face +
+          '</div></li>';
       }
       var current = state === 'open' && !done ? ' aria-current="step"' : '';
-      return '<li class="door-cell"><button type="button" class="advent-door ' + state + '" data-action="open" data-index="' + index + '"' + current +
-        ' aria-label="' + esc(label) + ': ' + esc(title) + '">' + inner + '</button></li>';
+      return '<li class="door-cell">' +
+        '<button type="button" class="advent-door ' + state + ' ' + tone + '" data-action="open" data-index="' + index + '"' + current +
+        ' aria-label="' + esc(label) + ': ' + esc(title) + '">' + face + '</button></li>';
     }).join('');
 
     var body;
     if (!lessons.length) {
       body = '<section class="card empty"><h2>Doors are on the way</h2><p>When the Advent course is added, twenty-four doors will open here.</p></section>';
     } else {
-      body = '<nav aria-label="Gistmas Advent calendar"><ol class="advent-grid">' + doors + '</ol></nav>' +
+      body = '<nav class="advent-board" aria-label="Gistmas Advent calendar">' +
+        '<ol class="advent-grid">' + doors + '</ol>' +
+        '</nav>' +
         '<p class="footnote">Open doors in order — each finished day awards a virtual chocolate. Finished days stay open to practise again.</p>';
     }
 
-    var eyebrow = 'Semantic Arts';
-    var heading = course.title || 'Gist';
-    var seasonLine = '';
-    var ornament = '';
-    var santa = '';
-    if (theme === 'halloween') {
-      eyebrow = 'Halloween edition';
-      heading = (course.title || 'Gist') + ' · Halloween';
-      seasonLine = '<p class="season-line">Twenty-four doors by moonlight — still the real gist under the costume.</p>';
-      ornament = '<span class="home-moon" aria-hidden="true"></span>';
-    } else if (theme === 'christmas') {
-      eyebrow = 'Gistmas Advent';
-      heading = (course.title || 'Gistmas') + ' Advent';
-      seasonLine = '<p class="season-line">Twenty-four doors of holly, waiting, and the real gist — from prophecy to joy.</p>';
-      ornament = '<span class="home-holly" aria-hidden="true"></span>';
-      santa = '<figure class="dave-santa">' +
-        '<img src="assets/dave-santa.jpg" width="240" height="240" alt="Dave McComb as Santa Claus">' +
-        '<figcaption>Dave McComb · Semantic Arts · as Santa</figcaption>' +
-        '</figure>';
-    } else {
-      seasonLine = '<p class="season-line">A twenty-four day Advent calendar for the Semantic Arts gist ontology.</p>';
-    }
-
-    function themeBtn(value, label) {
-      return '<button type="button" data-action="theme" data-theme="' + value + '" aria-pressed="' +
-        (pref === value ? 'true' : 'false') + '">' + esc(label) + '</button>';
-    }
-    var toggle = '<div class="theme-toggle" role="group" aria-label="Theme">' +
-      themeBtn('auto', 'Auto') +
-      themeBtn('halloween', 'Halloween') +
-      themeBtn('christmas', 'Gistmas') +
-      themeBtn('classic', 'Classic') +
-      '</div>';
+    var eyebrow = 'Gistmas Advent';
+    var heading = (course.title || 'Gistmas') + ' Advent';
+    var seasonLine = '<p class="season-line">Twenty-four doors of holly, waiting, and the real gist — from prophecy to joy.</p>';
+    var ornament = '<span class="home-holly" aria-hidden="true"></span>';
+    var santa = '<figure class="dave-santa">' +
+      '<img src="assets/dave-santa.jpg" width="160" height="160" alt="Dave McComb as Santa Claus">' +
+      '<figcaption>Dave McComb · Semantic Arts · as Santa</figcaption>' +
+      '</figure>';
 
     return snowMarkup() +
       '<header class="home-head">' +
@@ -578,7 +504,6 @@
       seasonLine +
       santa +
       (course.sourceNote ? '<p class="source">' + richText(course.sourceNote) + '</p>' : '') +
-      toggle +
       '</header>' +
       '<section class="stats" aria-label="Progress">' +
       '<div class="stat choco-stat"><b>' + chocolates + '</b><span>' + (chocolates === 1 ? 'chocolate' : 'chocolates') + '</span></div>' +
@@ -715,9 +640,7 @@
     var sentence = scoreSentence(ui.firstTry, ui.scored);
     var figure = ui.scored ? '<p class="score-num">' + ui.firstTry + '<span> / ' + ui.scored + '</span></p>' : '';
     var award = ui.chocolateAward || { fresh: false, total: chocolateCount() };
-    var santaBit = resolveTheme() === 'christmas'
-      ? '<img class="dave-santa-mini wink" src="assets/dave-santa.jpg" width="88" height="88" alt="Dave McComb as Santa Claus">'
-      : '';
+    var santaBit = '<img class="dave-santa-mini wink" src="assets/dave-santa.jpg" width="88" height="88" alt="Dave McComb as Santa Claus">';
     var chocoShow = '<div class="choco-celebrate" aria-hidden="true">' +
       '<div class="foil-choco"><span class="foil-shine"></span></div>' +
       '</div>';
@@ -744,11 +667,9 @@
     else html = renderHome();
     app.innerHTML = html;
     if (ui.status !== 'ready') return;
-    var theme = applyTheme();
-    var courseTitle = ui.course.title || 'Gist';
-    var chromeTitle = courseTitle;
-    if (theme === 'halloween') chromeTitle = courseTitle + ' · Halloween';
-    if (theme === 'christmas') chromeTitle = courseTitle + ' Advent';
+    applyTheme();
+    var courseTitle = ui.course.title || 'Gistmas';
+    var chromeTitle = courseTitle + ' Advent';
     if (ui.view === 'home') document.title = chromeTitle;
     else {
       var lesson = currentLesson();
@@ -1066,15 +987,6 @@
     if (!btn || btn.disabled) return;
     var action = btn.dataset.action;
     if (action === 'home') { showHome(); return; }
-    if (action === 'theme') {
-      var next = btn.dataset.theme;
-      if (next === 'halloween' || next === 'christmas' || next === 'classic' || next === 'auto') {
-        saveThemePref(next);
-        applyTheme();
-        if (ui.view === 'home') render();
-      }
-      return;
-    }
     if (action === 'open') { openLesson(Number(btn.dataset.index)); return; }
     if (action === 'continue') { onContinue(); return; }
     if (action === 'choice') { onChoice(Number(btn.dataset.index)); return; }

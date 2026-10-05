@@ -20,17 +20,9 @@ Open the address it prints (usually http://127.0.0.1:8000).
 - Each lesson carries a short **Advent / Nativity beat** woven with faithful gist teaching — warm and reverent, not a sermon dump.
 - Teach `line` definitions stay aligned with **gist 14.1.0** skos definitions. Do not invent gist terms.
 
-## Seasonal themes
+## Gistmas theme
 
-Theme preference is stored under `gist-tutor-theme-v1` as `auto` | `halloween` | `christmas` | `classic`.
-
-**Auto** (local calendar via `localISODate`):
-
-- 1 October through 2 November → Halloween
-- **1 December through 6 January** → Gistmas (Christmas skin; Advent is the home experience)
-- otherwise → Classic
-
-**Gistmas**: forest green, crimson and gold, holly/ivy, CSS snowfall (respects `prefers-reduced-motion`), and Dave McComb (Semantic Arts) as Santa (`assets/dave-santa.jpg`). UI label is Gistmas; storage value remains `christmas`.
+The site is **Gistmas only** — forest green, crimson and gold, holly/ivy, CSS snowfall (respects `prefers-reduced-motion`), and Dave McComb (Semantic Arts) as Santa (`assets/dave-santa.jpg`). There is no Halloween or classic theme toggle.
 
 ## lessons.json
 
@@ -38,7 +30,7 @@ Theme preference is stored under `gist-tutor-theme-v1` as `auto` | `halloween` |
 
 - `title`, `sourceNote`, `lessons[]`
 - Each lesson: `{id, title, blurb, adventBeat, exercises}`
-- Exercise types: `teach`, `choice`, `truefalse`, `match`, `typein` (optional seasonal `*Halloween` / `*Christmas` fields on examples and prompts)
+- Exercise types: `teach`, `choice`, `truefalse`, `match`, `typein` (optional `*Christmas` fields on examples and prompts; unused Halloween fields are ignored)
 
 ## Source
 
