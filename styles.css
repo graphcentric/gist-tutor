@@ -70,7 +70,7 @@ p {
 }
 
 .app {
-  width: min(480px, 100%);
+  width: min(560px, 100%);
   margin: 0 auto;
   min-height: 100dvh;
   display: flex;
@@ -79,6 +79,10 @@ p {
     max(18px, env(safe-area-inset-top))
     16px
     max(24px, env(safe-area-inset-bottom));
+}
+
+.app.is-lesson {
+  width: min(480px, 100%);
 }
 
 .home-head {
@@ -100,7 +104,7 @@ p {
 
 h1 {
   margin: 4px 0 8px;
-  font-size: 3.4rem;
+  font-size: clamp(2.2rem, 8vw, 3.2rem);
   line-height: 0.92;
   letter-spacing: -0.045em;
   font-weight: 700;
@@ -123,9 +127,15 @@ h1 {
 
 .stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin: 22px 0 18px;
+}
+
+@media (max-width: 420px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
 }
 
 .stat {
@@ -976,29 +986,75 @@ html.christmas body {
   color: #f7f1e4;
 }
 
-html.christmas::before {
-  content: "";
+/* Multi-layer CSS snowfall (home + lessons in Gistmas) */
+.snow {
+  display: none;
+}
+
+html.christmas .snow {
+  display: block;
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 0;
-  opacity: 0.7;
+  overflow: hidden;
+}
+
+html.christmas .snow-layer {
+  position: absolute;
+  inset: -20% 0 0 0;
+  width: 100%;
+  height: 120%;
+  background-repeat: repeat;
   background-image:
-    radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.75) 50%, transparent 52%),
-    radial-gradient(1.5px 1.5px at 24% 48%, rgba(255, 255, 255, 0.55) 50%, transparent 52%),
-    radial-gradient(2px 2px at 38% 12%, rgba(255, 255, 255, 0.7) 50%, transparent 52%),
-    radial-gradient(1px 1px at 52% 36%, rgba(255, 255, 255, 0.5) 50%, transparent 52%),
-    radial-gradient(2px 2px at 68% 18%, rgba(255, 255, 255, 0.65) 50%, transparent 52%),
-    radial-gradient(1.5px 1.5px at 82% 42%, rgba(255, 255, 255, 0.45) 50%, transparent 52%),
-    radial-gradient(1px 1px at 92% 28%, rgba(255, 255, 255, 0.6) 50%, transparent 52%),
-    radial-gradient(1.5px 1.5px at 16% 72%, rgba(255, 255, 255, 0.4) 50%, transparent 52%),
-    radial-gradient(2px 2px at 46% 64%, rgba(255, 255, 255, 0.5) 50%, transparent 52%),
-    radial-gradient(1px 1px at 74% 78%, rgba(255, 255, 255, 0.45) 50%, transparent 52%);
+    radial-gradient(circle 1.5px at 8% 12%, rgba(255, 255, 255, 0.95) 98%, transparent 100%),
+    radial-gradient(circle 2px at 18% 34%, rgba(255, 255, 255, 0.75) 98%, transparent 100%),
+    radial-gradient(circle 1px at 28% 8%, rgba(255, 255, 255, 0.85) 98%, transparent 100%),
+    radial-gradient(circle 2.2px at 38% 52%, rgba(255, 255, 255, 0.7) 98%, transparent 100%),
+    radial-gradient(circle 1.4px at 48% 22%, rgba(255, 255, 255, 0.9) 98%, transparent 100%),
+    radial-gradient(circle 1px at 58% 68%, rgba(255, 255, 255, 0.65) 98%, transparent 100%),
+    radial-gradient(circle 2px at 68% 16%, rgba(255, 255, 255, 0.8) 98%, transparent 100%),
+    radial-gradient(circle 1.2px at 78% 44%, rgba(255, 255, 255, 0.7) 98%, transparent 100%),
+    radial-gradient(circle 1.8px at 88% 28%, rgba(255, 255, 255, 0.85) 98%, transparent 100%),
+    radial-gradient(circle 1px at 94% 72%, rgba(255, 255, 255, 0.6) 98%, transparent 100%),
+    radial-gradient(circle 2px at 12% 82%, rgba(255, 255, 255, 0.7) 98%, transparent 100%),
+    radial-gradient(circle 1.3px at 42% 90%, rgba(255, 255, 255, 0.75) 98%, transparent 100%),
+    radial-gradient(circle 1.6px at 72% 88%, rgba(255, 255, 255, 0.8) 98%, transparent 100%);
+  background-size: 320px 320px;
+  opacity: 0.85;
+  will-change: transform;
+}
+
+html.christmas .snow-layer-a {
+  background-size: 280px 280px;
+  opacity: 0.55;
+  filter: blur(0.2px);
+}
+
+html.christmas .snow-layer-b {
+  background-size: 380px 380px;
+  opacity: 0.75;
+  background-position: 40px 20px;
+}
+
+html.christmas .snow-layer-c {
+  background-size: 220px 220px;
+  opacity: 0.95;
+  background-position: -30px 60px;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.4));
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  html.christmas::before {
-    animation: xm-snowfall 22s linear infinite;
+  html.christmas .snow-layer-a {
+    animation: xm-snow-fall 18s linear infinite;
+  }
+
+  html.christmas .snow-layer-b {
+    animation: xm-snow-fall 28s linear infinite;
+  }
+
+  html.christmas .snow-layer-c {
+    animation: xm-snow-fall-drift 14s linear infinite;
   }
 
   html.christmas .home-holly::before,
@@ -1009,11 +1065,30 @@ html.christmas::before {
   html.christmas .dave-santa img {
     animation: xm-bob 4.5s ease-in-out infinite;
   }
+
+  html.christmas .foil-choco {
+    animation: xm-choco-pop 0.7s ease-out;
+  }
+
+  html.christmas .dave-santa-mini.wink {
+    animation: xm-bob 3.2s ease-in-out infinite;
+  }
 }
 
-@keyframes xm-snowfall {
-  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
-  to { background-position: 0 120px, 12px 160px, -8px 100px, 6px 140px, -10px 110px, 8px 150px, -4px 90px, 10px 130px, -6px 170px, 4px 115px; }
+@keyframes xm-snow-fall {
+  from { transform: translate3d(0, -8%, 0); }
+  to { transform: translate3d(0, 45%, 0); }
+}
+
+@keyframes xm-snow-fall-drift {
+  from { transform: translate3d(0, -10%, 0); }
+  to { transform: translate3d(4%, 50%, 0); }
+}
+
+@keyframes xm-choco-pop {
+  0% { transform: scale(0.4) rotate(-12deg); opacity: 0; }
+  60% { transform: scale(1.08) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
 @keyframes xm-twinkle {
@@ -1354,15 +1429,22 @@ html.christmas .home-holly::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.christmas::before {
-    opacity: 0.4;
-    animation: none;
+  html.christmas .snow-layer {
+    animation: none !important;
+    opacity: 0.35;
+    transform: none;
+  }
+
+  html.christmas .snow-layer-c {
+    opacity: 0.45;
   }
 
   html.christmas .home-holly::before,
   html.christmas .home-holly::after,
-  html.christmas .dave-santa img {
-    animation: none;
+  html.christmas .dave-santa img,
+  html.christmas .foil-choco,
+  html.christmas .dave-santa-mini.wink {
+    animation: none !important;
   }
 }
 
@@ -1388,4 +1470,246 @@ html.christmas .home-holly::after {
   html.christmas .marker.done::after {
     display: none;
   }
+}
+
+
+/* —— Advent calendar grid —— */
+.advent-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 420px) {
+  .advent-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.door-cell {
+  margin: 0;
+  min-width: 0;
+}
+
+.advent-door {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  width: 100%;
+  min-height: 96px;
+  padding: 10px 6px 8px;
+  border-radius: 14px;
+  border: 1px solid #31485c;
+  background: #1c2e3d;
+  color: #f6f1e7;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.advent-door.open {
+  background: linear-gradient(160deg, #243d52 0%, #1c2e3d 100%);
+  box-shadow: 0 0 0 2px #1f7a6b, inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.advent-door.done {
+  background: linear-gradient(160deg, #1f7a6b 0%, #185e53 100%);
+  border-color: #2a9a88;
+}
+
+.advent-door.locked {
+  cursor: default;
+  opacity: 0.72;
+  color: #9eb0c0;
+}
+
+.door-num {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.door-title {
+  font-size: 0.68rem;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.door-hint {
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8fd4c8;
+  opacity: 0.9;
+}
+
+.advent-door.locked .door-hint {
+  color: #8fa0b0;
+}
+
+.door-lock {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  opacity: 0.7;
+}
+
+.door-lock svg {
+  width: 14px;
+  height: 14px;
+}
+
+.door-choco {
+  width: 18px;
+  height: 14px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #c9a227 0%, #8b5a2b 45%, #5c3317 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 1px 2px rgba(0, 0, 0, 0.25);
+  margin-bottom: 2px;
+}
+
+.advent-beat {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #d0d7de;
+  line-height: 1.4;
+}
+
+html.christmas .advent-beat {
+  color: #e8c65a;
+}
+
+.choco-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #1c2e3d;
+  border: 1px solid #31485c;
+  font-size: 0.85rem;
+}
+
+.choco-pill b {
+  font-variant-numeric: tabular-nums;
+}
+
+.choco-icon,
+.choco-stat .choco-icon {
+  display: inline-block;
+  width: 18px;
+  height: 14px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #e8c65a 0%, #8b5a2b 48%, #4a2c14 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.choco-celebrate {
+  display: flex;
+  justify-content: center;
+  margin: 6px 0 14px;
+}
+
+.foil-choco {
+  width: 72px;
+  height: 52px;
+  border-radius: 10px;
+  position: relative;
+  background:
+    linear-gradient(125deg, transparent 40%, rgba(255, 255, 255, 0.45) 48%, transparent 56%),
+    linear-gradient(160deg, #f0d878 0%, #c9a227 35%, #8b5a2b 70%, #5c3317 100%);
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.18);
+}
+
+.foil-choco::before {
+  content: "";
+  position: absolute;
+  inset: 8px 10px;
+  border-radius: 6px;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+}
+
+.foil-shine {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  width: 18px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  filter: blur(1px);
+}
+
+.choco-line {
+  margin: 0 0 10px;
+  font-size: 1.02rem;
+}
+
+html.christmas .advent-door {
+  background: linear-gradient(165deg, #184032 0%, #0f3324 100%);
+  border-color: #2f5c45;
+  color: #f7f1e4;
+  box-shadow:
+    inset 0 1px 0 rgba(232, 198, 90, 0.12),
+    0 6px 14px rgba(0, 0, 0, 0.22);
+}
+
+html.christmas .advent-door.open {
+  background: linear-gradient(165deg, #1f4d38 0%, #123826 100%);
+  box-shadow: 0 0 0 2px #d4a017, 0 8px 16px rgba(0, 0, 0, 0.28);
+}
+
+html.christmas .advent-door.done {
+  background: linear-gradient(165deg, #c41e3a 0%, #9a1530 100%);
+  border-color: #e8c65a;
+}
+
+html.christmas .advent-door.locked {
+  background: #0f2a20;
+  border-color: #234836;
+  color: #a8b8ae;
+}
+
+html.christmas button.advent-door:hover {
+  filter: brightness(1.06);
+}
+
+html.christmas .door-hint {
+  color: #e8c65a;
+}
+
+html.christmas .choco-pill {
+  background: #123826;
+  border-color: #2f5c45;
+  color: #f7f1e4;
+}
+
+html.halloween .advent-door {
+  background: #1a1028;
+  border-color: #3a2a55;
+}
+
+html.halloween .advent-door.open {
+  box-shadow: 0 0 0 2px #e8a84a;
+}
+
+html.halloween .advent-door.done {
+  background: linear-gradient(165deg, #6b3fa0 0%, #3d2466 100%);
 }

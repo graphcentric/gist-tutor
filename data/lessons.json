@@ -1,6 +1,6 @@
 {
-  "title": "Gist",
-  "sourceNote": "Semantic Arts gist 14.1.0 (17 April 2026). Definitions from gistCore. https://www.semanticarts.com/gist/",
+  "title": "Gistmas",
+  "sourceNote": "Semantic Arts gist 14.1.0 (17 April 2026). Definitions from gistCore under CC BY 4.0. https://www.semanticarts.com/gist/",
   "lessons": [
     {
       "id": "day-01",
@@ -130,7 +130,8 @@
           ],
           "whyChristmas": "A person is a human being. The committee and the charity are organisations: structured entities formed to achieve goals. Members of an organisation are not the organisation."
         }
-      ]
+      ],
+      "adventBeat": "Long centuries of waiting: a people longed for the One who was promised."
     },
     {
       "id": "day-02",
@@ -243,7 +244,8 @@
           "promptHalloween": "A street performer promises one Hallowe'en show to every ticket holder. How many commitments is that?",
           "promptChristmas": "A caroller promises one Christmas Eve show to every ticket holder. How many commitments is that?"
         }
-      ]
+      ],
+      "adventBeat": "An angel speaks a holy intention — a promise begins to take shape."
     },
     {
       "id": "day-03",
@@ -349,7 +351,8 @@
           ],
           "why": "isUnderJurisdictionOf relates a law, contract, and the like to the system of law or government with authority to interpret and apply it. A contract is an agreement with at least one such government organisation."
         }
-      ]
+      ],
+      "adventBeat": "Covenant love draws near: what was offered becomes a firm arrangement."
     },
     {
       "id": "day-04",
@@ -451,7 +454,8 @@
           ],
           "why": "isBasedOn means the object is a foundation or starting point for the subject. A task is based on its task template."
         }
-      ]
+      ],
+      "adventBeat": "The journey is set with a purpose — work toward a holy goal."
     },
     {
       "id": "day-05",
@@ -578,7 +582,8 @@
           "promptHalloween": "The pumpkin carving was planned for Thursday and actually began on Thursday. Which statement is faithful?",
           "promptChristmas": "The present wrapping was planned for Thursday and actually began on Thursday. Which statement is faithful?"
         }
-      ]
+      ],
+      "adventBeat": "Appointed days unfold on the road toward Bethlehem."
     },
     {
       "id": "day-06",
@@ -589,7 +594,7 @@
           "type": "teach",
           "term": "gist:TimeInterval",
           "kind": "class",
-          "line": "A span of time with a known start time, end time, and duration.",
+          "line": "A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred.",
           "example": "The span from 09:00 to 09:45 on Tuesday, lasting 45 minutes, is a time interval.",
           "exampleHalloween": "The span from 18:00 to 20:00 on Hallowe'en, lasting two hours of trick-or-treat, is a time interval.",
           "exampleChristmas": "The span from 18:00 to 20:00 on Christmas Eve, lasting two hours of carol singing, is a time interval."
@@ -675,7 +680,8 @@
           ],
           "why": "A time interval has a known start, a known end, and a duration. If the end is still unknown, it is not a time interval."
         }
-      ]
+      ],
+      "adventBeat": "In the fullness of time, the long wait draws to its appointed span."
     },
     {
       "id": "day-07",
@@ -775,7 +781,8 @@
           ],
           "why": "containedText relates something that contains textual information to the string that makes up that text. isAbout is the subject the document is about, not the words themselves."
         }
-      ]
+      ],
+      "adventBeat": "The Word is made known — good news takes form as content we can share."
     },
     {
       "id": "day-08",
@@ -902,7 +909,8 @@
           ],
           "whyChristmas": "A thing can have more than one ID, like more than one URI, but each ID can refer to only one thing. Sharing one ID individual between Maya and her sister would break that."
         }
-      ]
+      ],
+      "adventBeat": "You shall call his name Jesus: identity given with love."
     },
     {
       "id": "day-09",
@@ -1016,7 +1024,8 @@
           "promptChristmas": "Which property links a Christmas pudding to the flour it contains?",
           "whyChristmas": "isMadeUpOf relates something to a physical substance it is made up of. isPartOf is for a part that exists in its own right, such as a bauble on a tree."
         }
-      ]
+      ],
+      "adventBeat": "Swaddling cloth and manger wood — humble things that hold a king."
     },
     {
       "id": "day-10",
@@ -1112,7 +1121,8 @@
           ],
           "why": "hasUnitOfMeasure relates a magnitude to its unit of measure. The parcel does not point straight at the unit; the parcel has a magnitude, and that magnitude has the unit and the numeric value."
         }
-      ]
+      ],
+      "adventBeat": "Shepherds count the watches of the night; measures mark the hours."
     },
     {
       "id": "day-11",
@@ -1218,7 +1228,8 @@
           ],
           "why": "refersTo relates something to a resource it points to or indicates. A physical address is an address that refers to a geographic location. hasAddress runs the other way: from the bookshop to the address."
         }
-      ]
+      ],
+      "adventBeat": "To Bethlehem of Judea: a place named in prophecy."
     },
     {
       "id": "day-12",
@@ -1330,7 +1341,8 @@
           ],
           "why": "A controlled vocabulary is a collection of terms approved and managed by some organisation or person. Formally it is a collection governed by a person or organisation, with categories as members."
         }
-      ]
+      ],
+      "adventBeat": "Called Son, Shepherd, and King — labels that name who he is."
     },
     {
       "id": "day-13",
@@ -1453,7 +1465,8 @@
           ],
           "why": "isMemberOf relates a member individual to the collection or organisation it is a member of. The ordered-member proxy uses the same idea: the proxy, not the underlying person, is the member of that one ordered collection."
         }
-      ]
+      ],
+      "adventBeat": "Shepherds gather in the fields, a small network of wonder."
     },
     {
       "id": "day-14",
@@ -1557,6 +1570,927 @@
             "gist:isAssignmentTo"
           ],
           "why": "isAssignmentTo relates an assignment to the thing the resource is assigned to. isAssignmentOf relates it to the resource itself, such as the person. Neither has a formal domain or range; where ordinary speech could be read either way, pick one reading and keep it."
+        }
+      ],
+      "adventBeat": "Every part of the story fits — assignment and belonging."
+    },
+    {
+      "id": "day-15",
+      "title": "Place and shelter",
+      "blurb": "Buildings and landmarks sit on the earth; events occur in places.",
+      "adventBeat": "A stable and a manger: place and building for the newborn King.",
+      "exercises": [
+        {
+          "type": "teach",
+          "term": "gist:Building",
+          "kind": "class",
+          "line": "A relatively permanent man-made structure situated on a plot of land, having a roof and walls, commonly used for dwelling, entertaining, or working.",
+          "example": "The parish hall on High Street is a building with a roof and walls.",
+          "exampleHalloween": "The haunted-house façade on Elm Street is still a building with a roof and walls.",
+          "exampleChristmas": "The stable beside the inn is a building — humble walls for a holy night."
+        },
+        {
+          "type": "teach",
+          "term": "gist:Landmark",
+          "kind": "class",
+          "line": "Something permanently attached to the Earth.",
+          "example": "The stone cross on the hill is a landmark permanently attached to the earth.",
+          "exampleHalloween": "The old oak in the churchyard is a landmark permanently attached to the earth.",
+          "exampleChristmas": "The starry hillside above Bethlehem is marked by landmarks attached to the earth."
+        },
+        {
+          "type": "teach",
+          "term": "gist:occursIn",
+          "kind": "property",
+          "line": "Relates something, such as an event, to the geographic location where it did, does, or will happen.",
+          "example": "The town council meeting occurs in the parish hall.",
+          "exampleHalloween": "The costume parade occurs in the town square.",
+          "exampleChristmas": "The Nativity occurs in Bethlehem."
+        },
+        {
+          "type": "teach",
+          "term": "gist:hasPhysicalLocation",
+          "kind": "property",
+          "line": "Relates something to its physical location.",
+          "example": "The parcel locker has a physical location behind the station.",
+          "exampleHalloween": "The pumpkin patch has a physical location behind the barn.",
+          "exampleChristmas": "The manger has a physical location inside the stable."
+        },
+        {
+          "type": "choice",
+          "prompt": "How do you say a meeting happened at a geographic place?",
+          "options": [
+            "Relate the meeting with gist:occursIn",
+            "Type the place as gist:Event",
+            "Use only gist:name on the meeting"
+          ],
+          "answer": 0,
+          "why": "occursIn relates something such as an event to the geographic location where it did, does, or will happen."
+        },
+        {
+          "type": "truefalse",
+          "prompt": "gist:Building is a kind of temporary tent with no walls.",
+          "answer": false,
+          "why": "A building is a relatively permanent man-made structure with a roof and walls."
+        },
+        {
+          "type": "match",
+          "prompt": "Match each name to its meaning",
+          "pairs": [
+            {
+              "left": "gist:Building",
+              "right": "a permanent structure with roof and walls"
+            },
+            {
+              "left": "gist:Landmark",
+              "right": "something permanently attached to the Earth"
+            },
+            {
+              "left": "gist:occursIn",
+              "right": "links an event to where it happens"
+            },
+            {
+              "left": "gist:hasPhysicalLocation",
+              "right": "links a thing to its physical location"
+            }
+          ]
+        },
+        {
+          "type": "typein",
+          "prompt": "Type the class for a structure with a roof and walls.",
+          "accept": [
+            "Building",
+            "gist:Building"
+          ],
+          "why": "gist:Building is a relatively permanent man-made structure with a roof and walls."
+        }
+      ]
+    },
+    {
+      "id": "day-16",
+      "title": "Messages sent",
+      "blurb": "A message is content sent from a giver to a recipient.",
+      "adventBeat": "Tidings of great joy — a message sent to those who watch by night.",
+      "exercises": [
+        {
+          "type": "teach",
+          "term": "gist:Message",
+          "kind": "class",
+          "line": "A specific instance of content sent from a sender to at least one other recipient.",
+          "example": "The email from Idris to Priya is a message.",
+          "exampleHalloween": "The invitation Maya sends to her neighbours is a message.",
+          "exampleChristmas": "The angel’s tidings to the shepherds are a message."
+        },
+        {
+          "type": "teach",
+          "term": "gist:hasGiver",
+          "kind": "property",
+          "line": "Relates something to the participant that provides it.",
+          "example": "The parcel notice has the courier as giver.",
+          "exampleHalloween": "The party invitation has Maya as giver.",
+          "exampleChristmas": "The glad tidings have the angel as giver."
+        },
+        {
+          "type": "teach",
+          "term": "gist:hasRecipient",
+          "kind": "property",
+          "line": "Relates something to the participant that receives or is intended to receive it.",
+          "example": "The parcel notice has Priya as recipient.",
+          "exampleHalloween": "The invitation has the neighbours as recipients.",
+          "exampleChristmas": "The tidings have the shepherds as recipients."
+        },
+        {
+          "type": "teach",
+          "term": "gist:isAbout",
+          "kind": "property",
+          "line": "Subject matter of a document.",
+          "example": "The safety leaflet is about fire exits.",
+          "exampleHalloween": "The costume guide is about Hallowe’en safety.",
+          "exampleChristmas": "The angel’s message is about a newborn king."
+        },
+        {
+          "type": "choice",
+          "prompt": "What is a gist:Message?",
+          "options": [
+            "Any string stored in a database",
+            "A specific instance of content sent from a sender to at least one recipient",
+            "A unit of measure for email size"
+          ],
+          "answer": 1,
+          "why": "A message is a specific instance of content sent from a sender to at least one other recipient."
+        },
+        {
+          "type": "truefalse",
+          "prompt": "gist:hasGiver can name who provides a message.",
+          "answer": true,
+          "why": "hasGiver relates something to the participant that provides it."
+        },
+        {
+          "type": "match",
+          "prompt": "Match each name to its meaning",
+          "pairs": [
+            {
+              "left": "gist:Message",
+              "right": "content sent from a sender to a recipient"
+            },
+            {
+              "left": "gist:hasGiver",
+              "right": "who provides it"
+            },
+            {
+              "left": "gist:hasRecipient",
+              "right": "who receives it"
+            },
+            {
+              "left": "gist:isAbout",
+              "right": "subject matter of content"
+            }
+          ]
+        },
+        {
+          "type": "typein",
+          "prompt": "Type the class for content sent to a recipient.",
+          "accept": [
+            "Message",
+            "gist:Message"
+          ],
+          "why": "gist:Message is a specific instance of content sent from a sender to at least one other recipient."
+        }
+      ]
+    },
+    {
+      "id": "day-17",
+      "title": "Allowed and required",
+      "blurb": "Permission describes what you may do; a requirement describes what you must.",
+      "adventBeat": "Peace on earth, and what is asked of us: permission and requirement.",
+      "exercises": [
+        {
+          "type": "teach",
+          "term": "gist:Permission",
+          "kind": "class",
+          "line": "A description of things one is permitted to do.",
+          "example": "A visitor badge that lets you enter the lobby is a permission.",
+          "exampleHalloween": "A ticket that lets you enter the haunted trail is a permission.",
+          "exampleChristmas": "Peace proclaimed is permission to approach without fear."
+        },
+        {
+          "type": "teach",
+          "term": "gist:allows",
+          "kind": "property",
+          "line": "Relates a permission to a particular activity or type of activity it allows.",
+          "example": "The badge allows entry to the lobby.",
+          "exampleHalloween": "The ticket allows entry to the trail.",
+          "exampleChristmas": "The welcome allows the shepherds to come and see."
+        },
+        {
+          "type": "teach",
+          "term": "gist:Requirement",
+          "kind": "class",
+          "line": "The obligation of a person or organization to behave in a certain way.",
+          "example": "A rule that staff must wear high-vis on site is a requirement.",
+          "exampleHalloween": "A rule that guests must keep candles behind glass is a requirement.",
+          "exampleChristmas": "Joseph’s duty to enrol in the census is a requirement."
+        },
+        {
+          "type": "teach",
+          "term": "gist:requires",
+          "kind": "property",
+          "line": "The subject needs the object or makes it necessary, mandatory, or compulsory.",
+          "example": "The site policy requires high-vis clothing.",
+          "exampleHalloween": "The trail rules require closed shoes.",
+          "exampleChristmas": "The decree requires enrolment in one’s own city."
+        },
+        {
+          "type": "choice",
+          "prompt": "How do you link a permission to the activity it permits?",
+          "options": [
+            "gist:allows",
+            "gist:name",
+            "gist:isPartOf"
+          ],
+          "answer": 0,
+          "why": "allows relates a permission to a particular activity or type of activity it allows."
+        },
+        {
+          "type": "truefalse",
+          "prompt": "A gist:Requirement is only a polite suggestion.",
+          "answer": false,
+          "why": "A requirement is the obligation of a person or organisation to behave in a certain way."
+        },
+        {
+          "type": "match",
+          "prompt": "Match each name to its meaning",
+          "pairs": [
+            {
+              "left": "gist:Permission",
+              "right": "a description of things one is permitted to do"
+            },
+            {
+              "left": "gist:allows",
+              "right": "links a permission to an allowed activity"
+            },
+            {
+              "left": "gist:Requirement",
+              "right": "an obligation to behave a certain way"
+            },
+            {
+              "left": "gist:requires",
+              "right": "makes something necessary or mandatory"
+            }
+          ]
+        },
+        {
+          "type": "typein",
+          "prompt": "Type the class for what one is permitted to do.",
+          "accept": [
+            "Permission",
+            "gist:Permission"
+          ],
+          "why": "gist:Permission is a description of things one is permitted to do."
+        }
+      ]
+    },
+    {
+      "id": "day-18",
+      "title": "Accounts and exchanges",
+      "blurb": "Accounts hold balances; transactions record exchanges.",
+      "adventBeat": "Gold, frankincense, and myrrh — gifts exchanged in honour.",
+      "exercises": [
+        {
+          "type": "teach",
+          "term": "gist:Account",
+          "kind": "class",
+          "line": "An agreement having a balance.",
+          "example": "Priya’s savings account at the building society is an account.",
+          "exampleHalloween": "The neighbourhood fireworks fund is an account.",
+          "exampleChristmas": "The magi’s treasury that funded the gifts is an account."
+        },
+        {
+          "type": "teach",
+          "term": "gist:Transaction",
+          "kind": "class",
+          "line": "An exchange or transfer of goods, services, or funds.",
+          "example": "Paying the baker for bread is a transaction.",
+          "exampleHalloween": "Buying pumpkins at the farm stall is a transaction.",
+          "exampleChristmas": "Presenting gold as a gift is a transaction — an exchange of goods."
+        },
+        {
+          "type": "teach",
+          "term": "gist:hasMagnitude",
+          "kind": "property",
+          "line": "Relates a thing to a magnitude.",
+          "example": "The invoice has a magnitude for the amount due.",
+          "exampleHalloween": "The stall price board has a magnitude for each pumpkin.",
+          "exampleChristmas": "Each gift has a magnitude — weight or worth — attached."
+        },
+        {
+          "type": "teach",
+          "term": "gist:numericValue",
+          "kind": "property",
+          "line": "The actual value of a magnitude.",
+          "example": "The magnitude for the bill has numeric value 42.50.",
+          "exampleHalloween": "The magnitude for the pumpkin has numeric value 3.",
+          "exampleChristmas": "The magnitude for the frankincense weight has a numeric value."
+        },
+        {
+          "type": "choice",
+          "prompt": "What is a gist:Transaction?",
+          "options": [
+            "A unit of measure",
+            "An exchange or transfer of goods, services, or funds",
+            "A kind of building"
+          ],
+          "answer": 1,
+          "why": "A transaction is an exchange or transfer of goods, services, or funds."
+        },
+        {
+          "type": "truefalse",
+          "prompt": "An account in gist is an agreement that has a balance.",
+          "answer": true,
+          "why": "gist:Account is defined as an agreement having a balance."
+        },
+        {
+          "type": "match",
+          "prompt": "Match each name to its meaning",
+          "pairs": [
+            {
+              "left": "gist:Account",
+              "right": "an agreement having a balance"
+            },
+            {
+              "left": "gist:Transaction",
+              "right": "an exchange or transfer"
+            },
+            {
+              "left": "gist:hasMagnitude",
+              "right": "links a thing to a magnitude"
+            },
+            {
+              "left": "gist:numericValue",
+              "right": "the actual value of a magnitude"
+            }
+          ]
+        },
+        {
+          "type": "typein",
+          "prompt": "Type the class for an exchange of goods or funds.",
+          "accept": [
+            "Transaction",
+            "gist:Transaction"
+          ],
+          "why": "gist:Transaction is an exchange or transfer of goods, services, or funds."
+        }
+      ]
+    },
+    {
+      "id": "day-19",
+      "title": "Tools and purpose",
+      "blurb": "Equipment is made to help a task; function names what it is for.",
+      "adventBeat": "Tools of the night watch: each thing made for a purpose.",
+      "exercises": [
+        {
+          "type": "teach",
+          "term": "gist:Equipment",
+          "kind": "class",
+          "line": "Human-made, tangible property other than land or buildings used to perform a task or activity.",
+          "example": "A warehouse scanner is equipment used to perform a task.",
+          "exampleHalloween": "A lantern for the night trail is equipment used to perform a task.",
+          "exampleChristmas": "A shepherd’s crook is equipment used to perform a task."
+        },
+        {
+          "type": "teach",
+          "term": "gist:Function",
+          "kind": "class",
+          "line": "The activity that a human-made item is intended to perform.",
+          "example": "Lighting a path is a function a lamp is intended to perform.",
+          "exampleHalloween": "Scaring kindly guests is a function the fog machine is intended to perform.",
+          "exampleChristmas": "Guiding the flock is a function the crook is intended to perform."
+        },
+        {
+          "type": "teach",
+          "term": "gist:isBasedOn",
+          "kind": "property",
+          "line": "The object is a foundation for, a starting point for, gave rise to, or justifies the subject.",
+          "example": "The nightly checklist is based on the warehouse procedure.",
+          "exampleHalloween": "The costume route is based on last year’s map.",
+          "exampleChristmas": "The night watch is based on the custom of the fields."
+        },
+        {
+          "type": "teach",
+          "term": "gist:contributesTo",
+          "kind": "property",
+          "line": "The subject helps achieve or fulfill the goals or functions of the object.",
+          "example": "The scanner contributes to the packing goal.",
+          "exampleHalloween": "The lantern contributes to safe walking.",
+          "exampleChristmas": "The crook contributes to gathering the sheep."
+        },
+        {
+          "type": "choice",
+          "prompt": "What is gist:Equipment?",
+          "options": [
+            "Land or buildings only",
+            "Human-made tangible property (other than land or buildings) used to perform a task",
+            "A kind of message"
+          ],
+          "answer": 1,
+          "why": "Equipment is human-made, tangible property other than land or buildings used to perform a task or activity."
+        },
+        {
+          "type": "truefalse",
+          "prompt": "gist:Function names the activity a human-made item is intended to perform.",
+          "answer": true,
+          "why": "That is the skos definition of Function."
+        },
+        {
+          "type": "match",
+          "prompt": "Match each name to its meaning",
+          "pairs": [
+            {
+              "left": "gist:Equipment",
+              "right": "tangible tools used for a task"
+            },
+            {
+              "left": "gist:Function",
+              "right": "the activity an item is intended to perform"
+            },
+            {
+              "left": "gist:isBasedOn",
+              "right": "built on a foundation or starting point"
+            },
+            {
+              "left": "gist:contributesTo",
+              "right": "helps achieve a goal or function"
+            }
+          ]
+        },
+        {
+          "type": "typein",
+          "prompt": "Type the class for tools used to perform a task.",
+          "accept": [
+            "Equipment",
+            "gist:Equipment"
+          ],
+          "why": "gist:Equipment is human-made tangible property used to perform a task or activity."
+        }
+      ]
+    },
+    {
+      "id": "day-20",
+      "title": "Wholes and parts",
+      "blurb": "A system is a composite of interdependent components.",
+      "adventBeat": "One story of many parts — a living system of hope.",
+      "exercises": [
+        {
+          "type": "teach",
+          "term": "gist:System",
+          "kind": "class",
+          "line": "A composite made up of interacting or interdependent components that together operate as a whole.",
+          "example": "The warehouse conveyor line is a system of interdependent parts.",
+          "exampleHalloween": "The Hallowe’en trail lighting rig is a system of interdependent parts.",
+          "exampleChristmas": "The household that welcomes the child is a living system of care."
+        },
+        {
+          "type": "teach",
+          "term": "gist:Component",
+          "kind": "class",
+          "line": "Something that, while having an independent existence, is inherently part of or designed to be part of a larger entity, such as a system or network.",
+          "example": "A motor on the conveyor is a component designed to be part of the line.",
+          "exampleHalloween": "A bulb in the trail lights is a component of the lighting rig.",
+          "exampleChristmas": "Each kindness in the story is a component of the whole."
+        },
+        {
+          "type": "teach",
+          "term": "gist:isDirectPartOf",
+          "kind": "property",
+          "line": "The relationship between a part and a whole where the part has independent existence and there are no other parts in between.",
+          "example": "The motor is a direct part of the conveyor assembly.",
+          "exampleHalloween": "The bulb is a direct part of the lantern.",
+          "exampleChristmas": "The manger is a direct part of the stable scene."
+        },
+        {
+          "type": "teach",
+          "term": "gist:isConnectedTo",
+          "kind": "property",
+          "line": "A non-owning, non-causal, non-subordinate (i.e., peer-to-peer) relationship.",
+          "example": "Two peer warehouses are connected without one owning the other.",
+          "exampleHalloween": "Two neighbouring houses on the trail are connected as peers.",
+          "exampleChristmas": "Bethlehem and the hillside fields are connected in the night’s story."
+        },
+        {
+          "type": "choice",
+          "prompt": "What is a gist:System?",
+          "options": [
+            "A single undivided substance",
+            "A composite of interacting components that operate as a whole",
+            "Only a computer program"
+          ],
+          "answer": 1,
+          "why": "A system is a composite made up of interacting or interdependent components that together operate as a whole."
+        },
+        {
+          "type": "truefalse",
+          "prompt": "A component can have independent existence yet be designed as part of a larger entity.",
+          "answer": true,
+          "why": "That is how gist defines Component."
+        },
+        {
+          "type": "match",
+          "prompt": "Match each name to its meaning",
+          "pairs": [
+            {
+              "left": "gist:System",
+              "right": "interacting parts operating as a whole"
+            },
+            {
+              "left": "gist:Component",
+              "right": "a part designed for a larger entity"
+            },
+            {
+              "left": "gist:isDirectPartOf",
+              "right": "part-to-whole with nothing in between"
+            },
+            {
+              "left": "gist:isConnectedTo",
+              "right": "a peer-to-peer link"
+            }
+          ]
+        },
+        {
+          "type": "typein",
+          "prompt": "Type the class for interacting parts as a whole.",
+          "accept": [
+            "System",
+            "gist:System"
+          ],
+          "why": "gist:System is a composite of interacting or interdependent components."
+        }
+      ]
+    },
+    {
+      "id": "day-21",
+      "title": "Language and text",
+      "blurb": "Text is written characters; language is the organised set of symbols.",
+      "adventBeat": "The good news spoken aloud, in the language of the heart.",
+      "exercises": [
+        {
+          "type": "teach",
+          "term": "gist:Language",
+          "kind": "class",
+          "line": "A recognized, organized set of symbols and grammar.",
+          "example": "English is a language — a recognised set of symbols and grammar.",
+          "exampleHalloween": "Welsh is a language — a recognised set of symbols and grammar.",
+          "exampleChristmas": "The tongue of the shepherds is a language — symbols and grammar shared aloud."
+        },
+        {
+          "type": "teach",
+          "term": "gist:Text",
+          "kind": "class",
+          "line": "Content expressed as a written sequence of characters.",
+          "example": "The printed safety notice is text.",
+          "exampleHalloween": "The carved pumpkin poem is text.",
+          "exampleChristmas": "The angel’s proclamation written down is text."
+        },
+        {
+          "type": "teach",
+          "term": "gist:isExpressedIn",
+          "kind": "property",
+          "line": "Relates something to the language it is expressed in.",
+          "example": "The notice is expressed in English.",
+          "exampleHalloween": "The poem is expressed in English.",
+          "exampleChristmas": "The glad tidings are expressed in the shepherds’ language."
+        },
+        {
+          "type": "teach",
+          "term": "gist:containedText",
+          "kind": "property",
+          "line": "Relates an entity containing textual information to the string constituting that textual information.",
+          "example": "The PDF has contained text for the body of the letter.",
+          "exampleHalloween": "The flyer has contained text for the party time.",
+          "exampleChristmas": "The scroll has contained text for the prophecy."
+        },
+        {
+          "type": "choice",
+          "prompt": "What is gist:Text?",
+          "options": [
+            "Any audio recording",
+            "Content expressed as a written sequence of characters",
+            "A unit of measure"
+          ],
+          "answer": 1,
+          "why": "Text is content expressed as a written sequence of characters."
+        },
+        {
+          "type": "truefalse",
+          "prompt": "gist:isExpressedIn relates something to the language it is expressed in.",
+          "answer": true,
+          "why": "That is the definition of isExpressedIn."
+        },
+        {
+          "type": "match",
+          "prompt": "Match each name to its meaning",
+          "pairs": [
+            {
+              "left": "gist:Language",
+              "right": "organised symbols and grammar"
+            },
+            {
+              "left": "gist:Text",
+              "right": "written sequence of characters"
+            },
+            {
+              "left": "gist:isExpressedIn",
+              "right": "links content to its language"
+            },
+            {
+              "left": "gist:containedText",
+              "right": "the string of textual information"
+            }
+          ]
+        },
+        {
+          "type": "typein",
+          "prompt": "Type the class for a written sequence of characters.",
+          "accept": [
+            "Text",
+            "gist:Text"
+          ],
+          "why": "gist:Text is content expressed as a written sequence of characters."
+        }
+      ]
+    },
+    {
+      "id": "day-22",
+      "title": "What may and will happen",
+      "blurb": "Contingent events depend on a trigger; scheduled events have a planned start.",
+      "adventBeat": "What was promised comes to pass — contingency becomes certainty.",
+      "exercises": [
+        {
+          "type": "teach",
+          "term": "gist:ContingentEvent",
+          "kind": "class",
+          "line": "An event with a probability of happening in the future, and usually dependent upon some other event or condition.",
+          "example": "A refund that happens only if the parcel is lost is a contingent event.",
+          "exampleHalloween": "A rain postponement that happens only if storms arrive is a contingent event.",
+          "exampleChristmas": "Fulfilment that awaited the appointed night is a contingent hope made sure."
+        },
+        {
+          "type": "teach",
+          "term": "gist:isTriggeredBy",
+          "kind": "property",
+          "line": "Relates a contingency, such as an event or obligation, to the event that gives rise to it.",
+          "example": "The refund contingency is triggered by the loss report.",
+          "exampleHalloween": "The postponement is triggered by the storm warning.",
+          "exampleChristmas": "The journey’s next step is triggered by the census decree."
+        },
+        {
+          "type": "teach",
+          "term": "gist:ScheduledEvent",
+          "kind": "class",
+          "line": "An event with a planned start datetime.",
+          "example": "The 10:00 board meeting is a scheduled event with a planned start.",
+          "exampleHalloween": "The 19:00 trail opening is a scheduled event with a planned start.",
+          "exampleChristmas": "The night of the child’s birth is held in the fullness of scheduled time."
+        },
+        {
+          "type": "teach",
+          "term": "gist:plannedStartDateTime",
+          "kind": "property",
+          "line": "The date and time that something is or was planned to start, with no implied precision.",
+          "example": "The meeting has a planned start date-time of Monday at 10:00.",
+          "exampleHalloween": "The trail has a planned start date-time of Friday at 19:00.",
+          "exampleChristmas": "The watch has a planned start in the watches of the night."
+        },
+        {
+          "type": "choice",
+          "prompt": "What marks a gist:ScheduledEvent?",
+          "options": [
+            "It has no time at all",
+            "It has a planned start datetime",
+            "It must already have ended"
+          ],
+          "answer": 1,
+          "why": "A scheduled event is an event with a planned start datetime."
+        },
+        {
+          "type": "truefalse",
+          "prompt": "gist:isTriggeredBy can relate a contingency to the event that gives rise to it.",
+          "answer": true,
+          "why": "isTriggeredBy relates a contingency, such as an event or obligation, to the event that gives rise to it."
+        },
+        {
+          "type": "match",
+          "prompt": "Match each name to its meaning",
+          "pairs": [
+            {
+              "left": "gist:ContingentEvent",
+              "right": "future event usually depending on a condition"
+            },
+            {
+              "left": "gist:isTriggeredBy",
+              "right": "links a contingency to its triggering event"
+            },
+            {
+              "left": "gist:ScheduledEvent",
+              "right": "an event with a planned start"
+            },
+            {
+              "left": "gist:plannedStartDateTime",
+              "right": "when something is planned to start"
+            }
+          ]
+        },
+        {
+          "type": "typein",
+          "prompt": "Type the class for an event with a planned start.",
+          "accept": [
+            "ScheduledEvent",
+            "gist:ScheduledEvent"
+          ],
+          "why": "gist:ScheduledEvent is an event with a planned start datetime."
+        }
+      ]
+    },
+    {
+      "id": "day-23",
+      "title": "Order in time",
+      "blurb": "Things can precede one another; some relations last for a span of time.",
+      "adventBeat": "Prophecy fulfilled in order: night gives way to dawn.",
+      "exercises": [
+        {
+          "type": "teach",
+          "term": "gist:precedes",
+          "kind": "property",
+          "line": "A generic ordering relation indicating that the subject comes before the object.",
+          "example": "Dawn precedes noon in the ordinary day.",
+          "exampleHalloween": "Dusk precedes the night trail opening.",
+          "exampleChristmas": "Prophecy precedes fulfilment."
+        },
+        {
+          "type": "teach",
+          "term": "gist:precedesDirectly",
+          "kind": "property",
+          "line": "A generic ordering relation indicating that the subject comes immediately before the object.",
+          "example": "Monday precedes Tuesday directly in the week.",
+          "exampleHalloween": "The safety briefing precedes the trail opening directly.",
+          "exampleChristmas": "The angel’s word precedes the shepherds’ journey directly."
+        },
+        {
+          "type": "teach",
+          "term": "gist:TemporalRelation",
+          "kind": "class",
+          "line": "A relationship existing for a period of time.",
+          "example": "An employment lasting from March to September is a temporal relation.",
+          "exampleHalloween": "A seasonal role lasting for October is a temporal relation.",
+          "exampleChristmas": "A watch lasting through the night is a temporal relation."
+        },
+        {
+          "type": "teach",
+          "term": "gist:startDateTime",
+          "kind": "property",
+          "line": "The date and time that something starts.",
+          "example": "The shift has a start date-time of 06:00.",
+          "exampleHalloween": "The trail has a start date-time of 19:00.",
+          "exampleChristmas": "The watch has a start date-time in the first watch of night."
+        },
+        {
+          "type": "choice",
+          "prompt": "What does gist:precedes mean?",
+          "options": [
+            "The subject owns the object",
+            "A generic ordering: the subject comes before the object",
+            "The subject is taller than the object"
+          ],
+          "answer": 1,
+          "why": "precedes is a generic ordering relation indicating that the subject comes before the object."
+        },
+        {
+          "type": "truefalse",
+          "prompt": "A temporal relation exists for a period of time.",
+          "answer": true,
+          "why": "gist:TemporalRelation is a relationship existing for a period of time."
+        },
+        {
+          "type": "match",
+          "prompt": "Match each name to its meaning",
+          "pairs": [
+            {
+              "left": "gist:precedes",
+              "right": "comes before"
+            },
+            {
+              "left": "gist:precedesDirectly",
+              "right": "comes immediately before"
+            },
+            {
+              "left": "gist:TemporalRelation",
+              "right": "a relationship for a period of time"
+            },
+            {
+              "left": "gist:startDateTime",
+              "right": "when something starts"
+            }
+          ]
+        },
+        {
+          "type": "typein",
+          "prompt": "Type the property that means comes before.",
+          "accept": [
+            "precedes",
+            "gist:precedes"
+          ],
+          "why": "gist:precedes indicates that the subject comes before the object."
+        }
+      ]
+    },
+    {
+      "id": "day-24",
+      "title": "Joy and peace",
+      "blurb": "Behaviours, media, and participants gather in celebration.",
+      "adventBeat": "Joy to the world, and peace on earth — the Advent door stands open.",
+      "exercises": [
+        {
+          "type": "teach",
+          "term": "gist:Behavior",
+          "kind": "class",
+          "line": "A category indicating the nature of an activity.",
+          "example": "Queueing patiently is a behaviour — a category of activity.",
+          "exampleHalloween": "Trick-or-treating kindly is a behaviour — a category of activity.",
+          "exampleChristmas": "Kneeling in wonder is a behaviour — a category of activity."
+        },
+        {
+          "type": "teach",
+          "term": "gist:MediaType",
+          "kind": "class",
+          "line": "A digitized type that computer applications can recognize.",
+          "example": "image/jpeg is a media type computers can recognise.",
+          "exampleHalloween": "audio/mpeg is a media type computers can recognise.",
+          "exampleChristmas": "text/plain holding a carol lyric is a media type computers can recognise."
+        },
+        {
+          "type": "teach",
+          "term": "gist:hasParticipant",
+          "kind": "property",
+          "line": "Relates something (e.g. an agreement) to things that play a role, or take part or are otherwise involved in some way.",
+          "example": "The workshop has Idris and Priya as participants.",
+          "exampleHalloween": "The costume party has Maya as a participant.",
+          "exampleChristmas": "The holy night has shepherds, magi, and the holy family as participants."
+        },
+        {
+          "type": "teach",
+          "term": "gist:Permission",
+          "kind": "class",
+          "line": "A description of things one is permitted to do.",
+          "example": "Leave to enter the quiet garden is a permission.",
+          "exampleHalloween": "Leave to walk the lantern path is a permission.",
+          "exampleChristmas": "Peace that lets the fearful draw near is a permission."
+        },
+        {
+          "type": "choice",
+          "prompt": "How do you record that people take part in an agreement or event?",
+          "options": [
+            "Only with gist:name",
+            "With gist:hasParticipant",
+            "By inventing gist:Party as a class"
+          ],
+          "answer": 1,
+          "why": "hasParticipant relates something (for example an agreement) to things that play a role or take part."
+        },
+        {
+          "type": "truefalse",
+          "prompt": "gist:Behavior is a category indicating the nature of an activity.",
+          "answer": true,
+          "why": "That is the skos definition of Behavior."
+        },
+        {
+          "type": "match",
+          "prompt": "Match each name to its meaning",
+          "pairs": [
+            {
+              "left": "gist:Behavior",
+              "right": "a category for the nature of an activity"
+            },
+            {
+              "left": "gist:MediaType",
+              "right": "a digitised type computers recognise"
+            },
+            {
+              "left": "gist:hasParticipant",
+              "right": "who takes part"
+            },
+            {
+              "left": "gist:Permission",
+              "right": "what one is permitted to do"
+            }
+          ]
+        },
+        {
+          "type": "typein",
+          "prompt": "Type the property for who takes part.",
+          "accept": [
+            "hasParticipant",
+            "gist:hasParticipant"
+          ],
+          "why": "gist:hasParticipant relates something to those who take part or are involved."
         }
       ]
     }

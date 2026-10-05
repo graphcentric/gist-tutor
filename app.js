@@ -29,12 +29,15 @@
  * kind is "class" or "property". choice.answer is the index of the right option.
  * truefalse.answer is a boolean. typein.accept is matched case-insensitively, after trimming.
  * Progress is stored in localStorage under gist-tutor-progress-v1.
+ * Advent chocolates use gist-tutor-advent-v1 (migrates from completed lessons).
+ * Optional lesson fields: adventBeat (Nativity/waiting one-liner), seasonal *Christmas examples.
  */
 
 (function () {
   'use strict';
 
   var STORAGE_KEY = 'gist-tutor-progress-v1';
+  var ADVENT_KEY = 'gist-tutor-advent-v1';
   var THEME_KEY = 'gist-tutor-theme-v1';
   var THEME_COLOR_CLASSIC = '#14202b';
   var THEME_COLOR_HALLOWEEN = '#12081a';
@@ -239,6 +242,73 @@
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
   }
 
+  function loadAdvent() {
+    var empty = { chocolates: {}, awarded: [] };
+    try {
+      var raw = localStorage.getItem(ADVENT_KEY);
+      if (raw) {
+        var data = JSON.parse(raw);
+        if (data && typeof data === 'object' && !Array.isArray(data)) {
+          var chocolates = data.chocolates && typeof data.chocolates === 'object' && !Array.isArray(data.chocolates)
+            ? data.chocolates
+            : {};
+          var awarded = Array.isArray(data.awarded) ? data.awarded.filter(function (id) { return typeof id === 'string'; }) : [];
+          Object.keys(chocolates).forEach(function (id) {
+            if (awarded.indexOf(id) === -1) awarded.push(id);
+          });
+          return { chocolates: chocolates, awarded: awarded };
+        }
+      }
+    } catch (err) {}
+    // Migrate: each completed lesson becomes one chocolate.
+    var progress = loadProgress();
+    var chocolates = {};
+    var awarded = [];
+    Object.keys(progress.completed || {}).forEach(function (id) {
+      chocolates[id] = progress.completed[id];
+      awarded.push(id);
+    });
+    var migrated = { chocolates: chocolates, awarded: awarded };
+    try { localStorage.setItem(ADVENT_KEY, JSON.stringify(migrated)); } catch (err) {}
+    return migrated;
+  }
+
+  function saveAdvent(data) {
+    try { localStorage.setItem(ADVENT_KEY, JSON.stringify(data)); } catch (err) {}
+  }
+
+  function chocolateCount() {
+    return loadAdvent().awarded.length;
+  }
+
+  function awardChocolate(id) {
+    var advent = loadAdvent();
+    var fresh = !advent.chocolates[id];
+    if (fresh) {
+      advent.chocolates[id] = localISODate();
+      if (advent.awarded.indexOf(id) === -1) advent.awarded.push(id);
+      saveAdvent(advent);
+    }
+    return { fresh: fresh, total: advent.awarded.length };
+  }
+
+  function doorNumber(index) {
+    return index + 1;
+  }
+
+  function snowMarkup() {
+    if (resolveTheme() !== 'christmas') return '';
+    return '<div class="snow" aria-hidden="true">' +
+      '<div class="snow-layer snow-layer-a"></div>' +
+      '<div class="snow-layer snow-layer-b"></div>' +
+      '<div class="snow-layer snow-layer-c"></div>' +
+      '</div>';
+  }
+
+  function chocolateIcon() {
+    return '<span class="choco-icon" aria-hidden="true"></span>';
+  }
+
   function shuffle(list) {
     var arr = list.slice();
     var i;
@@ -404,12 +474,21 @@
       ? 'Done'
       : (nums.total ? '<span class="visually-hidden">Exercise </span>' + nums.current + ' of ' + nums.total : '');
     var title = lesson && lesson.title ? String(lesson.title) : 'Lesson';
-    return '<header class="lesson-top">' +
-      '<button type="button" class="back" data-action="home">' + iconBack() + '<span>Path</span></button>' +
+    var day = 'Day ' + doorNumber(ui.lessonIndex);
+    var beat = lesson && typeof lesson.adventBeat === 'string' && lesson.adventBeat.trim()
+      ? '<p class="advent-beat">' + esc(lesson.adventBeat.trim()) + '</p>'
+      : '';
+    var choco = '<div class="choco-pill" title="Chocolates collected">' + chocolateIcon() +
+      '<span><b>' + chocolateCount() + '</b> / 24</span></div>';
+    return snowMarkup() +
+      '<header class="lesson-top">' +
+      '<button type="button" class="back" data-action="home">' + iconBack() + '<span>Calendar</span></button>' +
       '<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="' + nums.total + '" aria-valuenow="' + nums.done + '" aria-label="Lesson progress">' +
       '<div class="progress-fill" style="width:' + nums.pct + '%"></div></div>' +
       '<span class="count">' + count + '</span></header>' +
-      '<div class="stage"><p class="lesson-kicker">' + esc(title) + '</p>' + body + '</div>';
+      '<div class="stage">' + choco +
+      '<p class="lesson-kicker">' + esc(day) + ' · ' + esc(title) + '</p>' +
+      beat + body + '</div>';
   }
 
   function renderHome() {
@@ -423,36 +502,39 @@
     }
     var dates = progress.dates.slice();
     var streak = streakCount(dates);
-    var items = lessons.map(function (lesson, index) {
+    var chocolates = chocolateCount();
+    var theme = resolveTheme();
+    var pref = loadThemePref();
+
+    var doors = lessons.map(function (lesson, index) {
       var unlocked = isUnlocked(progress, lessons, index);
       var done = isLessonDone(progress, lesson, index);
-      var state = !unlocked ? 'locked' : (done ? 'done' : 'current');
-      var kicker = !unlocked ? 'Locked' : (done ? 'Done' : 'Up next');
-      var title = lesson && lesson.title ? String(lesson.title) : ('Lesson ' + (index + 1));
-      var blurb = lesson && lesson.blurb ? String(lesson.blurb) : '';
-      var marker = state === 'done' ? iconTick() : (state === 'locked' ? iconLock() : String(index + 1));
-      var inner = '<span class="marker-wrap"><span class="marker ' + state + '">' + marker + '</span></span>' +
-        '<span class="node-copy"><span class="node-kicker">' + kicker + '</span>' +
-        '<span class="node-title">' + esc(title) + '</span>' +
-        (blurb ? '<span class="node-blurb">' + esc(blurb) + '</span>' : '') +
-        '</span>';
+      var n = doorNumber(index);
+      var state = !unlocked ? 'locked' : (done ? 'done' : 'open');
+      var title = lesson && lesson.title ? String(lesson.title) : ('Day ' + n);
+      var label = done ? 'Opened' : (unlocked ? 'Open day ' + n : 'Locked — finish day ' + (n - 1) + ' first');
+      var hint = '<span class="door-hint">Opens Dec ' + n + '</span>';
+      var face = done
+        ? '<span class="door-choco" aria-hidden="true"></span><span class="door-num">' + n + '</span>'
+        : '<span class="door-num">' + n + '</span>';
+      var inner = face + '<span class="door-title">' + esc(title) + '</span>' + hint;
       if (!unlocked) {
-        return '<li class="path-item"><div class="lesson-node locked">' + inner + '</div></li>';
+        return '<li class="door-cell"><div class="advent-door locked" aria-label="Day ' + n + ' locked. ' + esc(title) + '. Opens Dec ' + n + '.">' +
+          '<span class="door-lock" aria-hidden="true">' + iconLock() + '</span>' + inner + '</div></li>';
       }
-      var current = state === 'current' ? ' aria-current="step"' : '';
-      return '<li class="path-item"><button type="button" class="lesson-node" data-action="open" data-index="' + index + '"' + current + '>' + inner + '</button></li>';
+      var current = state === 'open' && !done ? ' aria-current="step"' : '';
+      return '<li class="door-cell"><button type="button" class="advent-door ' + state + '" data-action="open" data-index="' + index + '"' + current +
+        ' aria-label="' + esc(label) + ': ' + esc(title) + '">' + inner + '</button></li>';
     }).join('');
 
     var body;
     if (!lessons.length) {
-      body = '<section class="card empty"><h2>Lessons are on the way</h2><p>When a course is added, the lessons will line up here, one after another.</p></section>';
+      body = '<section class="card empty"><h2>Doors are on the way</h2><p>When the Advent course is added, twenty-four doors will open here.</p></section>';
     } else {
-      body = '<nav aria-label="Lesson path"><ol class="path">' + items + '</ol></nav>' +
-        '<p class="footnote">Finished lessons stay open if you want to practise them again.</p>';
+      body = '<nav aria-label="Gistmas Advent calendar"><ol class="advent-grid">' + doors + '</ol></nav>' +
+        '<p class="footnote">Open doors in order — each finished day awards a virtual chocolate. Finished days stay open to practise again.</p>';
     }
 
-    var theme = resolveTheme();
-    var pref = loadThemePref();
     var eyebrow = 'Semantic Arts';
     var heading = course.title || 'Gist';
     var seasonLine = '';
@@ -461,18 +543,21 @@
     if (theme === 'halloween') {
       eyebrow = 'Halloween edition';
       heading = (course.title || 'Gist') + ' · Halloween';
-      seasonLine = '<p class="season-line">Ontology by moonlight — still the real gist under the costume.</p>';
+      seasonLine = '<p class="season-line">Twenty-four doors by moonlight — still the real gist under the costume.</p>';
       ornament = '<span class="home-moon" aria-hidden="true"></span>';
     } else if (theme === 'christmas') {
-      eyebrow = 'Gistmas edition';
-      heading = (course.title || 'Gist') + ' · Gistmas';
-      seasonLine = '<p class="season-line">Holly, ivy, and the real gist under the Gistmas wrapping paper.</p>';
+      eyebrow = 'Gistmas Advent';
+      heading = (course.title || 'Gistmas') + ' Advent';
+      seasonLine = '<p class="season-line">Twenty-four doors of holly, waiting, and the real gist — from prophecy to joy.</p>';
       ornament = '<span class="home-holly" aria-hidden="true"></span>';
       santa = '<figure class="dave-santa">' +
-        '<img src="assets/dave-santa.jpg" width="240" height="240" alt="Dave McComb as Santa Claus (festive illustration)">' +
+        '<img src="assets/dave-santa.jpg" width="240" height="240" alt="Dave McComb as Santa Claus">' +
         '<figcaption>Dave McComb · Semantic Arts · as Santa</figcaption>' +
         '</figure>';
+    } else {
+      seasonLine = '<p class="season-line">A twenty-four day Advent calendar for the Semantic Arts gist ontology.</p>';
     }
+
     function themeBtn(value, label) {
       return '<button type="button" data-action="theme" data-theme="' + value + '" aria-pressed="' +
         (pref === value ? 'true' : 'false') + '">' + esc(label) + '</button>';
@@ -484,19 +569,21 @@
       themeBtn('classic', 'Classic') +
       '</div>';
 
-    return '<header class="home-head">' +
+    return snowMarkup() +
+      '<header class="home-head">' +
       ornament +
       '<p class="eyebrow">' + esc(eyebrow) + '</p>' +
       '<h1>' + esc(heading) + '</h1>' +
-      '<p class="sub">The Semantic Arts ontology</p>' +
+      '<p class="sub">The Semantic Arts ontology · CC BY 4.0</p>' +
       seasonLine +
       santa +
       (course.sourceNote ? '<p class="source">' + richText(course.sourceNote) + '</p>' : '') +
       toggle +
       '</header>' +
       '<section class="stats" aria-label="Progress">' +
+      '<div class="stat choco-stat"><b>' + chocolates + '</b><span>' + (chocolates === 1 ? 'chocolate' : 'chocolates') + '</span></div>' +
+      '<div class="stat"><b>' + doneCount + '</b><span>' + (doneCount === 1 ? 'door open' : 'doors open') + '</span></div>' +
       '<div class="stat"><b>' + streak + '</b><span>day streak</span></div>' +
-      '<div class="stat"><b>' + doneCount + '</b><span>' + (doneCount === 1 ? 'lesson done' : 'lessons done') + '</span></div>' +
       '</section>' + body;
   }
 
@@ -619,7 +706,7 @@
     var exercises = lesson && Array.isArray(lesson.exercises) ? lesson.exercises : [];
     if (!exercises.length) {
       return lessonChrome('<article class="card"><div class="card-body"><h2 id="step-heading" tabindex="-1">This lesson has no cards yet</h2><p class="line">There is nothing to practise here.</p></div>' +
-        '<div class="card-actions"><button type="button" class="btn" data-action="home" data-continue>Back to the path</button></div></article>');
+        '<div class="card-actions"><button type="button" class="btn" data-action="home" data-continue>Back to the calendar</button></div></article>');
     }
     return lessonChrome('<article class="card">' + renderExercise(exercises[ui.step]) + '</article>');
   }
@@ -627,12 +714,20 @@
   function renderDone() {
     var sentence = scoreSentence(ui.firstTry, ui.scored);
     var figure = ui.scored ? '<p class="score-num">' + ui.firstTry + '<span> / ' + ui.scored + '</span></p>' : '';
+    var award = ui.chocolateAward || { fresh: false, total: chocolateCount() };
     var santaBit = resolveTheme() === 'christmas'
-      ? '<img class="dave-santa-mini" src="assets/dave-santa.jpg" width="72" height="72" alt="Dave McComb as Santa Claus (festive illustration)">'
+      ? '<img class="dave-santa-mini wink" src="assets/dave-santa.jpg" width="88" height="88" alt="Dave McComb as Santa Claus">'
       : '';
-    var card = '<article class="card"><div class="card-body">' + santaBit +
-      '<h2 id="step-heading" tabindex="-1">Lesson complete</h2>' +
-      figure + '<p class="score-line">' + esc(sentence) + '</p></div>' + continueButton('Back to the path') + '</article>';
+    var chocoShow = '<div class="choco-celebrate" aria-hidden="true">' +
+      '<div class="foil-choco"><span class="foil-shine"></span></div>' +
+      '</div>';
+    var chocoLine = award.fresh
+      ? '<p class="choco-line">A foil-wrapped chocolate is yours — <b>' + award.total + '</b> of 24 in your stash.</p>'
+      : '<p class="choco-line">Chocolate already in your stash — <b>' + award.total + '</b> of 24.</p>';
+    var card = '<article class="card celebrate-card"><div class="card-body">' + santaBit + chocoShow +
+      '<h2 id="step-heading" tabindex="-1">Door open — chocolate earned</h2>' +
+      chocoLine + figure + '<p class="score-line">' + esc(sentence) + '</p></div>' +
+      continueButton('Back to the calendar') + '</article>';
     return lessonChrome(card);
   }
 
@@ -640,6 +735,7 @@
     var app = document.getElementById('app');
     var lessonMode = ui.status === 'ready' && (ui.view === 'lesson' || ui.view === 'done');
     app.classList.toggle('is-lesson', lessonMode);
+    app.classList.toggle('is-home', ui.status === 'ready' && ui.view === 'home');
     var html;
     if (ui.status === 'loading') html = '<p class="loading">Loading the course…</p>';
     else if (ui.status === 'error') html = '<section class="card"><h2>The course could not be loaded</h2><p class="line">Check data/lessons.json, then refresh.</p></section>';
@@ -652,7 +748,7 @@
     var courseTitle = ui.course.title || 'Gist';
     var chromeTitle = courseTitle;
     if (theme === 'halloween') chromeTitle = courseTitle + ' · Halloween';
-    if (theme === 'christmas') chromeTitle = courseTitle + ' · Gistmas';
+    if (theme === 'christmas') chromeTitle = courseTitle + ' Advent';
     if (ui.view === 'home') document.title = chromeTitle;
     else {
       var lesson = currentLesson();
@@ -766,14 +862,24 @@
 
   function completeLesson() {
     var lesson = currentLesson();
+    var id = lessonId(lesson, ui.lessonIndex);
     try {
-      markComplete(lessonId(lesson, ui.lessonIndex));
+      markComplete(id);
     } catch (err) {
+      console.error(err);
+    }
+    try {
+      ui.chocolateAward = awardChocolate(id);
+    } catch (err) {
+      ui.chocolateAward = { fresh: false, total: chocolateCount() };
       console.error(err);
     }
     ui.view = 'done';
     ui.pendingFocus = 'heading';
-    ui.pendingAnnounce = scoreSentence(ui.firstTry, ui.scored);
+    var award = ui.chocolateAward;
+    ui.pendingAnnounce = (award.fresh
+      ? 'Door open. A chocolate is yours. ' + award.total + ' of 24. '
+      : 'Door open. ') + scoreSentence(ui.firstTry, ui.scored);
     render();
   }
 
