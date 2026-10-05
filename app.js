@@ -493,7 +493,10 @@
     var backdrop = '<div class="santa-backdrop" aria-hidden="true">' +
       '<img src="assets/dave-santa-bg.jpg" width="1920" height="1080" alt="">' +
       '</div>';
-    var credit = '<p class="santa-credit">Dave McComb · Semantic Arts · as Santa</p>';
+    var santa = '<figure class="dave-santa">' +
+      '<img src="assets/dave-santa-bg.jpg" width="640" height="360" alt="Dave McComb as Santa Claus (festive illustration)">' +
+      '<figcaption>Dave McComb · Semantic Arts · as Santa</figcaption>' +
+      '</figure>';
 
     return snowMarkup() +
       '<div class="home-stage">' +
@@ -504,7 +507,7 @@
       '<h1 class="home-greeting">' + esc(heading) + '</h1>' +
       '<p class="sub home-lead">' + esc(lead) + '</p>' +
       '<p class="season-line">A Gistmas Advent calendar through the Semantic Arts ontology · CC BY 4.0</p>' +
-      credit +
+      santa +
       (course.sourceNote ? '<p class="source">' + richText(course.sourceNote) + '</p>' : '') +
       '</header>' +
       '<section class="stats" aria-label="Progress">' +
