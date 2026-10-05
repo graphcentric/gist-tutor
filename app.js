@@ -32,6 +32,9 @@
   'use strict';
 
   var STORAGE_KEY = 'gist-tutor-progress-v1';
+  var THEME_KEY = 'gist-tutor-theme-v1';
+  var THEME_COLOR_CLASSIC = '#14202b';
+  var THEME_COLOR_HALLOWEEN = '#12081a';
 
   var ui = {
     status: 'loading',
@@ -105,6 +108,47 @@
       if (n > 5000) break;
     }
     return n;
+  }
+
+
+  function loadThemePref() {
+    try {
+      var raw = localStorage.getItem(THEME_KEY);
+      if (raw === 'halloween' || raw === 'classic' || raw === 'auto') return raw;
+    } catch (err) {}
+    return 'auto';
+  }
+
+  function saveThemePref(value) {
+    try {
+      localStorage.setItem(THEME_KEY, value);
+    } catch (err) {}
+  }
+
+  function isHalloweenSeason(date) {
+    var iso = localISODate(date);
+    var parts = iso.split('-').map(Number);
+    var month = parts[1];
+    var day = parts[2];
+    if (month === 10) return true;
+    if (month === 11 && day <= 2) return true;
+    return false;
+  }
+
+  function resolveHalloweenOn(pref) {
+    var p = pref || loadThemePref();
+    if (p === 'halloween') return true;
+    if (p === 'classic') return false;
+    return isHalloweenSeason();
+  }
+
+  function applyTheme() {
+    var on = resolveHalloweenOn();
+    var root = document.documentElement;
+    root.classList.toggle('halloween', on);
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', on ? THEME_COLOR_HALLOWEEN : THEME_COLOR_CLASSIC);
+    return on;
   }
 
   function lessonId(lesson, index) {
@@ -365,11 +409,32 @@
         '<p class="footnote">Finished lessons stay open if you want to practise them again.</p>';
     }
 
+    var halloweenOn = resolveHalloweenOn();
+    var pref = loadThemePref();
+    var eyebrow = halloweenOn ? 'Halloween edition' : 'Semantic Arts';
+    var heading = halloweenOn ? ((course.title || 'Gist') + ' · Halloween') : (course.title || 'Gist');
+    var seasonLine = halloweenOn
+      ? '<p class="season-line">Ontology by moonlight — still the real gist under the costume.</p>'
+      : '';
+    var moon = halloweenOn ? '<span class="home-moon" aria-hidden="true"></span>' : '';
+    function themeBtn(value, label) {
+      return '<button type="button" data-action="theme" data-theme="' + value + '" aria-pressed="' +
+        (pref === value ? 'true' : 'false') + '">' + esc(label) + '</button>';
+    }
+    var toggle = '<div class="theme-toggle" role="group" aria-label="Theme">' +
+      themeBtn('auto', 'Auto') +
+      themeBtn('halloween', 'Halloween') +
+      themeBtn('classic', 'Classic') +
+      '</div>';
+
     return '<header class="home-head">' +
-      '<p class="eyebrow">Semantic Arts</p>' +
-      '<h1>' + esc(course.title || 'Gist') + '</h1>' +
+      moon +
+      '<p class="eyebrow">' + esc(eyebrow) + '</p>' +
+      '<h1>' + esc(heading) + '</h1>' +
       '<p class="sub">The Semantic Arts ontology</p>' +
+      seasonLine +
       (course.sourceNote ? '<p class="source">' + richText(course.sourceNote) + '</p>' : '') +
+      toggle +
       '</header>' +
       '<section class="stats" aria-label="Progress">' +
       '<div class="stat"><b>' + streak + '</b><span>day streak</span></div>' +
@@ -519,12 +584,14 @@
     else html = renderHome();
     app.innerHTML = html;
     if (ui.status !== 'ready') return;
+    var halloweenOn = applyTheme();
     var courseTitle = ui.course.title || 'Gist';
-    if (ui.view === 'home') document.title = courseTitle;
+    var chromeTitle = halloweenOn ? (courseTitle + ' · Halloween') : courseTitle;
+    if (ui.view === 'home') document.title = chromeTitle;
     else {
       var lesson = currentLesson();
       var name = lesson && lesson.title ? lesson.title : 'Lesson';
-      document.title = name + ' · ' + courseTitle;
+      document.title = name + ' · ' + chromeTitle;
     }
   }
 
@@ -827,6 +894,15 @@
     if (!btn || btn.disabled) return;
     var action = btn.dataset.action;
     if (action === 'home') { showHome(); return; }
+    if (action === 'theme') {
+      var next = btn.dataset.theme;
+      if (next === 'halloween' || next === 'classic' || next === 'auto') {
+        saveThemePref(next);
+        applyTheme();
+        if (ui.view === 'home') render();
+      }
+      return;
+    }
     if (action === 'open') { openLesson(Number(btn.dataset.index)); return; }
     if (action === 'continue') { onContinue(); return; }
     if (action === 'choice') { onChoice(Number(btn.dataset.index)); return; }
@@ -884,6 +960,7 @@
     app.addEventListener('click', onClick);
     app.addEventListener('submit', onSubmit);
     document.addEventListener('keydown', onKey);
+    applyTheme();
     render();
     loadCourse();
   }

@@ -27,6 +27,11 @@ Progress is stored in this browser under the key `gist-tutor-progress-v1` (lesso
   - `match`: `prompt`, `pairs` of `{left, right}`
   - `typein`: `prompt`, `accept` (strings, matched without case), `why`
 
+
+## Halloween theme
+
+In late October (1 October through 2 November, local calendar), a Halloween skin turns on automatically. On the home screen you can switch among Auto, Halloween, and Classic; the choice is stored in this browser under `gist-tutor-theme-v1`. Progress still uses `gist-tutor-progress-v1` and is not cleared by the theme.
+
 ## Source
 
 Lesson definitions are from Semantic Arts gist 14.1.0, used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Attribute https://www.semanticarts.com/gist/ .

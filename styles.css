@@ -625,3 +625,329 @@ input[type="text"] {
     background: Highlight;
   }
 }
+
+/* —— Halloween edition (html.halloween) —— */
+html.halloween {
+  background: #12081a;
+  --hw-ink: #1a0f14;
+  --hw-paper: #f4e8d4;
+  --hw-paper-deep: #ebe0c8;
+  --hw-orange: #e67e22;
+  --hw-orange-deep: #c96a14;
+  --hw-mint: #f0a868;
+  --hw-sky: #12081a;
+  --hw-sky-mid: #2a1540;
+  --hw-panel: #1e1030;
+  --hw-line: #4a2f5c;
+  --hw-muted: #d4c4b0;
+}
+
+html.halloween body {
+  background:
+    radial-gradient(circle 140px at 88% 6%, rgba(246, 224, 160, 0.22) 0%, rgba(246, 224, 160, 0.08) 38%, transparent 62%),
+    radial-gradient(900px 480px at 50% -100px, #2a1540 0%, #12081a 62%);
+  color: #f4e8d4;
+}
+
+html.halloween::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(244, 232, 212, 0.55) 50%, transparent 52%),
+    radial-gradient(1px 1px at 28% 42%, rgba(244, 232, 212, 0.4) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 64% 14%, rgba(244, 232, 212, 0.5) 50%, transparent 52%),
+    radial-gradient(1px 1px at 78% 36%, rgba(244, 232, 212, 0.35) 50%, transparent 52%),
+    radial-gradient(1px 1px at 42% 8%, rgba(244, 232, 212, 0.45) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 91% 48%, rgba(244, 232, 212, 0.3) 50%, transparent 52%);
+}
+
+html.halloween .app {
+  position: relative;
+  z-index: 1;
+}
+
+html.halloween ::selection {
+  background: #e67e22;
+  color: #1a0f14;
+}
+
+html.halloween :focus-visible {
+  outline-color: #f4e8d4;
+}
+
+html.halloween .card :focus-visible {
+  outline-color: #e67e22;
+}
+
+html.halloween .eyebrow,
+html.halloween .lesson-kicker,
+html.halloween .kind,
+html.halloween .example-label,
+html.halloween .node-kicker {
+  color: #f0a868;
+}
+
+html.halloween .source {
+  color: #d4c4b0;
+}
+
+html.halloween .source a {
+  color: #f4e8d4;
+}
+
+html.halloween .stats .stat {
+  background: #1e1030;
+  border-color: #4a2f5c;
+}
+
+html.halloween .stat span {
+  color: #d4c4b0;
+}
+
+html.halloween .path-item:not(:last-child)::before {
+  background: #4a2f5c;
+}
+
+html.halloween .lesson-node.locked {
+  color: #d4c4b0;
+}
+
+html.halloween button.lesson-node:hover {
+  background: rgba(230, 126, 34, 0.08);
+}
+
+html.halloween .marker {
+  background: #1a0e28;
+  color: #f4e8d4;
+  box-shadow: inset 0 0 0 2px #4a2f5c;
+}
+
+html.halloween .marker.current {
+  background: #f4e8d4;
+  color: #1a0f14;
+  box-shadow: 0 0 0 3px #e67e22;
+}
+
+html.halloween .marker.done {
+  background: #e67e22;
+  color: #1a0f14;
+  box-shadow: none;
+}
+
+html.halloween .marker.locked {
+  background: #1a0e28;
+  color: #d4c4b0;
+}
+
+html.halloween .lesson-node.locked .node-kicker {
+  color: #cbb8a4;
+}
+
+html.halloween .node-blurb {
+  color: #cbb8a4;
+}
+
+html.halloween .lesson-node.locked .node-blurb {
+  color: #b8a490;
+}
+
+html.halloween .footnote,
+html.halloween .loading {
+  color: #d4c4b0;
+}
+
+html.halloween .back {
+  border-color: #5a3a6e;
+  color: #f4e8d4;
+}
+
+html.halloween .back:hover {
+  background: rgba(230, 126, 34, 0.1);
+}
+
+html.halloween .progress {
+  background: #2a1838;
+}
+
+html.halloween .progress-fill {
+  background: #e67e22;
+}
+
+html.halloween .count {
+  color: #d4c4b0;
+}
+
+html.halloween .card {
+  background: linear-gradient(180deg, #faf3e4 0%, #f4e8d4 140px);
+  color: #1a0f14;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+}
+
+html.halloween .kind {
+  color: #c96a14;
+}
+
+html.halloween .help {
+  color: #6a5a48;
+}
+
+html.halloween .example {
+  background: #fff8ec;
+  border-left-color: #e67e22;
+}
+
+html.halloween .example-label {
+  color: #1a0f14;
+}
+
+html.halloween .option,
+html.halloween .match-btn,
+html.halloween input[type="text"] {
+  color: #1a0f14;
+  background: #fff8ec;
+  border-color: #e2d2b8;
+}
+
+html.halloween .match-btn.selected {
+  border-color: #e67e22;
+  background: #fde9d2;
+}
+
+html.halloween .option.correct,
+html.halloween .match-btn.locked,
+html.halloween input.correct {
+  background: #e7f3ea;
+  border-color: #1b7a45;
+}
+
+html.halloween .option.wrong,
+html.halloween .match-btn.wrong,
+html.halloween input.wrong {
+  background: #fdeceb;
+  border-color: #9d342c;
+}
+
+html.halloween .btn {
+  background: #e67e22;
+  color: #1a0f14;
+}
+
+html.halloween .btn:hover {
+  background: #c96a14;
+}
+
+html.halloween .score-num {
+  color: #c96a14;
+}
+
+html.halloween .score-num span {
+  color: #6a5a48;
+}
+
+html.halloween .noscript {
+  background: #f4e8d4;
+  color: #1a0f14;
+}
+
+/* Seasonal chrome helpers */
+.theme-toggle {
+  display: inline-flex;
+  gap: 0;
+  margin-top: 14px;
+  border: 1px solid #3a5166;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(20, 32, 43, 0.35);
+}
+
+html.halloween .theme-toggle {
+  border-color: #5a3a6e;
+  background: rgba(18, 8, 26, 0.45);
+}
+
+.theme-toggle button {
+  appearance: none;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  cursor: pointer;
+  min-height: 36px;
+}
+
+.theme-toggle button[aria-pressed="true"] {
+  background: #1f7a6b;
+  color: #fff;
+}
+
+html.halloween .theme-toggle button[aria-pressed="true"] {
+  background: #e67e22;
+  color: #1a0f14;
+}
+
+.theme-toggle button:hover:not([aria-pressed="true"]) {
+  background: rgba(246, 241, 231, 0.08);
+}
+
+html.halloween .theme-toggle button:hover:not([aria-pressed="true"]) {
+  background: rgba(230, 126, 34, 0.12);
+}
+
+.season-line {
+  margin: 10px 0 0;
+  color: #d0d7de;
+  font-size: 0.98rem;
+  font-style: italic;
+}
+
+html.halloween .season-line {
+  color: #f0a868;
+}
+
+.home-moon {
+  display: none;
+}
+
+html.halloween .home-moon {
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin: 0 0 6px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 40%, #f6e0a0 0 58%, transparent 60%),
+    radial-gradient(circle at 62% 48%, #12081a 0 42%, transparent 44%);
+  box-shadow: 0 0 18px rgba(246, 224, 160, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.halloween::before {
+    opacity: 0.35;
+  }
+}
+
+@media (forced-colors: active) {
+  html.halloween .theme-toggle,
+  html.halloween .theme-toggle button {
+    border: 1px solid ButtonText;
+  }
+
+  html.halloween .progress-fill,
+  html.halloween .theme-toggle button[aria-pressed="true"],
+  html.halloween .btn,
+  html.halloween .marker.done {
+    background: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+}
