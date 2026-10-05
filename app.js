@@ -487,8 +487,8 @@
     }
 
     var eyebrow = 'Gistmas Advent';
-    var heading = (course.title || 'Gistmas') + ' Advent';
-    var seasonLine = '<p class="season-line">Twenty-four doors of holly, waiting, and the real gist — from prophecy to joy.</p>';
+    var heading = 'Merry Christmas, one and all';
+    var lead = 'Twenty-four doors of holly, chocolate, and the real gist — from prophecy to joy.';
     var ornament = '<span class="home-holly" aria-hidden="true"></span>';
     var santa = '<figure class="dave-santa">' +
       '<img src="assets/dave-santa.jpg" width="160" height="160" alt="Dave McComb as Santa Claus">' +
@@ -499,9 +499,9 @@
       '<header class="home-head">' +
       ornament +
       '<p class="eyebrow">' + esc(eyebrow) + '</p>' +
-      '<h1>' + esc(heading) + '</h1>' +
-      '<p class="sub">The Semantic Arts ontology · CC BY 4.0</p>' +
-      seasonLine +
+      '<h1 class="home-greeting">' + esc(heading) + '</h1>' +
+      '<p class="sub home-lead">' + esc(lead) + '</p>' +
+      '<p class="season-line">A Gistmas Advent calendar through the Semantic Arts ontology · CC BY 4.0</p>' +
       santa +
       (course.sourceNote ? '<p class="source">' + richText(course.sourceNote) + '</p>' : '') +
       '</header>' +
@@ -668,9 +668,8 @@
     app.innerHTML = html;
     if (ui.status !== 'ready') return;
     applyTheme();
-    var courseTitle = ui.course.title || 'Gistmas';
-    var chromeTitle = courseTitle + ' Advent';
-    if (ui.view === 'home') document.title = chromeTitle;
+    var chromeTitle = 'Gistmas Advent';
+    if (ui.view === 'home') document.title = 'Merry Christmas, one and all · ' + chromeTitle;
     else {
       var lesson = currentLesson();
       var name = lesson && lesson.title ? lesson.title : 'Lesson';

@@ -1027,6 +1027,22 @@ html.christmas .season-line {
   color: #e8c65a;
 }
 
+html.christmas .home-greeting {
+  margin: 6px 0 10px;
+  font-size: clamp(1.85rem, 6.8vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  max-width: 12em;
+}
+
+html.christmas .home-lead {
+  margin: 0;
+  font-size: 1.12rem;
+  line-height: 1.4;
+  color: #f7f1e4;
+  max-width: 36rem;
+}
+
 
 .home-holly {
   display: none;
