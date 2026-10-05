@@ -22,7 +22,7 @@ Open the address it prints (usually http://127.0.0.1:8000).
 
 ## Gistmas theme
 
-The site is **Gistmas only** — forest green, crimson and gold, holly/ivy, CSS snowfall (respects `prefers-reduced-motion`), and Dave McComb (Semantic Arts) as Santa (`assets/dave-santa.jpg`). There is no Halloween or classic theme toggle.
+The site is **Gistmas only** — forest green, crimson and gold, holly/ivy, CSS snowfall (respects `prefers-reduced-motion`), and Dave McComb (Semantic Arts) as Santa — soft large home backdrop (`assets/dave-santa-bg.jpg`, from `assets/dave-santa.jpg`). Greeting: **Merry Gistmas, one and all**. There is no Halloween or classic theme toggle.
 
 ## lessons.json
 

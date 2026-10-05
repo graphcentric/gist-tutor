@@ -487,29 +487,32 @@
     }
 
     var eyebrow = 'Gistmas Advent';
-    var heading = 'Merry Christmas, one and all';
-    var lead = 'Twenty-four doors of holly, chocolate, and the real gist — from prophecy to joy.';
+    var heading = 'Merry Gistmas, one and all';
+    var lead = 'Twenty-four Gistmas doors of holly, chocolate, and the real gist — from prophecy to joy.';
     var ornament = '<span class="home-holly" aria-hidden="true"></span>';
-    var santa = '<figure class="dave-santa">' +
-      '<img src="assets/dave-santa.jpg" width="160" height="160" alt="Dave McComb as Santa Claus">' +
-      '<figcaption>Dave McComb · Semantic Arts · as Santa</figcaption>' +
-      '</figure>';
+    var backdrop = '<div class="santa-backdrop" aria-hidden="true">' +
+      '<img src="assets/dave-santa-bg.jpg" width="1600" height="1000" alt="">' +
+      '</div>';
+    var credit = '<p class="santa-credit">Dave McComb · Semantic Arts · as Santa</p>';
 
     return snowMarkup() +
+      '<div class="home-stage">' +
+      backdrop +
       '<header class="home-head">' +
       ornament +
       '<p class="eyebrow">' + esc(eyebrow) + '</p>' +
       '<h1 class="home-greeting">' + esc(heading) + '</h1>' +
       '<p class="sub home-lead">' + esc(lead) + '</p>' +
       '<p class="season-line">A Gistmas Advent calendar through the Semantic Arts ontology · CC BY 4.0</p>' +
-      santa +
+      credit +
       (course.sourceNote ? '<p class="source">' + richText(course.sourceNote) + '</p>' : '') +
       '</header>' +
       '<section class="stats" aria-label="Progress">' +
       '<div class="stat choco-stat"><b>' + chocolates + '</b><span>' + (chocolates === 1 ? 'chocolate' : 'chocolates') + '</span></div>' +
       '<div class="stat"><b>' + doneCount + '</b><span>' + (doneCount === 1 ? 'door open' : 'doors open') + '</span></div>' +
       '<div class="stat"><b>' + streak + '</b><span>day streak</span></div>' +
-      '</section>' + body;
+      '</section>' + body +
+      '</div>';
   }
 
   function renderTeach(ex) {
@@ -669,7 +672,7 @@
     if (ui.status !== 'ready') return;
     applyTheme();
     var chromeTitle = 'Gistmas Advent';
-    if (ui.view === 'home') document.title = 'Merry Christmas, one and all · ' + chromeTitle;
+    if (ui.view === 'home') document.title = 'Merry Gistmas, one and all · ' + chromeTitle;
     else {
       var lesson = currentLesson();
       var name = lesson && lesson.title ? lesson.title : 'Lesson';

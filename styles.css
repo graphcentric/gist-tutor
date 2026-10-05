@@ -1103,6 +1103,77 @@ html.christmas .home-holly::after {
   letter-spacing: 0.02em;
 }
 
+
+.home-stage {
+  position: relative;
+  isolation: isolate;
+}
+
+.santa-backdrop {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: -2%;
+  width: min(140%, 920px);
+  height: min(78vh, 720px);
+  transform: translateX(-50%);
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.28;
+  filter: blur(1.5px) saturate(1.05);
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 32%, #000 18%, rgba(0, 0, 0, 0.55) 48%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 32%, #000 18%, rgba(0, 0, 0, 0.55) 48%, transparent 78%);
+}
+
+.santa-backdrop img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  user-select: none;
+}
+
+.home-stage > :not(.santa-backdrop) {
+  position: relative;
+  z-index: 1;
+}
+
+.santa-credit {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  color: #c8d5cc;
+  letter-spacing: 0.02em;
+}
+
+html.christmas .santa-credit {
+  color: #d7e6db;
+  text-shadow: 0 1px 10px rgba(11, 46, 31, 0.85);
+}
+
+html.christmas .home-greeting,
+html.christmas .home-lead,
+html.christmas .eyebrow,
+html.christmas .season-line {
+  text-shadow: 0 1px 12px rgba(11, 46, 31, 0.75);
+}
+
+html.christmas .advent-board {
+  /* keep doors readable over soft Santa */
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.christmas .santa-backdrop {
+    animation: xm-santa-drift 14s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes xm-santa-drift {
+  from { transform: translateX(-50%) translateY(0); }
+  to { transform: translateX(-50%) translateY(8px); }
+}
+
 .dave-santa-mini {
   display: block;
   margin: 0 auto 10px;
@@ -1125,8 +1196,14 @@ html.christmas .home-holly::after {
   html.christmas .home-holly::after,
   html.christmas .dave-santa img,
   html.christmas .foil-choco,
-  html.christmas .dave-santa-mini.wink {
+  html.christmas .dave-santa-mini.wink,
+  html.christmas .santa-backdrop {
     animation: none !important;
+  }
+
+  html.christmas .santa-backdrop {
+    opacity: 0.24;
+    filter: blur(1px) saturate(1.02);
   }
 }
 
