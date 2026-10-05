@@ -491,7 +491,7 @@
     var lead = 'Twenty-four Gistmas doors of holly, chocolate, and the real gist — from prophecy to joy.';
     var ornament = '<span class="home-holly" aria-hidden="true"></span>';
     var backdrop = '<div class="santa-backdrop" aria-hidden="true">' +
-      '<img src="assets/dave-santa-bg.jpg" width="1600" height="1000" alt="">' +
+      '<img src="assets/dave-santa-bg.jpg" width="1920" height="1080" alt="">' +
       '</div>';
     var credit = '<p class="santa-credit">Dave McComb · Semantic Arts · as Santa</p>';
 

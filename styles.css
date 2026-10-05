@@ -1114,13 +1114,13 @@ html.christmas .home-holly::after {
   z-index: 0;
   left: 50%;
   top: -2%;
-  width: min(140%, 920px);
-  height: min(78vh, 720px);
+  width: min(180%, 1200px);
+  height: min(92vh, 900px);
   transform: translateX(-50%);
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.28;
-  filter: blur(1.5px) saturate(1.05);
+  opacity: 0.55;
+  filter: blur(0.6px) saturate(1.1);
   -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 32%, #000 18%, rgba(0, 0, 0, 0.55) 48%, transparent 78%);
   mask-image: radial-gradient(ellipse 70% 65% at 50% 32%, #000 18%, rgba(0, 0, 0, 0.55) 48%, transparent 78%);
 }
@@ -1130,7 +1130,7 @@ html.christmas .home-holly::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 22%;
   user-select: none;
 }
 
@@ -1202,8 +1202,8 @@ html.christmas .advent-board {
   }
 
   html.christmas .santa-backdrop {
-    opacity: 0.24;
-    filter: blur(1px) saturate(1.02);
+    opacity: 0.42;
+    filter: blur(0.4px) saturate(1.05);
   }
 }
 
