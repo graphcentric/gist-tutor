@@ -1331,9 +1331,11 @@ html.christmas .home-holly::after {
 
 .dave-santa img {
   display: inline-block;
-  max-width: min(220px, 70vw);
+  max-width: min(360px, 92vw);
+  width: 100%;
   height: auto;
   border-radius: 18px;
+  object-fit: cover;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 

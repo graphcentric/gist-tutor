@@ -469,7 +469,7 @@
       seasonLine = '<p class="season-line">Holly, ivy, and the real gist under the Gistmas wrapping paper.</p>';
       ornament = '<span class="home-holly" aria-hidden="true"></span>';
       santa = '<figure class="dave-santa">' +
-        '<img src="assets/dave-santa.svg" width="220" height="240" alt="Dave McComb as Santa Claus (festive illustration)">' +
+        '<img src="assets/dave-santa.jpg" width="240" height="240" alt="Dave McComb as Santa Claus (festive illustration)">' +
         '<figcaption>Dave McComb · Semantic Arts · as Santa</figcaption>' +
         '</figure>';
     }
@@ -628,7 +628,7 @@
     var sentence = scoreSentence(ui.firstTry, ui.scored);
     var figure = ui.scored ? '<p class="score-num">' + ui.firstTry + '<span> / ' + ui.scored + '</span></p>' : '';
     var santaBit = resolveTheme() === 'christmas'
-      ? '<img class="dave-santa-mini" src="assets/dave-santa.svg" width="72" height="78" alt="Dave McComb as Santa Claus (festive illustration)">'
+      ? '<img class="dave-santa-mini" src="assets/dave-santa.jpg" width="72" height="72" alt="Dave McComb as Santa Claus (festive illustration)">'
       : '';
     var card = '<article class="card"><div class="card-body">' + santaBit +
       '<h2 id="step-heading" tabindex="-1">Lesson complete</h2>' +
