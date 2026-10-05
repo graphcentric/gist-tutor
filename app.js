@@ -491,10 +491,10 @@
     var lead = 'Twenty-four Gistmas doors of holly, chocolate, and the real gist — from prophecy to joy.';
     var ornament = '<span class="home-holly" aria-hidden="true"></span>';
     var backdrop = '<div class="santa-backdrop" aria-hidden="true">' +
-      '<img src="assets/dave-santa-bg.jpg" width="1920" height="1080" alt="">' +
+      '<img src="assets/dave-santa-bg.jpg?v=3" width="1920" height="1080" alt="">' +
       '</div>';
     var santa = '<figure class="dave-santa">' +
-      '<img src="assets/dave-santa-bg.jpg" width="640" height="360" alt="Dave McComb as Santa Claus (festive illustration)">' +
+      '<img src="assets/dave-santa-bg.jpg?v=3" width="640" height="360" alt="Dave McComb as Santa Claus (festive illustration)">' +
       '<figcaption>Dave McComb · Semantic Arts · as Santa</figcaption>' +
       '</figure>';
 
@@ -646,7 +646,7 @@
     var sentence = scoreSentence(ui.firstTry, ui.scored);
     var figure = ui.scored ? '<p class="score-num">' + ui.firstTry + '<span> / ' + ui.scored + '</span></p>' : '';
     var award = ui.chocolateAward || { fresh: false, total: chocolateCount() };
-    var santaBit = '<img class="dave-santa-mini wink" src="assets/dave-santa.jpg" width="88" height="88" alt="Dave McComb as Santa Claus">';
+    var santaBit = '<img class="dave-santa-mini wink" src="assets/dave-santa.jpg?v=3" width="88" height="88" alt="Dave McComb as Santa Claus">';
     var chocoShow = '<div class="choco-celebrate" aria-hidden="true">' +
       '<div class="foil-choco"><span class="foil-shine"></span></div>' +
       '</div>';
