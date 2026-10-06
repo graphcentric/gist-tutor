@@ -37,3 +37,10 @@ The site is **Gistmas only** — forest green, crimson and gold, holly/ivy, CSS 
 Lesson definitions from Semantic Arts gist 14.1.0, used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Attribute https://www.semanticarts.com/gist/ .
 
 Public site: https://graphcentric.github.io/gist-tutor/
+
+## Login gate
+
+On first visit the site shows a small Gistmas login screen. It compares a SHA-256 digest of
+`username:password` in the browser and remembers success in `localStorage` under
+`gist-tutor-auth-v1`. This is a light deterrent only, not real security. To be asked again,
+clear that key (or site data) in the browser.
